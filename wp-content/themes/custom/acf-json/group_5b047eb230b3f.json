@@ -1,0 +1,123 @@
+{
+    "key": "group_5b047eb230b3f",
+    "title": "Rich Link",
+    "fields": [
+        {
+            "key": "field_5b047eda3957d",
+            "label": "Link Type",
+            "name": "link_type",
+            "type": "select",
+            "instructions": "Should this link to another page on this site, or should would you like to enter a custom link?",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "url": "URL",
+                "page": "Page"
+            },
+            "default_value": [
+                "page"
+            ],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0,
+            "return_format": "value",
+            "placeholder": ""
+        },
+        {
+            "key": "field_5b047f183957e",
+            "label": "Link Label",
+            "name": "link_label",
+            "type": "text",
+            "instructions": "Define what the button for this link says.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5b047f323957f",
+            "label": "Link URL",
+            "name": "link_url",
+            "type": "url",
+            "instructions": "Enter a URL for this link button.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5b047eda3957d",
+                        "operator": "==",
+                        "value": "url"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_5b047f5239580",
+            "label": "Link to Page",
+            "name": "link_to_page",
+            "type": "page_link",
+            "instructions": "Pick a page out of the list to link to.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5b047eda3957d",
+                        "operator": "==",
+                        "value": "page"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "page"
+            ],
+            "taxonomy": [],
+            "allow_null": 0,
+            "allow_archives": 1,
+            "multiple": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1527455859
+}

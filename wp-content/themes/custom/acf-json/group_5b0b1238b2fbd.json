@@ -1,0 +1,110 @@
+{
+    "key": "group_5b0b1238b2fbd",
+    "title": "Rich Media",
+    "fields": [
+        {
+            "key": "field_5b0b1279fe1c8",
+            "label": "Media Type",
+            "name": "media_type",
+            "type": "select",
+            "instructions": "Choose whether to add an image or a video.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "image": "Image",
+                "video": "Video"
+            },
+            "default_value": [
+                "image"
+            ],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0,
+            "return_format": "value",
+            "placeholder": ""
+        },
+        {
+            "key": "field_5b0b12b3fe1c9",
+            "label": "Image",
+            "name": "image",
+            "type": "image",
+            "instructions": "Upload an image here.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5b0b1279fe1c8",
+                        "operator": "==",
+                        "value": "image"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5b0b12d3fe1ca",
+            "label": "Video",
+            "name": "video",
+            "type": "file",
+            "instructions": "Upload a video here.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5b0b1279fe1c8",
+                        "operator": "==",
+                        "value": "video"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": "webm, ogg, gif, avi, mp4"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1527452498
+}

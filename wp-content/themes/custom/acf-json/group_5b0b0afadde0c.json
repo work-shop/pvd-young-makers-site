@@ -1,0 +1,181 @@
+{
+    "key": "group_5b0b0afadde0c",
+    "title": "Tool",
+    "fields": [
+        {
+            "key": "field_5b0b0b678efee",
+            "label": "Tool Information",
+            "name": "",
+            "type": "accordion",
+            "instructions": "Use these fields to add details about this tool.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 1,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
+            "key": "field_5b0b1393c5753",
+            "label": "Tool Media",
+            "name": "tool_media",
+            "type": "clone",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "clone": [
+                "group_5b0b1238b2fbd"
+            ],
+            "display": "seamless",
+            "layout": "block",
+            "prefix_label": 0,
+            "prefix_name": 0
+        },
+        {
+            "key": "field_5b0b0b388efed",
+            "label": "Tool Description",
+            "name": "tool_description",
+            "type": "wysiwyg",
+            "instructions": "Write a description of this tool here.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_5b0b10a18efef",
+            "label": "Tool Metadata",
+            "name": "",
+            "type": "accordion",
+            "instructions": "Use this section to connect this tool to Events and Locations, as well as to manage other metadata about the tool.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
+            "key": "field_5b0b11328eff0",
+            "label": "Locations",
+            "name": "locations",
+            "type": "relationship",
+            "instructions": "Select the locations where this tool is available.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "locations"
+            ],
+            "taxonomy": [],
+            "filters": [
+                "search",
+                "taxonomy"
+            ],
+            "elements": [
+                "featured_image"
+            ],
+            "min": "",
+            "max": "",
+            "return_format": "object"
+        },
+        {
+            "key": "field_5b0b11708eff1",
+            "label": "Events",
+            "name": "events",
+            "type": "relationship",
+            "instructions": "Select the events that involve this tool, if any.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "events"
+            ],
+            "taxonomy": [],
+            "filters": [
+                "search",
+                "taxonomy"
+            ],
+            "elements": "",
+            "min": "",
+            "max": "",
+            "return_format": "object"
+        },
+        {
+            "key": "field_5b0b11ab8eff2",
+            "label": "Badge",
+            "name": "badge",
+            "type": "relationship",
+            "instructions": "Select the Machine Badge that is associated with this Tool.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "badges"
+            ],
+            "taxonomy": [
+                "badge-types:machine-badges"
+            ],
+            "filters": [
+                "search"
+            ],
+            "elements": "",
+            "min": "",
+            "max": 1,
+            "return_format": "object"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "tools"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content"
+    ],
+    "active": 1,
+    "description": "",
+    "modified": 1527459248
+}

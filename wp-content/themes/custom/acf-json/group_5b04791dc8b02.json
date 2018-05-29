@@ -1,0 +1,114 @@
+{
+    "key": "group_5b04791dc8b02",
+    "title": "Page Hero",
+    "fields": [
+        {
+            "key": "field_5b047925a63a9",
+            "label": "Page Summary",
+            "name": "page_summary",
+            "type": "textarea",
+            "instructions": "Use this field to create a broad overview of the content on this page. This text will be overlaid on a masked image, which you can specify below.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_5b047993a63aa",
+            "label": "Page Hero Image",
+            "name": "page_hero_image",
+            "type": "image",
+            "instructions": "Provide a large, landscape-orientation image for the top of this page. This image will be masked, to support a text overlay.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5b0479fda63ab",
+            "label": "Page Hero Links",
+            "name": "page_hero_links",
+            "type": "repeater",
+            "instructions": "Add 1 - 3 links to display at the bottom of the hero section for this page.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "",
+            "sub_fields": [
+                {
+                    "key": "field_5b047a5fa63ac",
+                    "label": "Page Link",
+                    "name": "page_link",
+                    "type": "clone",
+                    "instructions": "Should this link to another page on this site, or should would you like to enter a custom link?",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "clone": [
+                        "group_5b047eb230b3f"
+                    ],
+                    "display": "seamless",
+                    "layout": "block",
+                    "prefix_label": 0,
+                    "prefix_name": 0
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            },
+            {
+                "param": "page",
+                "operator": "!=",
+                "value": "116"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1527615859
+}

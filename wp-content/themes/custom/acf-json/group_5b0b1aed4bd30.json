@@ -1,0 +1,139 @@
+{
+    "key": "group_5b0b1aed4bd30",
+    "title": "Badge",
+    "fields": [
+        {
+            "key": "field_5b0b1b2414929",
+            "label": "",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Use these fields to edit the information and metadata for this badge.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_5b0b1b671492a",
+            "label": "Badge Information",
+            "name": "",
+            "type": "accordion",
+            "instructions": "Use these fields to edit information about this badge.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 1,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
+            "key": "field_5b0b1bae1492c",
+            "label": "Badge Description",
+            "name": "badge_description",
+            "type": "wysiwyg",
+            "instructions": "Edit a description of this badge here.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_5b0b1bd91492d",
+            "label": "Badge Icon",
+            "name": "badge_icon",
+            "type": "file",
+            "instructions": "Upload an SVG file that with the icon for this badge here.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": "svg"
+        },
+        {
+            "key": "field_5b0b1b8d1492b",
+            "label": "Badge Metadata",
+            "name": "",
+            "type": "accordion",
+            "instructions": "Use these fields to edit metadata about this badge.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
+            "key": "field_5b0b1cbb1492f",
+            "label": "Events",
+            "name": "events",
+            "type": "relationship",
+            "instructions": "Use this field to link badges to events related to this badge.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "events"
+            ],
+            "taxonomy": [],
+            "filters": [
+                "search",
+                "taxonomy"
+            ],
+            "elements": "",
+            "min": "",
+            "max": "",
+            "return_format": "object"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "badges"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1527455650
+}

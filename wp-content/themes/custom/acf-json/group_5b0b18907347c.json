@@ -1,0 +1,154 @@
+{
+    "key": "group_5b0b18907347c",
+    "title": "Rich Contact",
+    "fields": [
+        {
+            "key": "field_5b0b18cb401e2",
+            "label": "Contact Type",
+            "name": "contact_type",
+            "type": "select",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "from-site": "Contact from this Site",
+                "write-in": "Write-In Contact"
+            },
+            "default_value": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0,
+            "return_format": "value",
+            "placeholder": ""
+        },
+        {
+            "key": "field_5b0b1904401e3",
+            "label": "Contact",
+            "name": "contact",
+            "type": "relationship",
+            "instructions": "Choose a contact from the list of people on the site.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5b0b18cb401e2",
+                        "operator": "==",
+                        "value": "from-site"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "people"
+            ],
+            "taxonomy": [],
+            "filters": [
+                "search"
+            ],
+            "elements": "",
+            "min": "",
+            "max": 1,
+            "return_format": "object"
+        },
+        {
+            "key": "field_5b0b1939401e4",
+            "label": "Contact Name",
+            "name": "contact_name",
+            "type": "text",
+            "instructions": "Write this person's full name.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5b0b18cb401e2",
+                        "operator": "==",
+                        "value": "write-in"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5b0b19b9401e6",
+            "label": "Contact Email",
+            "name": "contact_email",
+            "type": "email",
+            "instructions": "Write this person's contact email address.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_5b0b195f401e5",
+            "label": "Contact Phone Number",
+            "name": "contact_phone_number",
+            "type": "text",
+            "instructions": "Write this person's contact phone number, like \"(###) ###-#### ex.###\".",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5b0b18cb401e2",
+                        "operator": "==",
+                        "value": "write-in"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1527454106
+}

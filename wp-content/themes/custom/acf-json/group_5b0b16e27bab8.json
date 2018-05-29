@@ -1,0 +1,96 @@
+{
+    "key": "group_5b0b16e27bab8",
+    "title": "Rich Hours",
+    "fields": [
+        {
+            "key": "field_5b0b171d86250",
+            "label": "Hours",
+            "name": "hours",
+            "type": "repeater",
+            "instructions": "Add hours to this location here.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "",
+            "sub_fields": [
+                {
+                    "key": "field_5b0b174d86251",
+                    "label": "Day",
+                    "name": "day",
+                    "type": "text",
+                    "instructions": "Enter the day of the week here. Use abbreviations, like \"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\", \"Sat\", and \"Sun\". If a block of hours for a number of consecutive days, feel free to condense that time: \"Mon – Wed\", for example.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "20",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": 9
+                },
+                {
+                    "key": "field_5b0b180986252",
+                    "label": "Opening Time",
+                    "name": "opening_time",
+                    "type": "time_picker",
+                    "instructions": "Choose when the location opens.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "40",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_format": "g:i a",
+                    "return_format": "g:i a"
+                },
+                {
+                    "key": "field_5b0b183a86253",
+                    "label": "Closing Time",
+                    "name": "closing_time",
+                    "type": "time_picker",
+                    "instructions": "Choose when this location closes.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_format": "g:i a",
+                    "return_format": "g:i a"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1527453784
+}
