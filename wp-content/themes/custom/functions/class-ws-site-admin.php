@@ -73,7 +73,16 @@ class WS_Site_Admin {
     }
 
     public function admin_css( ) {
-        wp_enqueue_style( 'admin_css', get_template_directory_uri() . '/bundles/admin-bundle.css' );
+
+        $main_css = '/bundles/admin-bundle.css';
+
+        $compiled_resources_dir = get_template_directory();
+        $compiled_resources_uri = get_template_directory_uri();
+
+        $main_css_ver = filemtime( $compiled_resources_dir . $main_css ); // version suffixes for cache-busting.
+
+        wp_enqueue_script('admin_css', $compiled_resources_uri . $main_css, array(), $main_css_ver);
+
     }
 
 
