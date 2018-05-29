@@ -1,0 +1,102 @@
+{
+    "key": "group_5b0dc551a3621",
+    "title": "Rich Project",
+    "fields": [
+        {
+            "key": "field_5b0dc582a31db",
+            "label": "Project Name",
+            "name": "project_name",
+            "type": "text",
+            "instructions": "Write this project's name.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5b0dc598a31dc",
+            "label": "Project Image",
+            "name": "project_image",
+            "type": "image",
+            "instructions": "Describe the project with an image here.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5b0dc5aaa31dd",
+            "label": "Project Summary",
+            "name": "project_summary",
+            "type": "wysiwyg",
+            "instructions": "Write a summary of the project here.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_5b0dc5d4a31de",
+            "label": "Project Link",
+            "name": "project_link",
+            "type": "url",
+            "instructions": "Optionally, add a link to the project, if it appears elsewhere on the web.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1527629255
+}

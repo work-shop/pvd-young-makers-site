@@ -94,7 +94,15 @@
             "type": "email",
             "instructions": "Write this person's contact email address.",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5b0b18cb401e2",
+                        "operator": "==",
+                        "value": "write-in"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -150,5 +158,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1527454106
+    "modified": 1527630336
 }
