@@ -20,17 +20,17 @@ class WS_Site {
 
     public function register_post_types_and_taxonomies() {
 
-
-
         PVDYM_Tool::register();
         PVDYM_Location::register();
         PVDYM_Badge::register();
         PVDYM_News::register();
-        // the events post-type is managed by `The Events Calendar` plugin.
+        PVDYM_Event::register();
+        PVDYM_Person::register();
 
         PVDYM_Badge_Type::register();
         PVDYM_News_Category::register();
         PVDYM_Tool_Type::register();
+        PVDYM_Event_Type::register();
 
     }
 

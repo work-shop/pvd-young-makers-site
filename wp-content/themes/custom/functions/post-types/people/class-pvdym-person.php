@@ -1,26 +1,26 @@
 <?php
 
-class PVDYM_Badge extends WS_Custom_Post_Type {
+class PVDYM_Person extends WS_Custom_Post_Type {
 
     public static $linked_post_type = false;
 
-    public static $slug = 'badges';
+    public static $slug = 'people';
 
-    public static $singular_name = 'Badge';
+    public static $singular_name = 'Person';
 
-    public static $plural_name = 'Badges';
+    public static $plural_name = 'People';
 
     public static $post_options = array(
-        'menu_icon'                 => 'dashicons-awards',
+        'menu_icon'                 => 'dashicons-groups',
         'hierarchical'              => false,
-        'has_archive'               => true,
+        'has_archive'               => false,
         'menu_position'             => 4,
         'supports'                  => array(
                                         'title',
                                         'revisions'
                                     ),
         'rewrite'                   => array(
-                                        'slug' => 'badges',
+                                        'slug' => 'people',
                                         'with_front' => false,
                                         'feeds' => true,
                                         'pages' => true

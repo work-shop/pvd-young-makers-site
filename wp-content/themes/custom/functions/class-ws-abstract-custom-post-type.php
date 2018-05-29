@@ -69,7 +69,127 @@ abstract class WS_Custom_Post_Type {
 
         }
 
+        add_action( 'acf/save_post', array( get_called_class(), 'link_referenced_posts' ), 1 );
+
     }
+
+    /**
+     * Should be updated in subclasses that manage other post types.
+     * This method gets the associated metadata for this post type.
+     */
+    public static function get_meta( $post_id ) { return array(); }
+
+    /**
+    * Should be updated in subclasses that manage other post types.
+    * This method updates the associated metadata for this post type.
+     */
+    public static function update_meta( $meta, $post_id ) { return true; }
+
+
+    /**
+     * link any posts references in an ACF update to this page.
+     *
+     * @param int $post_id The post ID.
+     */
+    public static function link_referenced_posts( $post_id ) {
+        // if we're not in the managed post type, drop it like it's hot.
+        if ( static::$linked_post_type && static::$slug == get_post_type( $post_id ) ) {
+            if ( !empty( $_POST['acf'] ) ) {
+
+                static::remove_actions_for_managed_classes();
+
+                static::update_meta( $post_id );
+
+                static::restore_actions_for_managed_classes();
+
+            }
+
+        }
+
+    }
+
+
+    public static function remove_actions_for_managed_classes() {
+        foreach ( static::$managed_classes as $managing_class ) { remove_action('acf/save_post', array( $managing_class, 'link_referenced_posts' ), 1 ); }
+    }
+
+    public static function restore_actions_for_managed_classes() {
+        foreach ( static::$managed_classes as $managing_class ) { add_action('acf/save_post', array( $managing_class, 'link_referenced_posts' ), 1 ); }
+    }
+
+
+    /**
+     * Utility method for transferring post-types relationships
+     * from one side of a relationship field to the other.
+     *
+     * @param string field_name the name of the foreign field to update, on the target linked post type.
+     * @param array<string> updating_field_state an array of id strings representing new posts.
+     * @param array<int> $old_field_state an array of id ints representing the old posts in the field.
+     *
+     */
+    public static function transfer_to_linked_post_type( $field_name, $new_field_state, $old_field_state, $source_post_id, $strict = false ) {
+
+        $new_field_state = ( empty( $new_field_state ) ) ? array() : $new_field_state;
+
+        // echo "\n\n 'new state:'";
+        // var_dump( $new_field_state );
+        // echo "\n\n 'old state:'";
+        // var_dump( $old_field_state );
+
+
+        foreach ( $new_field_state as $new_id ) {
+
+            // cast the id to an int for clearer comparison.
+            $new_id = (int) $new_id;
+
+            // If this new element is already in the array, just carry on.
+            // it should have been linked in a previous pass.
+            // In this case, this id is in the old field state, and
+            // in the new fieldstate, meaning it hasn't changed at all. pass along.
+            if ( !in_array( $new_id, $old_field_state, true ) ) {
+
+                // if it's down here,
+                // otherwise, get the target field state from the other post, designated $id.
+                $conserved_foreign_field_state = get_field( $field_name, $new_id );
+                $conserved_foreign_field_state = ( $conserved_foreign_field_state ) ? array_map( function($x) { return (int) $x->ID; }, $conserved_foreign_field_state ) : array();
+                // in php, arrays are assigned by copy, don't worry.
+                // add the id to the a foreign update
+                array_push( $conserved_foreign_field_state, $source_post_id );
+
+                update_field( $field_name, $conserved_foreign_field_state, $new_id );
+
+            } else {
+
+                // remove this updated id from the old field state,
+                // at the end of this loop, we'll have the set of posts to
+                // remove this post id from.
+                $old_field_state = array_remove( $new_id, $old_field_state );
+
+            }
+
+        }
+        // echo "\n\n 'posts to remove:'";
+        // var_dump( $old_field_state );
+
+        foreach ( $old_field_state as $old_id ) {
+
+            $old_id = (int) $old_id;
+
+            $outdated_foreign_field_state = get_field( $field_name, $old_id );
+            $outdated_foreign_field_state = ( $outdated_foreign_field_state ) ? array_map( function($x) { return (int) $x->ID; }, $outdated_foreign_field_state ) : array();
+
+            $new_foreign_field_state = array_remove( $source_post_id, $outdated_foreign_field_state );
+
+            // echo "\n\n 'removing post:'";
+            // var_dump( $new_foreign_field_state );
+
+            update_field( $field_name, $new_foreign_field_state, $old_id );
+
+        }
+
+
+    }
+
 
     /**
      * This static method retrieves a set of posts for the child's post-type.

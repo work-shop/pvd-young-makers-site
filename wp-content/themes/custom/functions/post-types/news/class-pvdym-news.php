@@ -2,6 +2,8 @@
 
 class PVDYM_News extends WS_Custom_Post_Type {
 
+    public static $linked_post_type = false;
+
     public static $slug = 'news';
 
     public static $singular_name = 'News Story';
