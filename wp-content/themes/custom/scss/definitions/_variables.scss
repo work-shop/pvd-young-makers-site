@@ -7,6 +7,15 @@ $brand-yellow: #DFBA39;
 $khaki: #F3F1EC;
 $slate: #8792A3;
 
+$brand-orange: #E36F1E;
+$brand-orange-light: #FADCC7;
+$brand-teal-dark: #174759;
+$brand-teal: #2A5A6B;
+$brand-teal-lighter: lighten( $brand-teal, 40 );
+$brand-cyan: #3F90A7;
+$brand-cyan-light: #C4E0E8;
+$brand-cyan-lighter: #D9F3FB;
+
 
 //grays
 $ultra-light: #F5F5F5;
@@ -15,6 +24,9 @@ $medium-light: #9B9B9B;
 $medium: #828282;
 $medium-dark: #555555;
 $dark: #222222;
+
+// work-shop
+$work-shop-color: #f79941;
 
 
 //utility colors
@@ -38,6 +50,8 @@ $container-fluid-padding-mobile: 15px;
 $container-fluid-sum: $container-fluid-padding * 2;
 $container-fluid-sum-mobile: $container-fluid-padding-mobile * 2;
 
+// site box borders
+$border-size: 10px;
 
 //transitions
 $modal-transition: .35s;
@@ -51,14 +65,14 @@ $lg: 1199px;
 
 
 //site
-$body-background-color: white;
+$body-background-color: $brand-cyan-lighter;
 
-$font-main: 'Akkurat Pro', Helvetica, Arial, Sans-serif;
-$font-italic: 'Akkurat Pro', Helvetica, Arial, Sans-serif;
-$font-bold: 'Akkurat Pro', Helvetica, Arial, Sans-serif;
-$font-bold-italic: 'Akkurat Pro', Helvetica, Arial, Sans-serif;
-$font-light: 'Founders-Light', Helvetica, Arial, Sans-serif;
-$font-light-italic: 'Founders-Light-Italic', Helvetica, Arial, Sans-serif;
+$font-main: 'Montserrat', Helvetica, Arial, Sans-serif;
+$font-italic: 'Montserrat', Helvetica, Arial, Sans-serif;
+$font-bold: 'Montserrat', Helvetica, Arial, Sans-serif;
+$font-bold-italic: 'Montserrat', Helvetica, Arial, Sans-serif;
+$font-light: 'Montserrat', Helvetica, Arial, Sans-serif;
+$font-light-italic: 'Montserrat', Helvetica, Arial, Sans-serif;
 $font-serif: freight-display-pro, Georgia, Times New Roman, Serif;
 $font-serif-italic: freight-display-pro, Georgia, Times New Roman, Serif;
 $font-serif-bold: freight-display-pro, Georgia, Times New Roman, Serif;
