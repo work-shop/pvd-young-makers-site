@@ -55,22 +55,6 @@ The `webpack.config.js` file has been replaced with a Gulp configuration file: `
 The npm scripts have also been updated. You can run `npm run build` to invoke `gulp build`, if you like. Similarly `npm run watch` will invoke `gulp watch`. If you're switching to this build process from Webpack, delete your `node_modules` directory to get rid of any unneeded modules, and then run `npm install`. Thats it.
 
 
-## Plugin Dependencies: Wordpress
-
-- [Object Sync for Salesforce](https://wordpress.org/plugins/object-sync-for-salesforce/). This plugin provides a low-level abstraction for connecting an arbitrary salesforce instance with an arbitrary wordpress installation. I intend to use it as a base for keeping User data in sync between salesforce and Wordpress.
-
-- [WooCommerce Base](https://woocommerce.com/developers/). Ecommerce Manager. Free. The obvious base ecommerce package for the site.
-
-- [WooCommerce Stripe](https://woocommerce.com/products/stripe/). Payment gateway. Free. We'll use stripe for all transactions. We had a good experience integrating with stripe on a previous project. Stripe also plays well with WooCommerce Subscriptions and securely saving cards, which we'll need.
-
-- [WooCommerce Subscriptions](https://woocommerce.com/products/woocommerce-subscriptions/). Secure Recurring Payments Scheduler. $199.00. Subscriptions and Recurring payments. We'll want to use this to manage recurring payments, as in donations and memberships.
-
-- [WooCommerce Product Bundles](https://docs.woocommerce.com/documentation/plugins/woocommerce/woocommerce-extensions/product-bundles/). For selling bundled products. $49.00. These may be things like a Course, and an Associate Course Fee.
-
-- [WooCommerce Custom Post Types Manager](http://reigelgallarde.me/doc/woocommerce-custom-post-type-manager/). Allows for woocommerce fields to be associated with non-product post-types. $25.99. We'll use this to turn each of our critical custom post types.
-
-- [TechCrunch WP Asynchronous Tasks](https://github.com/techcrunch/wp-async-task). Allows for Asynchronous request processing for WordPress in PHP: helpful because php execution environments are single-threaded, and we have a lot of processing to do at a given time. Free.
-
 
 ## Setting up the Development Environment.
 
