@@ -138,6 +138,8 @@ class wsMenuEditorExtras {
 		add_filter('user_has_cap', array($this, 'regrant_virtual_caps_to_user'), 200, 1);
 		add_filter('role_has_cap', array($this, 'grant_virtual_caps_to_role'), 200, 3);
 
+		add_action('load-options.php', array($this, 'disable_virtual_caps_on_all_options'));
+
 		//Make it possible to automatically hide new admin menus.
 		add_filter('admin_menu_editor-new_menu_grant_access', array($this, 'get_new_menu_grant_access'));
 
@@ -2179,6 +2181,26 @@ wsEditorData.importMenuNonce = "<?php echo esc_js(wp_create_nonce('import_custom
 
 	public function ajax_install_addon() {
 
+	}
+
+	/**
+	 * Prevent non-privileged users from accessing the special "All Settings" page even if
+	 * they've been granted access to other pages that require the "manage_options" capability.
+	 */
+	public function disable_virtual_caps_on_all_options() {
+		//options.php also handles the saving of settings created with the Settings API, so we
+		//need to check if this is a direct request for options.php and not just a form submission.
+		$action = ameUtils::get($_POST, 'action', ameUtils::get($_GET, 'action', ''));
+		$option_page = ameUtils::get($_POST, 'option_page', ameUtils::get($_GET, 'option_page', 'options'));
+
+		if ( ($action !== 'update') && (($option_page === 'options') || empty($option_page)) ) {
+			$this->disable_virtual_caps = true;
+			add_action('admin_enqueue_scripts', array($this, 'enable_virtual_caps'));
+		}
+	}
+
+	public function enable_virtual_caps() {
+		$this->disable_virtual_caps = false;
 	}
 }
 
