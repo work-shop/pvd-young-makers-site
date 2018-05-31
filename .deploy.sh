@@ -1,34 +1,34 @@
-#!/bin/bash                                                                                                                                                            │[10:53:46] Starting 'scss'...
-                                                                                                                                                                       │[10:53:46] Finished 'scss' after 1.11 ms
-#npm run build                                                                                                                                                         │[10:53:46] Starting 'js'...
-                                                                                                                                                                       │[10:53:46] Starting 'watch'...
-source ./.env                                                                                                                                                          │[10:53:47] Finished 'watch' after 115 ms
-                                                                                                                                                                       │[10:53:47] /Users/nicschumann/work-space/pvd-young-makers/pvdym-site/wp-content/themes/custom/scss/admin-bundle.css reloaded.
-if [ -z ${DESTINATION+x} ]; then                                                                                                                                       │[10:53:47] /Users/nicschumann/work-space/pvd-young-makers/pvdym-site/wp-content/themes/custom/bundles/bundle.css reloaded.
-    echo "No destination specified; nothing done."                                                                                                                     │[10:53:47] /Users/nicschumann/work-space/pvd-young-makers/pvdym-site/wp-content/themes/custom/bundles/ reloaded.
-    exit 1                                                                                                                                                             │[10:53:48] /Users/nicschumann/work-space/pvd-young-makers/pvdym-site/bundle.js reloaded.
-fi                                                                                                                                                                     │[10:53:48] Finished 'js' after 1.17 s
-                                                                                                                                                                       │[10:53:48] Starting 'default'...
-echo "destination = $KINSTA_IP:~/$DESTINATION"                                                                                                                         │[10:53:48] Finished 'default' after 24 μs
-                                                                                                                                                                       │[11:22:03] /Users/nicschumann/work-space/pvd-young-makers/pvdym-site/wp-content/themes/custom/functions/post-types/custom-post/class-ws-custom-post.php reloaded.
-                                                                                                                                                                       │[11:22:18] /Users/nicschumann/work-space/pvd-young-makers/pvdym-site/wp-content/themes/custom/functions/class-ws-site-init.php reloaded.
-#SED_REPLACE="s_//localhost:3000_//precollege.wsri.host_g ; s_//localhost:3001_//precollege.wsri.host_g ; s_//localhost:8080_//precollege.wsri.host_g"                 │[11:22:41] /Users/nicschumann/work-space/pvd-young-makers/pvdym-site/wp-content/themes/custom/functions.php reloaded.
-                                                                                                                                                                       │[11:25:14] /Users/nicschumann/work-space/pvd-young-makers/pvdym-site/wp-content/themes/custom/functions.php reloaded.
-#docker cp $DOCKER_WORDPRESS_CONTAINER:/var/www/html/wp-content/uploads ./dist/wp-content                                                                              │[11:28:02] /Users/nicschumann/work-space/pvd-young-makers/pvdym-site/wp-content/themes/custom/functions.php reloaded.
-#docker exec $DOCKER_DATABASE_CONTAINER mysqldump -u$WORDPRESS_DB_USER -p$WORDPRESS_DB_PASSWORD $WORDPRESS_DB_NAME | sed -e "$SED_REPLACE" > ./dist/migration.sql      │[11:28:13] /Users/nicschumann/work-space/pvd-young-makers/pvdym-site/wp-content/themes/custom/functions.php reloaded.
-                                                                                                                                                                       │[11:28:29] /Users/nicschumann/work-space/pvd-young-makers/pvdym-site/wp-content/themes/custom/functions.php reloaded.
-NODE_ENV=staging gulp build                                                                                                                                            │[11:29:28] /Users/nicschumann/work-space/pvd-young-makers/pvdym-site/wp-content/themes/custom/functions.php reloaded.
-scp -P $KINSTA_PORT -r ./wp-content/themes/custom/. $KINSTA_USER@$KINSTA_IP:./$DESTINATION/wp-content/themes/custom                                                    │[11:29:57] /Users/nicschumann/work-space/pvd-young-makers/pvdym-site/wp-content/themes/custom/functions/class-ws-site-init.php reloaded.
-#scp -P $KINSTA_PORT -r ./wp-content/plugins $KINSTA_USER@$KINSTA_IP:./$DESTINATION/wp-content/                                                                        │
-#scp -P $KINSTA_PORT -r ./wp-content/mu-plugins $KINSTA_USER@$KINSTA_IP:./$DESTINATION/wp-content/                                                                     ├──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-#scp -r ./dist/wp-content/uploads root@$DROPLET_IP:/var/www/html/wp-content/                                                                                           │.181 Safari/537.36"
-#scp ./dist/migration.sql root@$DROPLET_IP:/root                                                                                                                       │pvdyoungmakerssite_wordpress_1 | 172.24.0.1 - - [22/May/2018:15:29:35 +0000] "GET /wp-content/plugins/the-events-calendar/src/resources/js/aggregator-facebook-login.min.j
-#scp ./.remote.deploy.sh root@$DROPLET_IP:/root                                                                                                                        │s?ver=4.6.16 HTTP/1.1" 200 897 "http://localhost:8080/wp-admin/edit.php" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66
-                                                                                                                                                                       │.0.3359.181 Safari/537.36"
-#ssh root@$DROPLET_IP 'cd /root ; chmod +x ./.remote.deploy.sh ; ./.remote.deploy.sh'                                                                                  │pvdyoungmakerssite_wordpress_1 | 172.24.0.1 - - [22/May/2018:15:29:35 +0000] "GET /wp-content/plugins/the-events-calendar/src/resources/js/admin-ignored-events.min.js?ver
-                                                                                                                                                                       │=4.6.16 HTTP/1.1" 200 1084 "http://localhost:8080/wp-admin/edit.php" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3
-#rm -rf ./dist/wp-content/uploads                                                                                                                                      │359.181 Safari/537.36"
-#rm ./dist/migration.sql                                                                                                                                               │pvdyoungmakerssite_wordpress_1 | 172.24.0.1 - - [22/May/2018:15:29:36 +0000] "GET /wp-includes/js/wp-emoji-release.min.js?ver=4.8.1 HTTP/1.1" 200 4650 "http://localhost:8
-                                                                                                                                                                       │080/wp-admin/edit.php" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36"
-                                                                                                                                                                       │pvdyoungmakerssite_wordpress_1 | 172.24.0.1 - - [22/May/2018:15:29:36 +0000] "POST /wp-admin/admin-ajax.php HTTP/1.1" 200 471 "http://localhost:8080/wp-admin/edit.php" "M
+#!/bin/bash
+
+#npm run build
+
+source ./.env
+
+if [ -z ${DESTINATION+x} ]; then
+    echo "No destination specified; nothing done."
+    exit 1
+fi
+
+echo "destination = $KINSTA_IP:~/$DESTINATION"
+
+
+#SED_REPLACE="s_//localhost:3000_//precollege.wsri.host_g ; s_//localhost:3001_//precollege.wsri.host_g ; s_//localhost:8080_//precollege.wsri.host_g"
+
+#docker cp $DOCKER_WORDPRESS_CONTAINER:/var/www/html/wp-content/uploads ./dist/wp-content
+#docker exec $DOCKER_DATABASE_CONTAINER mysqldump -u$WORDPRESS_DB_USER -p$WORDPRESS_DB_PASSWORD $WORDPRESS_DB_NAME | sed -e "$SED_REPLACE" > ./dist/migration.sql
+
+NODE_ENV=staging gulp build
+scp -P $KINSTA_PORT -r ./wp-content/themes/custom/. $KINSTA_USER@$KINSTA_IP:./$DESTINATION/wp-content/themes/custom
+scp -P $KINSTA_PORT -r ./wp-content/plugins $KINSTA_USER@$KINSTA_IP:./$DESTINATION/wp-content/
+scp -P $KINSTA_PORT -r ./wp-content/mu-plugins $KINSTA_USER@$KINSTA_IP:./$DESTINATION/wp-content/
+#scp -r ./dist/wp-content/uploads root@$DROPLET_IP:/var/www/html/wp-content/
+#scp ./dist/migration.sql root@$DROPLET_IP:/root
+#scp ./.remote.deploy.sh root@$DROPLET_IP:/root
+
+#ssh root@$DROPLET_IP 'cd /root ; chmod +x ./.remote.deploy.sh ; ./.remote.deploy.sh'
+
+#rm -rf ./dist/wp-content/uploads
+#rm ./dist/migration.sql
+
+
 # TODO: Add a hook to migrate and string-replace the database.

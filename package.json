@@ -20,7 +20,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "gulp",
     "build": "gulp build",
-    "deploy": "./.deploy.sh",
+    "deploy-staging": "DESTINATION=staging_html ./.deploy.sh",
+    "deploy-production": "DESTINATION=public_html ./.deploy.sh",
     "pull-database": "./.pull-database.sh"
   },
   "devDependencies": {
