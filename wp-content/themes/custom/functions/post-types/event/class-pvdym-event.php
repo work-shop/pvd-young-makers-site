@@ -64,6 +64,56 @@ class PVDYM_Event extends WS_Custom_Post_Type {
 
     }
 
+    public static function save_post( $post_id ) {
+
+        if ( static::$slug != get_post_type( $post_id ) ) return;
+
+        remove_action( 'acf/save_post', array( get_called_class(), 'save_post' ), 50  );
+
+        $event_name = get_field( 'event_name', $post_id );
+        $event_slug = strtolower( $event_name );
+
+        $event_start = get_field('event_start', $post_id );
+        $event_end = get_field('event_end', $post_id );
+
+        $date_string = self::get_date_string( $event_start, $event_end );
+
+        wp_update_post(array(
+            'ID' => $post_id,
+            'post_title' => $event_name . ' ' . $date_string['title'],
+            'post_name' => $event_slug . '--' . $date_string['slug']
+        ));
+
+        add_action( 'acf/save_post', array( get_called_class(), 'save_post' ), 50  );
+
+    }
+
+
+    public static function get_date_string( $event_start, $event_end ) {
+        $dt_start = DateTime::createFromFormat('d/m/Y g:i a', $event_start );
+        $dt_end = DateTime::createFromFormat('d/m/Y g:i a', $event_end );
+
+        $date_start = $dt_start->format('F j, Y');
+        $date_end = $dt_end->format('F j, Y');
+
+        if ( $date_start == $date_end ) {
+
+            return array(
+                'title' => '(' . $date_start . ')',
+                'slug'  => strtolower( $dt_start->format('m-j-y') )
+            );
+
+        } else {
+
+            return array(
+                'title' => '(' . $date_start . ' to ' . $date_end . ')',
+                'slug'  => strtolower( $dt_start->format('m-j-y') . '--' . $dt_end->format('m-j-y') )
+            );
+
+        }
+
+    }
+
 
     /**
      * ==== Instance Members and Methods ====

@@ -20,6 +20,25 @@
             "esc_html": 0
         },
         {
+            "key": "field_5b0ff3f94a8bc",
+            "label": "Event Name",
+            "name": "event_name",
+            "type": "text",
+            "instructions": "Enter the name of this event here. The name you enter here will overwrite the name in the title bar above and will be merged with the timing you specify below.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_5b0b27a546883",
             "label": "Event Information",
             "name": "",
@@ -229,8 +248,11 @@
     "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
-    "hide_on_screen": "",
+    "hide_on_screen": [
+        "permalink",
+        "the_content"
+    ],
     "active": 1,
     "description": "",
-    "modified": 1527622539
+    "modified": 1527772669
 }

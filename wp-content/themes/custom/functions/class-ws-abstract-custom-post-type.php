@@ -70,8 +70,15 @@ abstract class WS_Custom_Post_Type {
         }
 
         add_action( 'acf/save_post', array( get_called_class(), 'link_referenced_posts' ), 1 );
+        add_action( 'acf/save_post', array( get_called_class(), 'save_post' ), 50 );
 
     }
+
+    /**
+     * A template function for a save_post hook,
+     * which can be overridden by subclasses.
+     */
+    public static function save_post( $post_id ) {}
 
     /**
      * Should be updated in subclasses that manage other post types.
