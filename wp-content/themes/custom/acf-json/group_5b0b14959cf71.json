@@ -78,8 +78,8 @@
         },
         {
             "key": "field_5b0b16e1e7fb2",
-            "label": "Location Contact Information",
-            "name": "location_contact_information",
+            "label": "Fab Newport Staff",
+            "name": "fab_newport_staff",
             "type": "clone",
             "instructions": "",
             "required": 1,
@@ -94,8 +94,29 @@
             ],
             "display": "seamless",
             "layout": "block",
-            "prefix_label": 0,
-            "prefix_name": 0
+            "prefix_label": 1,
+            "prefix_name": 1
+        },
+        {
+            "key": "field_5b116415ad284",
+            "label": "Library Staff",
+            "name": "library_staff",
+            "type": "clone",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "clone": [
+                "group_5b0b18907347c"
+            ],
+            "display": "seamless",
+            "layout": "block",
+            "prefix_label": 1,
+            "prefix_name": 1
         },
         {
             "key": "field_5b0b189b08248",
@@ -223,5 +244,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1527454427
+    "modified": 1527866366
 }
