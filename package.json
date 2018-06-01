@@ -21,8 +21,7 @@
     "watch": "gulp",
     "build": "gulp build",
     "deploy-staging": "DESTINATION=staging_html ./.deploy.sh",
-    "deploy-production": "DESTINATION=public_html ./.deploy.sh",
-    "pull-database": "./.pull-database.sh"
+    "deploy-production": "DESTINATION=public_html ./.deploy.sh"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
