@@ -90,7 +90,7 @@ abstract class WS_Custom_Post_Type {
     * Should be updated in subclasses that manage other post types.
     * This method updates the associated metadata for this post type.
      */
-    public static function update_meta( $meta, $post_id ) { return true; }
+    public static function update_meta( $post_id ) { return true; }
 
 
     /**

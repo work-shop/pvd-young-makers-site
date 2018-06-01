@@ -4,7 +4,7 @@ class PVDYM_Tool extends WS_Custom_Post_Type {
 
     public static $linked_post_type = true;
 
-    public static $managed_classes = array( PVDYM_Event, PVDYM_Location );
+    public static $managed_classes = array( 'PVDYM_Event', 'PVDYM_Location' );
 
     public static $slug = 'tools';
 

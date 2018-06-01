@@ -4,7 +4,7 @@ class PVDYM_Event extends WS_Custom_Post_Type {
 
     public static $linked_post_type = true;
 
-    public static $managed_classes = array( PVDYM_Location, PVDYM_Tool );
+    public static $managed_classes = array( 'PVDYM_Location', 'PVDYM_Tool' );
 
     public static $slug = 'events';
 

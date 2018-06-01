@@ -4,7 +4,7 @@ class PVDYM_Location extends WS_Custom_Post_Type {
 
     public static $linked_post_type = true;
 
-    public static $managed_classes = array( PVDYM_Event, PVDYM_Tool );
+    public static $managed_classes = array( 'PVDYM_Event', 'PVDYM_Tool' );
 
     public static $slug = 'locations';
 
