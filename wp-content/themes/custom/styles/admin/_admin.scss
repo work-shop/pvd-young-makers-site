@@ -1,10 +1,8 @@
-
-
 .acf-field-message {
-    background-color: $brand-orange-light;
+  background-color: var(--light-orange);
 }
 
 .hndle.ui-sortable-handle {
-    background-color: $brand-orange;
-    color: white;
+  background-color: var(--orange);
+  color: var(--white);
 }

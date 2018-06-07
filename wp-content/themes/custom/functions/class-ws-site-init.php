@@ -71,7 +71,7 @@ class WS_Site extends TimberSite
     public function enqueue_scripts_and_styles()
     {
         if (function_exists('get_template_directory_uri') && function_exists('wp_enqueue_style') && function_exists('wp_enqueue_script')) {
-            wp_register_style('google-fonts', 'https://fonts.googleapis.com/css?family=Montserrat');
+            wp_register_style('google-fonts', 'https://fonts.googleapis.com/css?family=Montserrat:500,700');
 
             $main_css = '/bundles/bundle.css';
             $main_js = '/bundles/bundle.js';

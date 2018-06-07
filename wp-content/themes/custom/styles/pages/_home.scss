@@ -1,0 +1,29 @@
+.HomePage {
+}
+
+.HomePage-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 75vh;
+  background-color: var(--light-blue);
+}
+
+.HomePage-headerContent {
+  max-width: 48rem;
+  padding: 1rem;
+}
+
+.HomePage-tagline {
+  // margin-bottom: 1rem;
+}
+
+.HomePage-links {
+  // display: flex;
+}
+
+@media (min-width: 768px) {
+  .HomePage-tagline {
+    margin-bottom: 3rem;
+  }
+}

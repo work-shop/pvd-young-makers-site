@@ -1,0 +1,57 @@
+/**
+ * Block
+ */
+
+.Block {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  box-decoration-break: clone;
+  box-shadow: 0.5rem 0.5rem 0 var(--orange);
+  margin: 0 1.5rem 1.5rem 0;
+  padding: calc(1rem * 2 / 3) 1rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.Block:last-of-type {
+  margin-right: 0;
+}
+
+a.Block {
+  text-decoration: none;
+}
+
+a.Block:hover {
+  color: currentColor;
+}
+
+.Block--dark {
+  background-color: var(--navy);
+  color: var(--white);
+}
+
+.Block--light {
+  background-color: var(--light-orange);
+  color: var(--navy);
+}
+
+/**
+ * HeroBlock
+ * Wrap around a Block to make it BIG!
+ */
+
+.HeroBlock .Block {
+  font-size: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .HeroBlock {
+    margin-bottom: 0.75rem;
+  }
+
+  .HeroBlock .Block {
+    display: inline;
+    font-size: 3rem;
+  }
+}

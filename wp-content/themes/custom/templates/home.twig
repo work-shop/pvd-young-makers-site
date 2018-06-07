@@ -1,7 +1,29 @@
 {% extends "base.twig" %}
 
 {% block content %}
-    <section>
-        {{ post.get_field('home_page_tagline') }}
+    <section class="HomePage">
+        <header class="HomePage-header">
+            <div class="HomePage-headerContent">
+                <div class="HomePage-tagline">
+                    <div class="HeroBlock">
+                        <h1 class="Block Block--dark">{{ post.get_field('home_page_tagline') }}</h1>
+                    </div>
+                </div>
+
+                <div class="HomePage-links">
+                    {% spaceless %}
+                        {% for item in post.get_field('home_page_links') %}
+                            {% set link_href = "#" %}
+                            {% if item.link_to_page %}
+                                {% set link_href = item.link_to_page %}
+                            {% elseif item.link_url %}
+                                {% set link_href = item.link_url %}
+                            {% endif %}
+                            <a class="Block Block--light" href="{{ link_href }}">{{ item.link_label }}</a>
+                        {% endfor %}
+                    {% endspaceless %}
+                </div>
+            </div>
+        </header>
     </section>
 {% endblock %}

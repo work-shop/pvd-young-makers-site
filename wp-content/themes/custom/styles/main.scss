@@ -3,13 +3,25 @@
 @import "variables";
 
 body {
+  background-color: var(--white);
   color: var(--navy);
+  font-weight: 500;
   font-family: var(--primary-font);
 }
 
 a {
   color: var(--orange);
+
+  &:hover {
+    color: var(--blue);
+  }
 }
+
+// Components
+@import "components/block";
+
+// Pages
+@import "pages/home";
 
 // @import "bourbon";
 // @import "bootstrap/bootstrap-grid";
