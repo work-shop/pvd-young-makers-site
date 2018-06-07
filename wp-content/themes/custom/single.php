@@ -1,12 +1,10 @@
+<?php
 
-<?php get_template_part('partials/header'); ?>
+$post = Timber::query_post();
 
-<?php get_template_part('partials/page/page_hero' ); ?>
+$templates = array('single-' . $post->ID . '.twig', 'single-' . $post->post_type . '.twig', 'single.twig');
 
-<?php get_template_part('partials/page/page_intro' ); ?>
+$context = Timber::get_context();
+$context['post'] = $post;
 
-<?php get_template_part('partials/flexible_content/flexible_content' ); ?>
-
-<?php get_template_part('partials/footer' ); ?>
-
-
+Timber::render($templates, $context);

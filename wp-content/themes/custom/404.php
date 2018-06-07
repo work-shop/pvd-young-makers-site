@@ -1,5 +1,5 @@
-<?php get_template_part('templates/partials/header'); ?>
+<?php
 
+$context = Timber::get_context();
 
-
-<?php get_template_part('templates/partials', 'footer' ); ?>
+Timber::render('404.twig', $context);

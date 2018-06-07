@@ -35,17 +35,17 @@ const slick_includePaths = path.join(__dirname,'node_modules','slick-carousel', 
 const php_entrypoint = path.join( __dirname, paths.src, '**', '*.!(' + managed_files.join('|') + ')' );
 const php_exitpoint = path.join( __dirname, paths.dest );
 
-const js_entrypoint = path.join( __dirname, paths.src, 'js', 'main.js' );
+const js_entrypoint = path.join( __dirname, paths.src, 'scripts', 'main.js' );
 const js_exitpoint = path.join( __dirname, paths.dest, 'bundles' );
-const js_watch_files = path.join( __dirname, paths.src, 'js', '**', '*.js' );
+const js_watch_files = path.join( __dirname, paths.src, 'scripts', '**', '*.js' );
 
-const sass_entrypoint = path.join( __dirname, paths.src, 'scss', 'main.scss' );
+const sass_entrypoint = path.join( __dirname, paths.src, 'styles', 'main.scss' );
 const sass_exitpoint = path.join( __dirname, paths.dest, 'bundles' );
-const sass_watch_files = path.join( __dirname, paths.src, 'scss', '**', '*.scss' );
+const sass_watch_files = path.join( __dirname, paths.src, 'styles', '**', '*.scss' );
 
-const admin_sass_entrypoint = path.join( __dirname, paths.src, 'scss', 'admin.scss' );
+const admin_sass_entrypoint = path.join( __dirname, paths.src, 'styles', 'admin.scss' );
 const admin_sass_exitpoint = path.join( __dirname, paths.dest, 'bundles' );
-const admin_sass_watch_files = [path.join( __dirname, paths.src, 'scss', 'admin.scss' ), path.join( __dirname, paths.src, 'styles', 'admin', '**', '*.scss' )];
+const admin_sass_watch_files = [path.join( __dirname, paths.src, 'styles', 'admin.scss' ), path.join( __dirname, paths.src, 'styles', 'admin', '**', '*.scss' )];
 
 const js_bundler = browserify(js_entrypoint).transform( babelify, {presets: ['env']});
 

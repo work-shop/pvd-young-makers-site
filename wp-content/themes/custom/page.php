@@ -1,14 +1,13 @@
+<?php
 
-<?php get_template_part('partials/header'); ?>
+$post = new TimberPost();
 
-<?php get_template_part('partials/page/page_hero' ); ?>
+$templates = array('page-' . $post->post_name . '.twig', 'page.twig');
+if (is_front_page()) {
+    array_unshift($templates, 'home.twig');
+}
 
-<?php get_template_part('partials/page/page_intro' ); ?>
+$context = Timber::get_context();
+$context['post'] = $post;
 
-<?php get_template_part('partials/initialize' ); ?>
-
-<?php get_template_part('partials/flexible_content/flexible_content' ); ?>
-
-<?php get_template_part('partials/footer' ); ?>
-
-
+Timber::render($templates, $context);

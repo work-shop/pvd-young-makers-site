@@ -1,5 +1,11 @@
-<?php get_template_part('partials/header'); ?>
+<?php
 
-<?php get_template_part('partials/initialize' ); ?>
+$templates = array('index.twig');
+if (is_home()) {
+    array_unshift($templates, 'home.twig');
+}
 
-<?php get_template_part('partials/footer' ); ?>
+$context = Timber::get_context();
+$context['posts'] = new Timber\PostQuery();
+
+Timber::render($templates, $context);
