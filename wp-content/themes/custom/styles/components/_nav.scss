@@ -9,11 +9,11 @@
   padding: 0;
 }
 
-.Nav-toggle:checked ~ .Nav-toggleLabel--collapsed {
+.Nav-toggle:checked ~ .Nav-toggleLabel .Nav-toggleLabelIcon--collapsed {
   display: none;
 }
 
-.Nav-toggle:not(:checked) ~ .Nav-toggleLabel--uncollapsed {
+.Nav-toggle:not(:checked) ~ .Nav-toggleLabel .Nav-toggleLabelIcon--uncollapsed {
   display: none;
 }
 
@@ -24,41 +24,49 @@
 .Nav-toggleLabel {
   display: block;
   float: left;
+}
+
+.Nav-toggleLabelIcon {
+  display: block;
   width: 4rem;
+  height: 4rem;
   user-select: none;
   cursor: pointer;
 }
 
-.Nav-toggleLabel::after {
+.Nav-toggleLabelIcon::after {
   display: block;
-  height: 3.625rem;
   margin: 0 0.625rem;
   line-height: 1;
   font-family: var(--pictogram-font);
 }
 
-.Nav-toggleLabel--collapsed::after {
+.Nav-toggleLabelIcon--collapsed::after {
   content: "Í";
   font-size: 3.625rem;
 }
 
-.Nav-toggleLabel--uncollapsed::after {
+.Nav-toggleLabelIcon--uncollapsed::after {
   content: "ﬂ";
   padding-left: 0.1875rem;
   font-size: 4rem;
 }
 
-.Nav-logo {
+.Nav-logoLink {
+  display: block;
   float: left;
 }
 
-.Nav-logoLink {
+.Nav-logo {
   display: block;
+  width: 16rem;
+  height: 4rem;
 }
 
 .Nav-list {
   display: none;
   clear: both;
+  width: 384px;
   margin: 0;
   padding: 0;
   list-style: none;

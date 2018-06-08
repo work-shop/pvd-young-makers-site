@@ -5,7 +5,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 75vh;
+  min-height: 80vh;
   background-color: var(--light-blue);
 }
 
@@ -15,11 +15,21 @@
 }
 
 .HomePage-tagline {
-  // margin-bottom: 1rem;
 }
 
-.HomePage-links {
-  // display: flex;
+.HomePage-listOfLinks {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.HomePage-listOfLinksItem {
+  display: inline-block;
+  margin-right: 1rem;
+}
+
+.HomePage-listOfLinksItem:last-of-type {
+  margin-right: 0;
 }
 
 @media (min-width: 768px) {

@@ -10,19 +10,19 @@
                     </div>
                 </div>
 
-                <div class="HomePage-links">
-                    {% spaceless %}
-                        {% for item in post.get_field('home_page_links') %}
-                            {% set link_href = "#" %}
-                            {% if item.link_to_page %}
-                                {% set link_href = item.link_to_page %}
-                            {% elseif item.link_url %}
-                                {% set link_href = item.link_url %}
-                            {% endif %}
+                <ul class="HomePage-listOfLinks">
+                    {% for item in post.get_field('home_page_links') %}
+                        {% set link_href = "#" %}
+                        {% if item.link_to_page %}
+                            {% set link_href = item.link_to_page %}
+                        {% elseif item.link_url %}
+                            {% set link_href = item.link_url %}
+                        {% endif %}
+                        <li class="HomePage-listOfLinksItem">
                             <a class="Block Block--light" href="{{ link_href }}">{{ item.link_label }}</a>
-                        {% endfor %}
-                    {% endspaceless %}
-                </div>
+                        </li>
+                    {% endfor %}
+                </ul>
             </div>
         </header>
     </section>

@@ -2,18 +2,20 @@
     <nav class="Nav">
         <div class="Block Block--dark">
             <input class="Nav-toggle" id="nav-toggle" type="checkbox" hidden="hidden">
-            <label class="Nav-toggleLabel Nav-toggleLabel--collapsed" for="nav-toggle" hidden="hidden"></label>​
-            <label class="Nav-toggleLabel Nav-toggleLabel--uncollapsed" for="nav-toggle" hidden="hidden"></label>​
+            <label class="Nav-toggleLabel" for="nav-toggle" hidden="hidden">
+                {% spaceless %}
+                    <span class="Nav-toggleLabelIcon Nav-toggleLabelIcon--collapsed"></span>
+                    <span class="Nav-toggleLabelIcon Nav-toggleLabelIcon--uncollapsed"></span>
+                {% endspaceless %}
+            </label>​
 
-            <div class="Nav-logo">
-                <a class="Nav-logoLink" href="{{ site.url }}">{{ site.name }}</a>
-            </div>
+            <a class="Nav-logoLink" href="{{ site.url }}"><img class="Nav-logo" src="" alt="{{ site.name }}"></a>
 
             <ul class="Nav-list">
                 {% for item in nav.items %}
                     <li class="Nav-listItem {{ item.classes|join(' ') }}">
                         {% if item.url == "#" %}
-                            {% set checkboxId = "nav-" ~ item.slug ~ "-toggle" %}
+                            {% set checkboxId = "nav-" ~ item.slug ~ "sublist-toggle" %}
                             <input class="Nav-sublistToggle" id="{{ checkboxId }}" type="checkbox" hidden="hidden">
                             <label class="Nav-sublistToggleLabel" for="{{ checkboxId }}">
                                 {% spaceless %}
