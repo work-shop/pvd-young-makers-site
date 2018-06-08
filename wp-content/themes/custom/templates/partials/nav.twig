@@ -1,25 +1,44 @@
 {% if nav %}
-    <nav class="nav-main">
-        <ul class="nav-main">
-            {% for item in nav.items %}
-                <li class="nav-main-item {{ item.classes|join(' ') }}">
-                    {% if 'nav-label' in item.classes %}
-                        {{ item.title }}
-                    {% else %}
-                        <a class="nav-main-link" href="{{ item.link }}">{{ item.title }}</a>
-                    {% endif %}
+    <nav class="Nav">
+        <div class="Block Block--dark">
+            <input class="Nav-toggle" id="nav-toggle" type="checkbox" hidden="hidden">
+            <label class="Nav-toggleLabel Nav-toggleLabel--collapsed" for="nav-toggle" hidden="hidden"></label>​
+            <label class="Nav-toggleLabel Nav-toggleLabel--uncollapsed" for="nav-toggle" hidden="hidden"></label>​
 
-                    {% if item.children %}
-                        <ul class="nav-drop">
-                            {% for child in item.children %}
-                                <li class="nav-drop-item">
-                                    <a href="{{ child.link }}">{{ child.title }}</a>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    {% endif %}
-                </li>
-            {% endfor %}
-        </ul>
+            <div class="Nav-logo">
+                <a class="Nav-logoLink" href="{{ site.url }}">{{ site.name }}</a>
+            </div>
+
+            <ul class="Nav-list">
+                {% for item in nav.items %}
+                    <li class="Nav-listItem {{ item.classes|join(' ') }}">
+                        {% if item.url == "#" %}
+                            {% set checkboxId = "nav-" ~ item.slug ~ "-toggle" %}
+                            <input class="Nav-sublistToggle" id="{{ checkboxId }}" type="checkbox" hidden="hidden">
+                            <label class="Nav-sublistToggleLabel" for="{{ checkboxId }}">
+                                {% spaceless %}
+                                    <span class="Nav-sublistToggleLabelIcon Nav-sublistToggleLabelIcon--collapsed"></span>
+                                    <span class="Nav-sublistToggleLabelIcon Nav-sublistToggleLabelIcon--uncollapsed"></span>
+                                    {{ item.title }}
+                                {% endspaceless %}
+                            </label>​
+                            {# <span class="Nav-label">{{ item.title }}</span> #}
+                        {% else %}
+                            <a class="Nav-link" href="{{ item.link }}">{{ item.title }}</a>
+                        {% endif %}
+
+                        {% if item.children %}
+                            <ul class="Nav-sublist">
+                                {% for child in item.children %}
+                                    <li class="Nav-sublistItem">
+                                        <a class="Nav-link" href="{{ child.link }}">{{ child.title }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
     </nav>
 {% endif %}

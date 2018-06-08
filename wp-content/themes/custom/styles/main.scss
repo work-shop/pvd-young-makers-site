@@ -4,20 +4,21 @@
 
 body {
   background-color: var(--white);
-  color: var(--navy);
+  color: var(--teal);
   font-weight: 500;
   font-family: var(--primary-font);
 }
 
-a {
-  color: var(--orange);
+// a {
+//   color: var(--orange);
 
-  &:hover {
-    color: var(--blue);
-  }
-}
+//   &:hover {
+//     color: var(--blue);
+//   }
+// }
 
 // Components
+@import "components/nav";
 @import "components/block";
 
 // Pages

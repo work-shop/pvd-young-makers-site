@@ -1,0 +1,142 @@
+.Nav {
+  position: absolute;
+  top: 1rem;
+  color: var(--white);
+  font-size: 1.25rem;
+}
+
+.Nav .Block {
+  padding: 0;
+}
+
+.Nav-toggle:checked ~ .Nav-toggleLabel--collapsed {
+  display: none;
+}
+
+.Nav-toggle:not(:checked) ~ .Nav-toggleLabel--uncollapsed {
+  display: none;
+}
+
+.Nav-toggle:checked ~ .Nav-list {
+  display: block;
+}
+
+.Nav-toggleLabel {
+  display: block;
+  float: left;
+  width: 4rem;
+  user-select: none;
+  cursor: pointer;
+}
+
+.Nav-toggleLabel::after {
+  display: block;
+  height: 3.625rem;
+  margin: 0 0.625rem;
+  line-height: 1;
+  font-family: var(--pictogram-font);
+}
+
+.Nav-toggleLabel--collapsed::after {
+  content: "Í";
+  font-size: 3.625rem;
+}
+
+.Nav-toggleLabel--uncollapsed::after {
+  content: "ﬂ";
+  padding-left: 0.1875rem;
+  font-size: 4rem;
+}
+
+.Nav-logo {
+  float: left;
+}
+
+.Nav-logoLink {
+  display: block;
+}
+
+.Nav-list {
+  display: none;
+  clear: both;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.Nav-sublistToggle:checked
+  ~ .Nav-sublistToggleLabel
+  .Nav-sublistToggleLabelIcon--collapsed {
+  display: none;
+}
+
+.Nav-sublistToggle:not(:checked)
+  ~ .Nav-sublistToggleLabel
+  .Nav-sublistToggleLabelIcon--uncollapsed {
+  display: none;
+}
+
+.Nav-sublistToggle:checked ~ .Nav-sublist {
+  display: block;
+}
+
+.Nav-sublistToggleLabel {
+  display: inline-block;
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid var(--teal);
+  border-width: 0 1px 1px 0;
+  padding: 0.75rem 1rem;
+  user-select: none;
+  cursor: pointer;
+}
+
+.Nav-sublistToggleLabel:hover {
+  background-color: var(--orange);
+}
+
+.Nav-sublistToggleLabelIcon {
+  display: inline-block;
+  transform: translateY(0.125rem);
+}
+
+.Nav-sublistToggleLabelIcon::before {
+  margin-right: 0.5rem;
+  font-size: 2rem;
+  line-height: 1;
+  font-family: var(--pictogram-font);
+}
+
+.Nav-sublistToggleLabelIcon--collapsed::before {
+  content: "ﬁ";
+}
+
+.Nav-sublistToggleLabelIcon--uncollapsed::before {
+  content: "€";
+}
+
+.Nav-sublist {
+  display: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.Nav-sublist .Nav-link {
+  padding-left: 4rem;
+  background-color: var(--light-teal);
+  font-weight: 500;
+}
+
+.Nav-link {
+  display: block;
+  border: 1px solid var(--teal);
+  border-width: 0 1px 1px 0;
+  padding: 0.75rem 1rem;
+  color: var(--white);
+  text-decoration: none;
+}
+
+.Nav-link:hover {
+  background-color: var(--orange);
+}

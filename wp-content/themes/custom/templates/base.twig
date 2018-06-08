@@ -11,17 +11,7 @@
     </head>
 
     <body class="{{body_class}}" data-template="base.twig">
-        <header class="header">
-            {% block header %}
-                <div class="wrapper">
-                    <h1 class="hdr-logo">
-                        <a class="hdr-logo-link" href="{{site.url}}" rel="home">{{site.name}}</a>
-                    </h1>
-
-                    {% include "partials/nav.twig" %}
-                </div>
-            {% endblock %}
-        </header>
+        {% include "partials/header.twig" %}
 
         <section class="content-wrapper">
             {% if title %}
