@@ -158,6 +158,42 @@
             "return_format": "object"
         },
         {
+            "key": "field_5b1fff904092f",
+            "label": "Home Page About",
+            "name": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
+            "key": "field_5b1fffa440930",
+            "label": "Home Page About Text",
+            "name": "home_page_about_text",
+            "type": "textarea",
+            "instructions": "Use this text area to write a brief introduction to the about section of the site.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
+        },
+        {
             "key": "field_5b0dbc3807ccd",
             "label": "Home Page Events",
             "name": "",
@@ -305,5 +341,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1527627695
+    "modified": 1528823973
 }
