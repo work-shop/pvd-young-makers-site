@@ -6,6 +6,7 @@ class WS_Site_Admin {
 
         add_action('admin_menu', array( $this, 'manage_admin_menu_options' ) );
         add_action('acf/init', array($this, 'add_options_pages'));
+        add_action('acf/init', array($this, 'add_google_maps_key'));
         add_action( 'admin_head', array( $this, 'admin_css'));
 
         add_action('wp_dashboard_setup', array($this, 'remove_dashboard_widgets') );
@@ -65,6 +66,18 @@ class WS_Site_Admin {
             ));
         }
     }
+
+    /**
+     * Google Maps API Key is registered here,
+     * so that ACF can make requests against
+     * Google Maps Platform.
+     */
+    public function add_google_maps_key() {
+        if ( function_exists( 'acf_update_setting' ) ) {
+            acf_update_setting('google_api_key', 'AIzaSyDTkjwJK80N7YCWoKjhKz8c3J1tNEbJpRg');
+        }
+    }
+
 
     public function pages_per_page_wpse_23503( $check, $object_id, $meta_key, $single ) {
         if( 'edit_page_per_page' == $meta_key )
