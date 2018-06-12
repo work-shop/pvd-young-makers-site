@@ -10,11 +10,14 @@
 }
 
 .HomePage-headerContent {
-  max-width: 48rem;
+  max-width: 960px;
   padding: 6rem 1rem 1rem;
 }
 
 .HomePage-tagline {
+  @media (min-width: 768px) {
+    margin-bottom: 3rem;
+  }
 }
 
 .HomePage-listOfLinks {
@@ -32,8 +35,66 @@
   margin-right: 0;
 }
 
-@media (min-width: 768px) {
-  .HomePage-tagline {
-    margin-bottom: 3rem;
+/**
+ * News stories
+ */
+
+.HomePage-news {
+  padding: 3rem 1rem 2rem;
+  background-color: var(--orange);
+  color: var(--white);
+  text-align: center;
+}
+
+.HomePage-newsItems {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  text-align: left;
+
+  @media (min-width: 768px) {
+    max-width: 1152px;
   }
+}
+
+.HomePage-newsItem {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  margin-bottom: 1rem;
+  border: 0.25rem solid currentColor;
+  padding: 1rem;
+
+  @media (min-width: 768px) {
+    width: calc(50% - 1rem);
+
+    &:nth-of-type(even) {
+      margin-left: 1rem;
+    }
+  }
+}
+
+.HomePage-newsItemTitle {
+  order: 2;
+  margin: 0 0 1rem;
+  font-size: 1.5rem;
+
+  @media (min-width: 768px) {
+    font-size: 2rem;
+  }
+}
+
+.HomePage-newsItemMetadata {
+  order: 1;
+  margin-bottom: 1rem;
+}
+
+.HomePage-newsItemMore {
+  order: 3;
+}
+
+.HomePage-newsItemMoreLink {
+  color: currentColor;
 }

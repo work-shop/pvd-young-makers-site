@@ -9,5 +9,6 @@ if (is_front_page()) {
 
 $context = Timber::get_context();
 $context['post'] = $post;
+$context['news'] = Timber::get_posts('post_type=news&numberposts=2');
 
 Timber::render($templates, $context);

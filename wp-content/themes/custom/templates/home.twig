@@ -6,12 +6,12 @@
             <div class="HomePage-headerContent">
                 <div class="HomePage-tagline">
                     <div class="HeroBlock">
-                        <h1 class="Block Block--dark">{{ post.get_field('home_page_tagline') }}</h1>
+                        <h1 class="Block Block--dark">{{ post.get_field("home_page_tagline") }}</h1>
                     </div>
                 </div>
 
                 <ul class="HomePage-listOfLinks">
-                    {% for item in post.get_field('home_page_links') %}
+                    {% for item in post.get_field("home_page_links") %}
                         {% set link_href = "#" %}
                         {% if item.link_to_page %}
                             {% set link_href = item.link_to_page %}
@@ -27,7 +27,31 @@
         </header>
     </section>
 
-    <section>
-        More stuff
-    </section>
+    {% if news %}
+        <section class="HomePage-news">
+            <div class="HomePage-newsItems">
+                {% for post in news %}
+                    <article class="HomePage-newsItem">
+                        <h2 class="HomePage-newsItemTitle">{{ post.title }}</h2>
+
+                        <div class="HomePage-newsItemMetadata">
+                            {{ post.date }}
+                            •
+                            {{ post.author }}
+                            {% if post.terms("news-categories") %}
+                                •
+                                {{ post.terms("news-categories")|join(", ") }}
+                            {% endif %}
+                        </div>
+
+                        <div class="HomePage-newsItemMore">
+                            <a href="{{ post.link }}" class="HomePage-newsItemMoreLink">Read more</a>
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+
+            <a class="Block Block--inverted" href="{{ site.link }}/news/">View more news</a>
+        </section>
+    {% endif %}
 {% endblock %}

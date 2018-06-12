@@ -30,21 +30,27 @@ a.Block {
   color: var(--teal);
 }
 
+.Block--inverted {
+  box-shadow: 0.25rem 0.25rem 0 var(--teal);
+  background-color: var(--light-blue);
+  color: var(--teal);
+}
+
 /**
  * HeroBlock
  * Wrap around a Block to make it BIG!
  */
 
-.HeroBlock .Block {
-  font-size: 1.5rem;
-}
-
-@media (min-width: 768px) {
-  .HeroBlock {
+.HeroBlock {
+  @media (min-width: 768px) {
     margin: 0.25rem 2rem 0.75rem 0;
   }
+}
 
-  .HeroBlock .Block {
+.HeroBlock .Block {
+  font-size: 1.5rem;
+
+  @media (min-width: 768px) {
     display: inline;
     box-shadow: 0.5rem 0.5rem 0 var(--orange);
     margin: 0;
