@@ -1,2 +1,80 @@
-Copyright
-{{"now"|date('Y')}}
+<footer class="Footer">
+    {% if nav %}
+        <nav class="FooterNav">
+
+            <ul class="FooterNav-list">
+                <li class="FooterNav-listItem FooterNav-listItem--contact">
+                    <span class="FooterNav-listTitle">Contact</span>
+
+                    <ul class="FooterNav-sublist">
+                        <li class="FooterNav-sublistItem FooterNav-sublistItem--phone">
+                            <span class="FooterNav-sublistItemLabel">Phone:</span>
+                            {{ options.general_phone_number }}
+                        </li>
+
+                        <li class="FooterNav-sublistItem FooterNav-sublistItem--email">
+                            <span class="FooterNav-sublistItemLabel">Email:</span>
+                            <a class="FooterNav-link" href="mailto:{{ options.general_email_address }}">{{ options.general_email_address }}</a>
+                        </li>
+
+                        {% if options.facebook %}
+                            <li class="FooterNav-sublistItem FooterNav-sublistItem--facebook">
+                                <a class="FooterNav-link" href="{{ options.facebook }}" target="_blank" rel="noopener">
+                                    <span class="FooterNav-linkLabel">Facebook</span>
+                                </a>
+                            </li>
+                        {% endif %}
+
+                        {% if options.instagram %}
+                            <li class="FooterNav-sublistItem FooterNav-sublistItem--instagram">
+                                <a class="FooterNav-link" href="{{ options.instagram }}" target="_blank" rel="noopener">
+                                    <span class="FooterNav-linkLabel">Instagram</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </li>
+
+                {% for item in footer_nav.items %}
+                    <li class="FooterNav-listItem FooterNav-listItem--nav {{ item.classes|join(' ') }}">
+                        {% if item.url == "#" %}
+                            <span class="FooterNav-listTitle">{{ item.title }}</span>
+                        {% else %}
+                            <a class="FooterNav-link" href="{{ item.link }}">{{ item.title }}</a>
+                        {% endif %}
+
+                        {% if item.children %}
+                            <ul class="FooterNav-sublist">
+                                {% for child in item.children %}
+                                    <li class="FooterNav-sublistItem">
+                                        <a class="FooterNav-link" href="{{ child.link }}">{{ child.title }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+
+                {% if partners %}
+                    <li class="FooterNav-listItem FooterNav-listItem--partners">
+                        <span class="FooterNav-listTitle">Our Partners</span>
+
+                        <ul class="FooterNav-sublist">
+                            {% for partner in partners %}
+                                <li class="FooterNav-sublistItem">
+                                    <a class="FooterNav-link" href="{{ partner.link }}">{{ partner.title }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    {% endif %}
+
+    <p class="Footer-copyright">
+        ©
+        {{ "now"|date("Y") }}
+        City of Providence
+    </p>
+</footer>

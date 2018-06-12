@@ -35,11 +35,7 @@
 
         <hr>
 
-        {% block footer %}
-            <footer id="footer">
-                {% include "partials/footer.twig" %}
-            </footer>
-        {% endblock %}
+        {% include "partials/footer.twig" %}
 
         {{function("wp_footer")}}
     </body>

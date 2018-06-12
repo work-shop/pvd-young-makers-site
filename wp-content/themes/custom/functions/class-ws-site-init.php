@@ -92,6 +92,8 @@ class WS_Site extends TimberSite
     public function add_to_context($context)
     {
         $context['nav'] = new TimberMenu('Primary Navigation');
+        $context['footer_nav'] = new TimberMenu('Footer Navigation');
+        $context['options'] = get_fields('option');
         $context['site'] = $this;
 
         return $context;

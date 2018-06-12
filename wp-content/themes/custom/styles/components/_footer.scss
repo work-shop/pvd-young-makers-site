@@ -1,0 +1,123 @@
+.Footer {
+  padding: 3rem 1rem;
+  background-color: var(--teal);
+  color: var(--blue);
+}
+
+.FooterNav {
+  max-width: 1152px;
+  margin: -2rem auto 0;
+}
+
+.FooterNav-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 0 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.FooterNav-listItem {
+  width: 100%;
+  @media (min-width: 768px) {
+    width: calc(100% / 3 - 2rem);
+    margin-right: 2rem;
+  }
+}
+
+.FooterNav-listItem--contact {
+  @media (min-width: 768px) {
+    order: 3;
+  }
+}
+
+.FooterNav-listItem--nav {
+  @media (min-width: 768px) {
+    order: 1;
+  }
+}
+
+.FooterNav-listItem--partners {
+  @media (min-width: 768px) {
+    order: 2;
+  }
+}
+
+.FooterNav-listTitle {
+  display: block;
+  margin: 2rem 0 1rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.FooterNav-sublist {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.FooterNav-sublistItem {
+  margin-bottom: 0.5rem;
+}
+
+.FooterNav-sublistItem--phone,
+.FooterNav-sublistItem--email {
+  display: flex;
+  align-items: baseline;
+}
+
+.FooterNav-sublistItem--facebook,
+.FooterNav-sublistItem--instagram {
+  display: inline-block;
+  margin-left: -0.25rem;
+}
+
+.FooterNav-sublistItem--facebook .FooterNav-link,
+.FooterNav-sublistItem--instagram .FooterNav-link {
+  text-decoration: none;
+}
+
+.FooterNav-sublistItem--facebook .FooterNav-linkLabel,
+.FooterNav-sublistItem--instagram .FooterNav-linkLabel {
+  display: none;
+}
+
+.FooterNav-sublistItem--facebook .FooterNav-link::after,
+.FooterNav-sublistItem--instagram .FooterNav-link::after {
+  line-height: 1;
+  font-weight: normal;
+  font-size: 3rem;
+  font-family: var(--pictogram-font);
+}
+
+.FooterNav-sublistItem--facebook .FooterNav-link::after {
+  content: "G";
+}
+
+.FooterNav-sublistItem--instagram .FooterNav-link::after {
+  content: "T";
+}
+
+.FooterNav-sublistItemLabel {
+  width: 4rem;
+  margin-right: 1rem;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.FooterNav-link {
+  color: inherit;
+}
+
+.FooterNav-link:hover {
+  color: var(--white);
+}
+
+.Footer-copyright {
+  max-width: 1152px;
+  margin: 2rem auto 0;
+}
