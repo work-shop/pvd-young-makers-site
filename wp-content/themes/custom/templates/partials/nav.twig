@@ -18,13 +18,10 @@
                             {% set checkboxId = "nav-" ~ item.slug ~ "sublist-toggle" %}
                             <input class="Nav-sublistToggle" id="{{ checkboxId }}" type="checkbox" hidden="hidden">
                             <label class="Nav-sublistToggleLabel" for="{{ checkboxId }}">
-                                {% spaceless %}
-                                    <span class="Nav-sublistToggleLabelIcon Nav-sublistToggleLabelIcon--collapsed"></span>
-                                    <span class="Nav-sublistToggleLabelIcon Nav-sublistToggleLabelIcon--uncollapsed"></span>
-                                    {{ item.title }}
-                                {% endspaceless %}
+                                <span class="Nav-sublistToggleLabelIcon Nav-sublistToggleLabelIcon--collapsed"></span>
+                                <span class="Nav-sublistToggleLabelIcon Nav-sublistToggleLabelIcon--uncollapsed"></span>
+                                <span class="Nav-sublistToggleLabelText">{{ item.title }}</span>
                             </label>​
-                            {# <span class="Nav-label">{{ item.title }}</span> #}
                         {% else %}
                             <a class="Nav-link" href="{{ item.link }}">{{ item.title }}</a>
                         {% endif %}
