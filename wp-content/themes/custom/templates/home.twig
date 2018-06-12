@@ -4,54 +4,66 @@
     <section class="HomePage">
         <header class="HomePage-header">
             <div class="HomePage-headerContent">
-                <div class="HomePage-tagline">
-                    <div class="HeroBlock">
-                        <h1 class="Block Block--dark">{{ post.get_field("home_page_tagline") }}</h1>
-                    </div>
-                </div>
 
-                <ul class="HomePage-listOfLinks">
-                    {% for item in post.get_field("home_page_links") %}
-                        {% set link_href = "#" %}
-                        {% if item.link_to_page %}
-                            {% set link_href = item.link_to_page %}
-                        {% elseif item.link_url %}
-                            {% set link_href = item.link_url %}
-                        {% endif %}
-                        <li class="HomePage-listOfLinksItem">
-                            <a class="Block Block--light" href="{{ link_href }}">{{ item.link_label }}</a>
-                        </li>
-                    {% endfor %}
-                </ul>
+                {% if post.get_field("home_page_tagline") %}
+                    <div class="HomePage-tagline">
+                        <div class="HeroBlock">
+                            <h1 class="Block Block--dark">{{ post.get_field("home_page_tagline") }}</h1>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if post.get_field("home_page_links") %}
+                    <ul class="HomePage-listOfLinks">
+                        {% for item in post.get_field("home_page_links") %}
+                            {% set link_href = "#" %}
+                            {% if item.link_to_page %}
+                                {% set link_href = item.link_to_page %}
+                            {% elseif item.link_url %}
+                                {% set link_href = item.link_url %}
+                            {% endif %}
+                            <li class="HomePage-listOfLinksItem">
+                                <a class="Block Block--light" href="{{ link_href }}">{{ item.link_label }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
             </div>
         </header>
     </section>
 
     {% if news %}
         <section class="HomePage-news">
-            <div class="HomePage-newsItems">
-                {% for post in news %}
-                    <article class="HomePage-newsItem">
-                        <h2 class="HomePage-newsItemTitle">{{ post.title }}</h2>
+            <h2 class="Section-title">Latest News</h2>
 
-                        <div class="HomePage-newsItemMetadata">
+            <ul class="HomePage-newsItems">
+                {% for post in news %}
+                    <li class="HomePage-newsItem">
+                        <span class="HomePage-newsItemTitle">
+                            <a class="HomePage-newsItemLink" href="{{ post.link }}">
+                                {{ post.title }}<br>
+                            </a>
+                        </span>
+
+                        <span class="HomePage-newsItemMetadata">
                             {{ post.date }}
-                            •
-                            {{ post.author }}
+                            {% if post.author.first_name or post.author.last_name %}
+                                •
+                                {{ post.author.first_name }}
+                                {{ post.author.last_name }}
+                            {% endif %}
                             {% if post.terms("news-categories") %}
                                 •
                                 {{ post.terms("news-categories")|join(", ") }}
                             {% endif %}
-                        </div>
-
-                        <div class="HomePage-newsItemMore">
-                            <a href="{{ post.link }}" class="HomePage-newsItemMoreLink">Read more</a>
-                        </div>
-                    </article>
+                        </span>
+                    </li>
                 {% endfor %}
-            </div>
+            </ul>
 
-            <a class="Block Block--inverted" href="{{ site.link }}/news/">View more news</a>
+            <p class="HomePage-newsMore">
+                <a class="Block Block--inverted" href="{{ site.link }}/news/">View more news</a>
+            </p>
         </section>
     {% endif %}
 {% endblock %}

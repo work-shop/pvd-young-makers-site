@@ -1,11 +1,17 @@
 .Nav {
   position: absolute;
-  top: 1rem;
+  width: calc(100% - 0.25rem);
   color: var(--white);
   font-size: 1.25rem;
+
+  @media (min-width: 768px) {
+    top: 1rem;
+    width: auto;
+  }
 }
 
 .Nav .Block {
+  width: 100%;
   padding: 0;
 }
 
@@ -71,10 +77,13 @@
 .Nav-list {
   display: none;
   clear: both;
-  width: 24rem;
   margin: 0;
   padding: 0;
   list-style: none;
+
+  @media (min-width: 768px) {
+    width: 24rem;
+  }
 }
 
 .Nav-sublistToggle:checked

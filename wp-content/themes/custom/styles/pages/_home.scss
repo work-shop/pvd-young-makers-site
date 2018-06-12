@@ -5,18 +5,22 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 80vh;
   background-color: var(--light-blue);
 }
 
 .HomePage-headerContent {
+  box-sizing: border-box;
   max-width: 960px;
-  padding: 6rem 1rem 1rem;
+  padding: 7rem 1rem 2rem;
+
+  @media (min-width: 768px) {
+    min-height: calc(100vh - 3.5rem);
+  }
 }
 
 .HomePage-tagline {
   @media (min-width: 768px) {
-    margin-bottom: 3rem;
+    padding: 1rem 0;
   }
 }
 
@@ -24,6 +28,10 @@
   margin: 0;
   padding: 0;
   list-style: none;
+
+  @media (min-width: 768px) {
+    margin-top: 2rem;
+  }
 }
 
 .HomePage-listOfLinksItem {
@@ -51,6 +59,7 @@
   flex-wrap: wrap;
   justify-content: center;
   margin: 0 auto 1rem;
+  padding: 0;
   text-align: left;
 
   @media (min-width: 768px) {
@@ -65,7 +74,7 @@
   width: 100%;
   margin-bottom: 1rem;
   border: 0.25rem solid currentColor;
-  padding: 1rem;
+  padding: 1.5rem;
 
   @media (min-width: 768px) {
     width: calc(50% - 1rem);
@@ -78,7 +87,8 @@
 
 .HomePage-newsItemTitle {
   order: 2;
-  margin: 0 0 1rem;
+  margin: 0;
+  font-weight: 700;
   font-size: 1.5rem;
 
   @media (min-width: 768px) {
@@ -86,15 +96,25 @@
   }
 }
 
+.HomePage-newsItemLink {
+  color: inherit;
+  text-decoration: none;
+}
+
+.HomePage-newsItemLink::after {
+  display: inline-block;
+  margin-top: 1rem;
+  content: "Read more";
+  font-weight: 500;
+  font-size: 1rem;
+  text-decoration: underline;
+}
+
 .HomePage-newsItemMetadata {
   order: 1;
   margin-bottom: 1rem;
 }
 
-.HomePage-newsItemMore {
-  order: 3;
-}
-
-.HomePage-newsItemMoreLink {
-  color: currentColor;
+.HomePage-newsMore {
+  margin: 0;
 }
