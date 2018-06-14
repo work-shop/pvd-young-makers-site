@@ -128,3 +128,18 @@
 
 .HomePage-about {
 }
+
+/**
+ * Events section
+ */
+
+.HomePage-events {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.HomePage-event {
+  flex-basis: 25%;
+}
