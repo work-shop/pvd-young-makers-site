@@ -1,7 +1,6 @@
-<footer class="Footer">
+<footer class="Footer Section">
     {% if nav %}
-        <nav class="FooterNav">
-
+        <nav class="FooterNav Section-container">
             <ul class="FooterNav-list">
                 {% if options.general_phone_number or options.general_email_address or options.facebook or options.instagram %}
                     <li class="FooterNav-listItem FooterNav-listItem--contact">
@@ -78,7 +77,7 @@
         </nav>
     {% endif %}
 
-    <p class="Footer-copyright">
+    <p class="Footer-copyright Section-container">
         ©
         {{ "now"|date("Y") }}
         City of Providence

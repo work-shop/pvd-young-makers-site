@@ -1,12 +1,10 @@
 .Footer {
-  padding: 3rem 1rem;
+  padding-bottom: 3rem;
   background-color: var(--teal);
   color: var(--blue);
 }
 
 .FooterNav {
-  max-width: 1152px;
-  margin: -2rem auto 0;
 }
 
 .FooterNav-list {
@@ -124,6 +122,4 @@
 }
 
 .Footer-copyright {
-  max-width: 1152px;
-  margin: 2rem auto 0;
 }
