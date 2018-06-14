@@ -3,37 +3,43 @@
         <nav class="FooterNav">
 
             <ul class="FooterNav-list">
-                <li class="FooterNav-listItem FooterNav-listItem--contact">
-                    <span class="FooterNav-listTitle">Contact</span>
+                {% if options.general_phone_number or options.general_email_address or options.facebook or options.instagram %}
+                    <li class="FooterNav-listItem FooterNav-listItem--contact">
+                        <span class="FooterNav-listTitle">Contact</span>
 
-                    <ul class="FooterNav-sublist">
-                        <li class="FooterNav-sublistItem FooterNav-sublistItem--phone">
-                            <span class="FooterNav-sublistItemLabel">Phone:</span>
-                            {{ options.general_phone_number }}
-                        </li>
+                        <ul class="FooterNav-sublist">
+                            {% if options.general_phone_number %}
+                                <li class="FooterNav-sublistItem FooterNav-sublistItem--phone">
+                                    <span class="FooterNav-sublistItemLabel">Phone:</span>
+                                    {{ options.general_phone_number }}
+                                </li>
+                            {% endif %}
 
-                        <li class="FooterNav-sublistItem FooterNav-sublistItem--email">
-                            <span class="FooterNav-sublistItemLabel">Email:</span>
-                            <a class="FooterNav-link" href="mailto:{{ options.general_email_address }}">{{ options.general_email_address }}</a>
-                        </li>
+                            {% if options.general_email_address %}
+                                <li class="FooterNav-sublistItem FooterNav-sublistItem--email">
+                                    <span class="FooterNav-sublistItemLabel">Email:</span>
+                                    <a class="FooterNav-link" href="mailto:{{ options.general_email_address }}">{{ options.general_email_address }}</a>
+                                </li>
+                            {% endif %}
 
-                        {% if options.facebook %}
-                            <li class="FooterNav-sublistItem FooterNav-sublistItem--facebook">
-                                <a class="FooterNav-link" href="{{ options.facebook }}" target="_blank" rel="noopener">
-                                    <span class="FooterNav-linkLabel">Facebook</span>
-                                </a>
-                            </li>
-                        {% endif %}
+                            {% if options.facebook %}
+                                <li class="FooterNav-sublistItem FooterNav-sublistItem--facebook">
+                                    <a class="FooterNav-link" href="{{ options.facebook }}" target="_blank" rel="noopener">
+                                        <span class="FooterNav-linkLabel">Facebook</span>
+                                    </a>
+                                </li>
+                            {% endif %}
 
-                        {% if options.instagram %}
-                            <li class="FooterNav-sublistItem FooterNav-sublistItem--instagram">
-                                <a class="FooterNav-link" href="{{ options.instagram }}" target="_blank" rel="noopener">
-                                    <span class="FooterNav-linkLabel">Instagram</span>
-                                </a>
-                            </li>
-                        {% endif %}
-                    </ul>
-                </li>
+                            {% if options.instagram %}
+                                <li class="FooterNav-sublistItem FooterNav-sublistItem--instagram">
+                                    <a class="FooterNav-link" href="{{ options.instagram }}" target="_blank" rel="noopener">
+                                        <span class="FooterNav-linkLabel">Instagram</span>
+                                    </a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </li>
+                {% endif %}
 
                 {% for item in footer_nav.items %}
                     <li class="FooterNav-listItem FooterNav-listItem--nav {{ item.classes|join(' ') }}">

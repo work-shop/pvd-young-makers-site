@@ -71,11 +71,17 @@
 .FooterNav-sublistItem--facebook,
 .FooterNav-sublistItem--instagram {
   display: inline-block;
-  margin-left: -0.25rem;
 }
 
 .FooterNav-sublistItem--facebook .FooterNav-link,
 .FooterNav-sublistItem--instagram .FooterNav-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  width: 1.875rem;
+  height: 2.125rem;
+  margin: 0.5rem 0.5rem 0 0;
   text-decoration: none;
 }
 
@@ -111,10 +117,10 @@
 
 .FooterNav-link {
   color: inherit;
-}
 
-.FooterNav-link:hover {
-  color: var(--white);
+  &:hover {
+    color: var(--white);
+  }
 }
 
 .Footer-copyright {
