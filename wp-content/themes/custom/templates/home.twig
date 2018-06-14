@@ -69,14 +69,14 @@
         </section>
     {% endif %}
 
-    <section class="Section Section--large">
-        <div class="Section-container">
-            {% if post.get_field("home_page_about_text") %}
-                <h2 class="Section-title Section-title--orange">About
-                    {{ site.title }}</h2>
+    {% embed "partials/section.twig" %}
+        {% block title %}
+            About
+            {{ site.title }}
+        {% endblock %}
 
-                <div class="max-w-md">{{ post.get_field("home_page_about_text") }}</div>
-            {% endif %}
+        {% block content %}
+            {{ post.get_field("home_page_about_text") }}
 
             <nav class="HomePage-nav">
                 <ul class="HomePage-navList">
@@ -94,37 +94,39 @@
                     </li>
                 </ul>
             </nav>
-        </div>
+        {% endblock %}
+    {% endembed %}
 
-        {% if events %}
-            <div class="Section-container">
-                <h2 class="Section-title Section-title--orange">Today’s Events</h2>
+    {% embed "partials/section.twig" %}
+        {% block title %}
+            Today’s Events
+        {% endblock %}
 
-                <div class="max-w-md">What are you doing today?</div>
+        {% block content %}
+            <div class="max-w-md">What are you doing today?</div>
 
-                <ul class="HomePage-events">
-                    {% for event in events %}
-                        <li class="HomePage-event">
-                            {% set event_date = event.event_start | date("F j, Y • g:ia") ~ "–" %}
+            <ul class="HomePage-events">
+                {% for event in events %}
+                    <li class="HomePage-event">
+                        {% set event_date = event.event_start | date("F j, Y • g:ia") ~ "–" %}
 
-                            {% if event.event_start | date("F j, Y") == event.event_end | date("F j, Y") %}
-                                {% set event_date = event_date ~ event.event_end | date("g:ia") %}
-                            {% else %}
-                                {% set event_date = event_date ~ event.event_end | date("F j, Y • g:ia") %}
-                            {% endif %}
+                        {% if event.event_start | date("F j, Y") == event.event_end | date("F j, Y") %}
+                            {% set event_date = event_date ~ event.event_end | date("g:ia") %}
+                        {% else %}
+                            {% set event_date = event_date ~ event.event_end | date("F j, Y • g:ia") %}
+                        {% endif %}
 
-                            {% include "partials/card.twig" with {
-                                title : event.event_name,
-                                link: event.link,
-                                primary_text: event_date,
-                                secondary_text: event.location_name,
-                                image_src: TimberImage(event.get_field('event_image')).src('large')
-                            }
-                            only %}
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </section>
-    {% endif %}
+                        {% include "partials/card.twig" with {
+                            title : event.event_name,
+                            link: event.link,
+                            primary_text: event_date,
+                            secondary_text: event.location_name,
+                            image_src: TimberImage(event.get_field('event_image')).src('large')
+                        }
+                        only %}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endblock %}
+    {% endembed %}
 {% endblock %}
