@@ -75,7 +75,7 @@
                 <h2 class="Section-title Section-title--orange">About
                     {{ site.title }}</h2>
 
-                <div class="Measure">{{ post.get_field("home_page_about_text") }}</div>
+                <div class="max-w-md">{{ post.get_field("home_page_about_text") }}</div>
             {% endif %}
 
             <nav class="HomePage-nav">
@@ -100,7 +100,7 @@
             <div class="Section-container">
                 <h2 class="Section-title Section-title--orange">Today’s Events</h2>
 
-                <div class="Measure">What are you doing today?</div>
+                <div class="max-w-md">What are you doing today?</div>
 
                 <ul class="HomePage-events">
                     {% for event in events %}

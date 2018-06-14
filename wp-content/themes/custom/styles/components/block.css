@@ -3,11 +3,11 @@
  */
 
 .Block {
+  @apply .shadow-orange;
   display: inline-block;
   box-decoration-break: clone;
-  box-shadow: 0.25rem 0.25rem 0 var(--orange);
   margin: 0 1.25rem 1.25rem 0;
-  padding: calc(1rem * 2 / 3) 1rem;
+  padding: 0.5rem 1rem;
   font-weight: 700;
   line-height: 1.5;
 }
@@ -21,8 +21,7 @@ a.Block {
 }
 
 .Block--dark {
-  background-color: var(--teal);
-  color: var(--white);
+  @apply .bg-teal-darkest .text-white;
 }
 
 .Block--light {
@@ -31,9 +30,7 @@ a.Block {
 }
 
 .Block--inverted {
-  box-shadow: 0.25rem 0.25rem 0 var(--teal);
-  background-color: var(--light-blue);
-  color: var(--teal);
+  @apply .shadow-teal .bg-teal-lightest .text-teal-darkest;
 }
 
 /**
@@ -52,7 +49,6 @@ a.Block {
 
   @media (min-width: 768px) {
     display: inline;
-    box-shadow: 0.5rem 0.5rem 0 var(--orange);
     margin: 0;
     font-size: 3rem;
   }

@@ -1,16 +1,26 @@
-// Base
-@import "base/normalize";
+/**
+ * Base
+ */
+@import "tailwindcss/preflight";
+
 @import "base/fonts";
 @import "base/variables";
 @import "base/global";
 
-// Components
-@import "components/measure";
+/**
+ * Components
+ */
+@import "tailwindcss/components";
+
 @import "components/card";
 @import "components/block";
-@import "components/nav";
 @import "components/section";
+@import "components/nav";
 @import "components/footer";
 
-// Pages
 @import "pages/home";
+
+/**
+ * Utilities
+ */
+@import "tailwindcss/utilities";

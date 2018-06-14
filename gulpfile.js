@@ -10,13 +10,12 @@ const source = require('vinyl-source-stream');
 const buffer = require('vinyl-buffer');
 
 const gulp = require('gulp');
-const sass = require('gulp-sass');
 const rename = require('gulp-rename');
 const sourcemaps = require('gulp-sourcemaps');
 const uglify = require('gulp-uglify');
 const log = require('gulp-logger');
 const livereload = require('gulp-livereload');
-const autoprefixer = require('gulp-autoprefixer');
+const postcss = require('gulp-postcss');
 
 
 /** ===============================
@@ -24,7 +23,7 @@ const autoprefixer = require('gulp-autoprefixer');
  * ================================ */
 const pkg = require('./package.json');
 const paths = pkg.paths;
-const managed_files = ['js', 'scss', 'css'];
+const managed_files = ['js', 'css'];
 
 /** ==================================================
  * Include Paths, Watch Paths, and Compilation Targets
@@ -39,13 +38,13 @@ const js_entrypoint = path.join( __dirname, paths.src, 'scripts', 'main.js' );
 const js_exitpoint = path.join( __dirname, paths.dest, 'bundles' );
 const js_watch_files = path.join( __dirname, paths.src, 'scripts', '**', '*.js' );
 
-const sass_entrypoint = path.join( __dirname, paths.src, 'styles', 'main.scss' );
-const sass_exitpoint = path.join( __dirname, paths.dest, 'bundles' );
-const sass_watch_files = path.join( __dirname, paths.src, 'styles', '**', '*.scss' );
+const styles_entrypoint = path.join( __dirname, paths.src, 'styles', 'main.css' );
+const styles_exitpoint = path.join( __dirname, paths.dest, 'bundles' );
+const styles_watch_files = path.join( __dirname, paths.src, 'styles', '**', '*.css' );
 
-const admin_sass_entrypoint = path.join( __dirname, paths.src, 'styles', 'admin.scss' );
-const admin_sass_exitpoint = path.join( __dirname, paths.dest, 'bundles' );
-const admin_sass_watch_files = [path.join( __dirname, paths.src, 'styles', 'admin.scss' ), path.join( __dirname, paths.src, 'styles', 'admin', '**', '*.scss' )];
+const admin_styles_entrypoint = path.join( __dirname, paths.src, 'styles', 'admin.css' );
+const admin_styles_exitpoint = path.join( __dirname, paths.dest, 'bundles' );
+const admin_styles_watch_files = [path.join( __dirname, paths.src, 'styles', 'admin.css' ), path.join( __dirname, paths.src, 'styles', 'admin', '**', '*.css' )];
 
 const js_bundler = browserify(js_entrypoint).transform( babelify, {presets: ['env']});
 
@@ -83,56 +82,38 @@ function file_bundle( development ) {
 }
 
 /**
- * This rule compiles the main.scss file, producing
+ * This rule compiles the main.css file, producing
  * a bundle.css output.
  */
-function sass_bundle( development ) {
-        return function() {
+function styles_bundle( development ) {
+    return function() {
 
-            gulp.src( sass_entrypoint )
-                .pipe( sass({
-                    includePaths: [ slick_includePaths ].concat( bourbon_includePaths ),
-                    outputStyle: ( development ) ? 'expanded' : 'compressed'
-                }).on('error', sass.logError ) )
-                .pipe( autoprefixer({
-                    browsers: [
-                        'last 2 versions',
-                        '> 5%',
-                        'Firefox ESR'
-                    ]
-                }))
-                .pipe( rename({ basename: 'bundle', ext: '.css' }) )
-                .pipe( sourcemaps.write('./', {
-                    includeContent: false,
-                    sourceRoot: path.join(__dirname, paths.src)
-                }))
-                .pipe( gulp.dest( sass_exitpoint ) )
-                .pipe( livereload() );
+        gulp.src( styles_entrypoint )
+            .pipe(sourcemaps.init())
+            .pipe(postcss())
+            .pipe( rename({ basename: 'bundle', ext: '.css' }) )
+            .pipe( sourcemaps.write('./', {
+                includeContent: false,
+                sourceRoot: path.join(__dirname, paths.src)
+            }))
+            .pipe( gulp.dest( styles_exitpoint ) )
+            .pipe( livereload() );
 
-        };
+    };
 
 }
 
 /**
- * This rule compiles the admin.scss file, producing
+ * This rule compiles the admin.css file, producing
  * a admin.css output.
  */
-function admin_sass_bundle( development ) {
+function admin_styles_bundle( development ) {
 
     return function() {
 
-        gulp.src( admin_sass_entrypoint )
-            .pipe( sass({
-                includePaths: [ slick_includePaths ].concat( bourbon_includePaths ),
-                outputStyle: ( development ) ? 'expanded' : 'compressed'
-            }).on('error', sass.logError ) )
-            .pipe( autoprefixer({
-                browsers: [
-                    'last 2 versions',
-                    '> 5%',
-                    'Firefox ESR'
-                ]
-            }))
+        gulp.src( admin_styles_entrypoint ) 
+            .pipe(sourcemaps.init())
+            .pipe(postcss())
             .pipe( rename({ basename: 'admin', ext: '.css' }) )
             .pipe( sourcemaps.write('./', {
                 includeContent: false,
@@ -140,7 +121,7 @@ function admin_sass_bundle( development ) {
             }))
             .pipe( rename({ basename: 'admin-bundle', ext: '.css' }) )
             .pipe( livereload() )
-            .pipe( gulp.dest( admin_sass_exitpoint ) );
+            .pipe( gulp.dest( admin_styles_exitpoint ) );
 
     };
 
@@ -176,8 +157,8 @@ function watch() {
 
     gulp.watch( php_entrypoint ).on('change', function( file ) { livereload.changed( file.path ); });
     gulp.watch( js_watch_files, ['js']);
-    gulp.watch( sass_watch_files, ['scss']);
-    gulp.watch( admin_sass_watch_files, ['admin-scss']);
+    gulp.watch( styles_watch_files, ['styles']);
+    gulp.watch( admin_styles_watch_files, ['admin-styles']);
 
 }
 
@@ -188,14 +169,14 @@ function watch() {
 
 gulp.task('files', file_bundle( process.env.NODE_ENV === 'development' ) );
 
-gulp.task('scss', sass_bundle( process.env.NODE_ENV === 'development' ) );
+gulp.task('styles', styles_bundle( process.env.NODE_ENV === 'development' ) );
 
-gulp.task('admin-scss', admin_sass_bundle( process.env.NODE_ENV === 'development' ) );
+gulp.task('admin-styles', admin_styles_bundle( process.env.NODE_ENV === 'development' ) );
 
 gulp.task('js', js_bundle( process.env.NODE_ENV === 'development' ) );
 
 gulp.task('watch', watch );
 
-gulp.task('build', ['admin-scss', 'scss', 'js']);
+gulp.task('build', ['admin-styles', 'styles', 'js']);
 
-gulp.task('default', ['admin-scss', 'scss', 'js', 'watch']);
+gulp.task('default', ['admin-styles', 'styles', 'js', 'watch']);

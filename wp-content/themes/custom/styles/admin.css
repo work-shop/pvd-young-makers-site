@@ -1,0 +1,11 @@
+@import "tailwindcss/preflight";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+.acf-field-message {
+  @apply .bg-orange-light;
+}
+
+.hndle.ui-sortable-handle {
+  @apply .bg-orange .text-white;
+}

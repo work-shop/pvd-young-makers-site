@@ -9,3 +9,7 @@ body {
 hr {
   display: none;
 }
+
+a {
+  color: inherit;
+}
