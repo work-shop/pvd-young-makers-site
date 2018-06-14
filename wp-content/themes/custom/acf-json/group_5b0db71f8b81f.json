@@ -194,6 +194,102 @@
             "new_lines": ""
         },
         {
+            "key": "field_5b22de717c696",
+            "label": "Home Page Locations Image",
+            "name": "home_page_locations_image",
+            "type": "image",
+            "instructions": "Add an image for the link to the locations page here.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5b22deaa7c697",
+            "label": "Home Page Tools Image",
+            "name": "home_page_tools_image",
+            "type": "image",
+            "instructions": "Add an image for the link to the tools page here.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5b22dec27c698",
+            "label": "Home Page Events Image",
+            "name": "home_page_events_image",
+            "type": "image",
+            "instructions": "Add an image for the link to the events page here.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5b22decf7c699",
+            "label": "Home Page Badging Image",
+            "name": "home_page_badging_image",
+            "type": "image",
+            "instructions": "Add an image for the link to the badging page here.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
             "key": "field_5b0dbc3807ccd",
             "label": "Home Page Events",
             "name": "",
@@ -341,5 +437,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1528823973
+    "modified": 1529011962
 }
