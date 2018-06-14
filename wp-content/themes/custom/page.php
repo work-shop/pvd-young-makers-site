@@ -10,7 +10,6 @@ if (is_front_page()) {
 $context = Timber::get_context();
 $context['post'] = $post;
 if (is_front_page()) {
-    $context['news'] = Timber::get_posts('post_type=news&numberposts=2');
     $events = Timber::get_posts('post_type=events&numberposts=3');
     foreach ($events as $event) {
         $event->location_name = Timber::get_post('post_type=locations&p=' . $event->location[0])->post_title;
