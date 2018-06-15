@@ -20,12 +20,19 @@
 }
 
 .Block--light {
-  background-color: var(--light-orange);
-  color: var(--teal);
+  @apply .bg-orange-lightest .text-teal-darkest;
+
+  &:hover {
+    @apply .bg-teal-darkest .text-white;
+  }
 }
 
 .Block--inverted {
   @apply .shadow-teal .bg-teal-lightest .text-teal-darkest;
+
+  &:hover {
+    @apply .bg-teal-dark .text-white;
+  }
 }
 
 /**
