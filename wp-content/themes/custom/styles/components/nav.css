@@ -13,6 +13,7 @@
 
 .Nav .Block {
   width: 100%;
+  margin: 0;
   padding: 0;
 }
 
@@ -63,8 +64,8 @@
 .Nav-logoLink {
   display: block;
   float: left;
-  width: calc(2rem * 5.225);
-  height: 2rem;
+  /* width: calc(4rem * 5.225); */
+  height: 4rem;
   padding: 1rem 2rem 1rem 1rem;
   transform: translateY(-0.0625rem);
 }
@@ -78,9 +79,6 @@
 .Nav-list {
   display: none;
   clear: both;
-  margin: 0;
-  padding: 0;
-  list-style: none;
 
   @media (min-width: 768px) {
     width: 24rem;
@@ -148,9 +146,6 @@
 
 .Nav-sublist {
   display: none;
-  margin: 0;
-  padding: 0;
-  list-style: none;
 }
 
 .Nav-sublist .Nav-link {

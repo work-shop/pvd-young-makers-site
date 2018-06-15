@@ -4,15 +4,14 @@
 
 .Block {
   @apply .shadow-orange;
-  display: inline-block;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   box-decoration-break: clone;
   margin: 0 0.25rem 0.25rem 0;
   padding: 0.5rem 1rem;
   font-weight: 700;
   line-height: 1.5;
-}
-
-a.Block {
   text-decoration: none;
 }
 

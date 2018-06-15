@@ -500,6 +500,7 @@ module.exports = {
 
   minHeight: {
     "0": "0",
+    half: "50%",
     full: "100%",
     screen: "100vh"
   },
@@ -820,12 +821,7 @@ module.exports = {
   |
   */
 
-  plugins: [
-    require("tailwindcss/plugins/container")({
-      // center: true,
-      // padding: '1rem',
-    })
-  ],
+  plugins: [require("tailwindcss-object-fit")(["responsive"])],
 
   /*
   |-----------------------------------------------------------------------------

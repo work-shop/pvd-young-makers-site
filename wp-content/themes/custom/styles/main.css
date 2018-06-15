@@ -18,9 +18,9 @@
 @import "components/nav";
 @import "components/footer";
 
-@import "pages/home";
-
 /**
  * Utilities
  */
 @import "tailwindcss/utilities";
+
+@import "utilities/container";
