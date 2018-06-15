@@ -4,9 +4,7 @@
 
 .Block {
   @apply .shadow-orange;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
+  display: inline-block;
   box-decoration-break: clone;
   margin: 0 0.25rem 0.25rem 0;
   padding: 0.5rem 1rem;
