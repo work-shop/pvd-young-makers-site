@@ -28,7 +28,3 @@ h5,
 h6 {
   font: inherit;
 }
-
-.small-caps {
-  @apply .text-sm .tracking-loose .uppercase;
-}

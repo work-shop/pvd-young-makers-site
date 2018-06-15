@@ -12,7 +12,6 @@
  */
 @import "tailwindcss/components";
 
-@import "components/card";
 @import "components/block";
 @import "components/section";
 @import "components/nav";
@@ -23,4 +22,5 @@
  */
 @import "tailwindcss/utilities";
 
+@import "utilities/typography";
 @import "utilities/container";

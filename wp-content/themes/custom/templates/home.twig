@@ -2,30 +2,30 @@
 
 {% block content %}
 	<section class="bg-teal-lightest">
-		<div class="container max-w-xl py-6">
-			{% if post.get_field("home_page_tagline") %}
-				<div class="HeroBlock mb-3 md:mb-4">
-					<h1 class="Block Block--dark">{{ post.get_field("home_page_tagline") }}</h1>
-				</div>
-			{% endif %}
+		<div class="container py-6">
+      {% if post.get_field("home_page_tagline") %}
+        <div class="HeroBlock mb-3 md:mb-4">
+          <h1 class="Block Block--dark">{{ post.get_field("home_page_tagline") }}</h1>
+        </div>
+      {% endif %}
 
-			{% if post.get_field("home_page_links") %}
-				<nav>
-					<ul class="flex">
-						{% for item in post.get_field("home_page_links") %}
-							{% set link_href = "#" %}
-							{% if item.link_type == "url" %}
-								{% set link_href = item.link_url %}
-							{% elseif item.link_type == "page" %}
-								{% set link_href = item.link_to_page %}
-							{% endif %}
-							<li class="mr-3">
-								<a class="Block Block--light" href="{{ link_href }}">{{ item.link_label }}</a>
-							</li>
-						{% endfor %}
-					</ul>
-				</nav>
-			{% endif %}
+      {% if post.get_field("home_page_links") %}
+        <nav>
+          <ul class="flex">
+            {% for item in post.get_field("home_page_links") %}
+              {% set link_href = "#" %}
+              {% if item.link_type == "url" %}
+                {% set link_href = item.link_url %}
+              {% elseif item.link_type == "page" %}
+                {% set link_href = item.link_to_page %}
+              {% endif %}
+              <li class="mr-3">
+                <a class="Block Block--light" href="{{ link_href }}">{{ item.link_label }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </nav>
+      {% endif %}
 		</div>
 	</section>
 
@@ -86,7 +86,7 @@
           {% if post.get_field("home_page_locations_image") %}
             <li class="w-full md:flex-1 m-2">
               <a href="{{ site.link }}/locations/">{% spaceless %}
-                <img class="block mb-3 w-full object-cover border-2 border-orange" src="{{ TimberImage(post.get_field("home_page_locations_image")).src("large") }}" height="256" alt="">
+                <img class="block mb-3 w-full object-cover border-2 border-orange hover:border-teal-darkest" src="{{ TimberImage(post.get_field("home_page_locations_image")).src("large") }}" height="256" alt="">
               {% endspaceless %}</a><br class="hidden">
 
               <a class="Block Block--light" href="{{ site.link }}/locations/">View our locations</a>
@@ -96,7 +96,7 @@
           {% if post.get_field("home_page_tools_image") %}
             <li class="w-full md:flex-1 m-2">
               <a href="{{ site.link }}/tools/">{% spaceless %}
-                <img class="block mb-3 w-full object-cover border-2 border-orange" src="{{ TimberImage(post.get_field("home_page_tools_image")).src("large") }}" height="256" alt="">
+                <img class="block mb-3 w-full object-cover border-2 border-orange hover:border-teal-darkest" src="{{ TimberImage(post.get_field("home_page_tools_image")).src("large") }}" height="256" alt="">
               {% endspaceless %}</a><br class="hidden">
 
               <a class="Block Block--light" href="{{ site.link }}/tools/">Check out the tools</a>
@@ -106,7 +106,7 @@
           {% if post.get_field("home_page_events_image") %}
             <li class="w-full md:flex-1 m-2">
               <a href="{{ site.link }}/events/">{% spaceless %}
-                <img class="block mb-3 w-full object-cover border-2 border-orange" src="{{ TimberImage(post.get_field("home_page_events_image")).src("large") }}" height="256" alt="">
+                <img class="block mb-3 w-full object-cover border-2 border-orange hover:border-teal-darkest" src="{{ TimberImage(post.get_field("home_page_events_image")).src("large") }}" height="256" alt="">
               {% endspaceless %}</a><br class="hidden">
 
               <a class="Block Block--light" href="{{ site.link }}/events/">Find upcoming events</a>
@@ -116,7 +116,7 @@
           {% if post.get_field("home_page_badging_image") %}
             <li class="w-full md:flex-1 m-2">
               <a href="{{ site.link }}/badges/">{% spaceless %}
-                <img class="block mb-3 w-full object-cover border-2 border-orange" src="{{ TimberImage(post.get_field("home_page_badging_image")).src("large") }}" height="256" alt="">
+                <img class="block mb-3 w-full object-cover border-2 border-orange hover:border-teal-darkest" src="{{ TimberImage(post.get_field("home_page_badging_image")).src("large") }}" height="256" alt="">
               {% endspaceless %}</a><br class="hidden">
 
               <a class="Block Block--light" href="{{ site.link }}/badges/">Read about badging</a>
