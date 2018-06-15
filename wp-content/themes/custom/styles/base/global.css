@@ -6,10 +6,29 @@ body {
   font-family: var(--primary-font);
 }
 
+nav ul,
+nav ol {
+  padding: 0;
+  list-style-type: none;
+}
+
 hr {
   display: none;
 }
 
 a {
   color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font: inherit;
+}
+
+.small-caps {
+  @apply .text-sm .tracking-loose .uppercase;
 }

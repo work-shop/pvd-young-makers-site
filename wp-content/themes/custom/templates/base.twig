@@ -7,36 +7,22 @@
         <meta name="description" content="{{ site.description }}">
         <title>{% include "partials/html-title.twig" %}</title>
         <link rel="pingback" href="{{ site.pingback_url }}"/>
-        {{function("wp_head")}}
+        {{ function("wp_head") }}
     </head>
 
-    <body class="{{body_class}}" data-template="base.twig">
+    <body class="{{ body_class }}">
         {% include "partials/header.twig" %}
 
         <hr>
 
-        <section class="content-wrapper">
-            {% if title %}
-                <h1>{{title}}</h1>
-            {% endif %}
-
-            <div class="wrapper {{sidebar_class}}">
-                {% block content %}
-                    Sorry, no content
-                {% endblock %}
-            </div>
-
-            {% if sidebar %}
-                <aside class="layout-sidebar">
-                    {{sidebar}}
-                </aside>
-            {% endif %}
-        </section>
+        <main>
+            {% block content %}{% endblock %}
+        </main>
 
         <hr>
 
         {% include "partials/footer.twig" %}
 
-        {{function("wp_footer")}}
+        {{ function("wp_footer") }}
     </body>
 </html>

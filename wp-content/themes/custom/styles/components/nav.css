@@ -1,5 +1,6 @@
 .Nav {
   position: absolute;
+  left: 0;
   width: calc(100% - 0.25rem);
   color: var(--white);
   font-size: 1.25rem;

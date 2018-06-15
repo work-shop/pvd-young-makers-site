@@ -262,7 +262,7 @@ module.exports = {
   tracking: {
     tight: "-0.05em",
     normal: "0",
-    wide: "0.05em"
+    loose: "0.05em"
   },
 
   /*
@@ -330,9 +330,10 @@ module.exports = {
   borderWidths: {
     default: "1px",
     "0": "0",
-    "2": "2px",
-    "4": "4px",
-    "8": "8px"
+    "1": "0.125rem",
+    "2": "0.25rem",
+    "3": "0.5rem",
+    "4": "1rem"
   },
 
   /*
@@ -352,7 +353,7 @@ module.exports = {
   |
   */
 
-  borderColors: global.Object.assign({ default: colors["gray-light"] }, colors),
+  borderColors: global.Object.assign({ default: "currentColor" }, colors),
 
   /*
   |-----------------------------------------------------------------------------
@@ -625,10 +626,11 @@ module.exports = {
     "0": "0",
     "1": "0.25rem",
     "2": "0.5rem",
-    "3": "0.75rem",
-    "4": "1rem",
-    "6": "1.5rem",
-    "8": "2rem"
+    "3": "1rem",
+    "4": "2rem",
+    "5": "4rem",
+    "6": "8rem",
+    "7": "16rem"
   },
 
   /*

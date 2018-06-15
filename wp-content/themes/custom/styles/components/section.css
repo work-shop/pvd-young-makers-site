@@ -6,8 +6,9 @@
   @apply .py-5;
 }
 
-.Section-container {
-  @apply .max-w-2xl .mx-auto .mb-5 .px-3;
+.Section-container,
+.wrapper {
+  @apply .max-w-2xl .mx-auto .mb-5 .px-3 .py-4;
 
   &:last-child {
     @apply .mb-0;

@@ -1,132 +1,129 @@
 {% extends "base.twig" %}
 
 {% block content %}
-    <section class="HomePage Section">
-        <header class="HomePage-header Section-container">
-            <div class="HomePage-headerContent">
+	<section class="bg-teal-lightest">
+		<div class="wrapper max-w-xl py-6">
+			{% if post.get_field("home_page_tagline") %}
+				<div class="HeroBlock mb-3 md:mb-4">
+					<h1 class="Block Block--dark">{{ post.get_field("home_page_tagline") }}</h1>
+				</div>
+			{% endif %}
 
-                {% if post.get_field("home_page_tagline") %}
-                    <div class="HomePage-tagline">
-                        <div class="HeroBlock">
-                            <h1 class="Block Block--dark">{{ post.get_field("home_page_tagline") }}</h1>
-                        </div>
-                    </div>
-                {% endif %}
+			{% if post.get_field("home_page_links") %}
+				<nav>
+					<ul class="flex">
+						{% for item in post.get_field("home_page_links") %}
+							{% set link_href = "#" %}
+							{% if item.link_type == "url" %}
+								{% set link_href = item.link_url %}
+							{% elseif item.link_type == "page" %}
+								{% set link_href = item.link_to_page %}
+							{% endif %}
+							<li class="mr-3">
+								<a class="Block Block--light" href="{{ link_href }}">{{ item.link_label }}</a>
+							</li>
+						{% endfor %}
+					</ul>
+				</nav>
+			{% endif %}
+		</div>
+	</section>
 
-                {% if post.get_field("home_page_links") %}
-                    <ul class="HomePage-listOfLinks">
-                        {% for item in post.get_field("home_page_links") %}
-                            {% set link_href = "#" %}
-                            {% if item.link_to_page %}
-                                {% set link_href = item.link_to_page %}
-                            {% elseif item.link_url %}
-                                {% set link_href = item.link_url %}
-                            {% endif %}
-                            <li class="HomePage-listOfLinksItem">
-                                <a class="Block Block--light" href="{{ link_href }}">{{ item.link_label }}</a>
-                            </li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
-            </div>
-        </header>
-    </section>
+	{% if post.get_field("home_page_news_stories") %}
+		<section class="bg-orange text-white text-center">
+			<div class="wrapper">
+				<h2 class="mb-4 font-bold text-3xl">Breaking News!</h2>
 
-    {% if post.get_field("home_page_news_stories") %}
-        <section class="HomePage-news Section">
-            <div class="Section-container">
-                <h2 class="HomePage-newsSectionTitle Section-title">Latest News</h2>
+				<nav class="mb-4">
+					<ul class="flex flex-wrap justify-between -m-2">
+						{% for post in post.get_field("home_page_news_stories") %}
+							<li class="w-full md:flex-1 m-2 text-left">
+								<a class="block p-4 border-2 border-white hover:bg-white hover:text-orange no-underline" href="{{ post.link }}">
+                  <span class="block mb-3">{% spaceless %}
+                    {{ post.date }}
+                    {% if post.author.first_name or post.author.last_name %}
+                      •
+                      {{ post.author.first_name }}
+                      {{ post.author.last_name }}
+                    {% endif %}
+                    {% if post.terms("news-categories") %}
+                      •
+                      {{ post.terms("news-categories")|join(", ") }}
+                    {% endif %}
+                  {% endspaceless %}</span><br class="hidden">
 
-                <ul class="HomePage-newsItems">
-                    {% for post in post.get_field("home_page_news_stories") %}
-                        <li class="HomePage-newsItem">
-                            <span class="HomePage-newsItemTitle">
-                                <a class="HomePage-newsItemLink" href="{{ post.link }}">
-                                    {{ post.title }}<br>
-                                </a>
-                            </span>
+									<span class="block mb-3 font-bold text-3xl">{{ post.title }}</span><br class="hidden">
 
-                            <span class="HomePage-newsItemMetadata">
-                                {{ post.date }}
-                                {% if post.author.first_name or post.author.last_name %}
-                                    •
-                                    {{ post.author.first_name }}
-                                    {{ post.author.last_name }}
-                                {% endif %}
-                                {% if post.terms("news-categories") %}
-                                    •
-                                    {{ post.terms("news-categories")|join(", ") }}
-                                {% endif %}
-                            </span>
-                        </li>
-                    {% endfor %}
-                </ul>
+									<span class="block font-bold small-caps">Read more</span>
+								</a>
+							</li>
+						{% endfor %}
+					</ul>
+				</nav>
 
-                <p class="HomePage-newsMore">
-                    <a class="Block Block--inverted" href="{{ site.link }}/news/">View more news</a>
-                </p>
-            </div>
-        </section>
-    {% endif %}
+				<a class="Block Block--inverted" href="{{ site.link }}/news/">View more news</a>
+			</div>
+		</section>
+	{% endif %}
 
-    {% embed "partials/section.twig" %}
-        {% block title %}
-            About
-            {{ site.title }}
-        {% endblock %}
+	{% embed "partials/section.twig" %}
+		{% block title %}
+			About
+			{{ site.title }}
+		{% endblock %}
 
-        {% block content %}
-            {{ post.get_field("home_page_about_text") }}
+		{% block content %}
+			{{ post.get_field("home_page_about_text") }}
 
-            <nav class="HomePage-nav">
-                <ul class="HomePage-navList">
-                    <li>
-                        <a href="">View our locations</a>
-                    </li>
-                    <li>
-                        <a href="">Check out the tools</a>
-                    </li>
-                    <li>
-                        <a href="">See our events</a>
-                    </li>
-                    <li>
-                        <a href="">Read about badging</a>
-                    </li>
-                </ul>
-            </nav>
-        {% endblock %}
-    {% endembed %}
+			<nav class="HomePage-nav">
+				<ul class="HomePage-navList">
+					<li>
+						<a href="">View our locations</a>
+					</li>
+					<li>
+						<a href="">Check out the tools</a>
+					</li>
+					<li>
+						<a href="">See our events</a>
+					</li>
+					<li>
+						<a href="">Read about badging</a>
+					</li>
+				</ul>
+			</nav>
+		{% endblock %}
+	{% endembed %}
 
-    {% embed "partials/section.twig" %}
-        {% block title %}
-            Today’s Events
-        {% endblock %}
+	{% embed "partials/section.twig" %}
+		{% block title %}
+			Today’s Events
+		{% endblock %}
 
-        {% block content %}
-            <div class="max-w-md">What are you doing today?</div>
+		{% block content %}
+			<div class="max-w-md">What are you doing today?</div>
 
-            <ul class="HomePage-events">
-                {% for event in events %}
-                    <li class="HomePage-event">
-                        {% set event_date = event.event_start | date("F j, Y • g:ia") ~ "–" %}
+			<ul class="HomePage-events">
+				{% for event in events %}
+					<li class="HomePage-event">
+						{% set event_date = event.event_start | date("F j, Y • g:ia") ~ "–" %}
 
-                        {% if event.event_start | date("F j, Y") == event.event_end | date("F j, Y") %}
-                            {% set event_date = event_date ~ event.event_end | date("g:ia") %}
-                        {% else %}
-                            {% set event_date = event_date ~ event.event_end | date("F j, Y • g:ia") %}
-                        {% endif %}
+						{% if event.event_start | date("F j, Y") == event.event_end | date("F j, Y") %}
+							{% set event_date = event_date ~ event.event_end | date("g:ia") %}
+						{% else %}
+							{% set event_date = event_date ~ event.event_end | date("F j, Y • g:ia") %}
+						{% endif %}
 
-                        {% include "partials/card.twig" with {
-                            title : event.event_name,
-                            link: event.link,
-                            primary_text: event_date,
-                            secondary_text: event.location_name,
-                            image_src: TimberImage(event.get_field('event_image')).src('large')
-                        }
-                        only %}
-                    </li>
-                {% endfor %}
-            </ul>
-        {% endblock %}
-    {% endembed %}
+						{% include "partials/card.twig" with {
+							title : event.event_name,
+							link: event.link,
+							primary_text: event_date,
+							secondary_text: event.location_name,
+							image_src: TimberImage(event.get_field('event_image')).src('large')
+						}
+						only %}
+					</li>
+				{% endfor %}
+			</ul>
+		{% endblock %}
+	{% endembed %}
 {% endblock %}
