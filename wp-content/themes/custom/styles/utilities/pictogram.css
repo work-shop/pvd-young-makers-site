@@ -1,0 +1,8 @@
+[data-pictogram] {
+  @apply .font-pictogram .leading-none;
+  font-size: 2em;
+
+  &::after {
+    content: attr(data-pictogram);
+  }
+}

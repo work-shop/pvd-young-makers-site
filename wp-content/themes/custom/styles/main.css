@@ -23,4 +23,5 @@
 @import "tailwindcss/utilities";
 
 @import "utilities/typography";
+@import "utilities/pictogram";
 @import "utilities/container";
