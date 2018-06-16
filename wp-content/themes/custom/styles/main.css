@@ -4,7 +4,6 @@
 @import "tailwindcss/preflight";
 
 @import "base/fonts";
-@import "base/variables";
 @import "base/global";
 
 /**
@@ -13,7 +12,6 @@
 @import "tailwindcss/components";
 
 @import "components/block";
-@import "components/section";
 @import "components/nav";
 @import "components/footer";
 
@@ -22,6 +20,6 @@
  */
 @import "tailwindcss/utilities";
 
+@import "utilities/container";
 @import "utilities/typography";
 @import "utilities/pictogram";
-@import "utilities/container";

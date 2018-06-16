@@ -89,10 +89,10 @@
 
 .FooterNav-sublistItem--facebook .FooterNav-link::after,
 .FooterNav-sublistItem--instagram .FooterNav-link::after {
+  @apply .font-pictogram;
   line-height: 1;
   font-weight: normal;
   font-size: 3rem;
-  font-family: var(--pictogram-font);
 }
 
 .FooterNav-sublistItem--facebook .FooterNav-link::after {

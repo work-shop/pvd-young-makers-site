@@ -1,19 +1,14 @@
 body {
-  background-color: var(--white);
-  color: var(--teal);
-  font-weight: 500;
-  line-height: 1.5;
-  font-family: var(--primary-font);
+  @apply .bg-white .text-teal-darkest .font-medium .font-sans .leading-normal;
 }
 
 nav ul,
 nav ol {
-  padding: 0;
-  list-style-type: none;
+  @apply .list-reset;
 }
 
 hr {
-  display: none;
+  @apply .hidden;
 }
 
 a {

@@ -1,8 +1,8 @@
 .Nav {
+  @apply .text-white;
   position: absolute;
   left: 0;
   width: calc(100% - 0.25rem);
-  color: var(--white);
   font-size: 1.25rem;
 
   @media (min-width: 768px) {
@@ -43,11 +43,11 @@
 }
 
 .Nav-toggleLabelIcon::after {
+  @apply .font-pictogram;
   display: block;
   margin: 0 0.625rem;
   line-height: 1;
   font-weight: normal;
-  font-family: var(--pictogram-font);
 }
 
 .Nav-toggleLabelIcon--collapsed::after {
@@ -102,11 +102,11 @@
 }
 
 .Nav-sublistToggleLabel {
+  @apply .border .border-teal-darkest;
   display: inline-flex;
   align-items: center;
   box-sizing: border-box;
   width: 100%;
-  border: 1px solid var(--teal);
   border-width: 0 1px 1px 0;
   padding: 0.75rem 1rem;
   user-select: none;
@@ -114,7 +114,7 @@
 }
 
 .Nav-sublistToggleLabel:hover {
-  background-color: var(--orange);
+  @apply .bg-orange;
 }
 
 .Nav-sublistToggleLabelIcon {
@@ -125,11 +125,11 @@
 }
 
 .Nav-sublistToggleLabelIcon::before {
+  @apply .font-pictogram;
   margin-right: 0.5rem;
   font-size: 2rem;
   line-height: 1;
   font-weight: normal;
-  font-family: var(--pictogram-font);
 }
 
 .Nav-sublistToggleLabelIcon--collapsed::before {
@@ -149,20 +149,19 @@
 }
 
 .Nav-sublist .Nav-link {
+  @apply .bg-teal-darker;
   padding-left: 3rem;
-  background-color: var(--light-teal);
   font-weight: 500;
 }
 
 .Nav-link {
+  @apply .border .border-teal-darkest .text-white;
   display: block;
-  border: 1px solid var(--teal);
   border-width: 0 1px 1px 0;
   padding: 0.75rem 1rem;
-  color: var(--white);
   text-decoration: none;
 }
 
 .Nav-link:hover {
-  background-color: var(--orange);
+  @apply .bg-orange;
 }
