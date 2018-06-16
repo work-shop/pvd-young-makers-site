@@ -1,85 +1,85 @@
 <footer class="py-4 bg-teal-darkest text-teal-dark">
-    {% if nav %}
-        <nav class="FooterNav container mb-4">
-            <ul class="FooterNav-list">
-                {% if options.general_phone_number or options.general_email_address or options.facebook or options.instagram %}
-                    <li class="FooterNav-listItem FooterNav-listItem--contact">
-                        <span class="FooterNav-listTitle">Contact</span>
+	{% if nav %}
+		<nav class="FooterNav container mb-4">
+			<ul class="FooterNav-list">
+				{% if options.general_phone_number or options.general_email_address or options.facebook or options.instagram %}
+					<li class="FooterNav-listItem FooterNav-listItem--contact">
+						<span class="FooterNav-listTitle">Contact</span>
 
-                        <ul class="FooterNav-sublist">
-                            {% if options.general_phone_number %}
-                                <li class="FooterNav-sublistItem">
-                                    <span class="small-caps">Phone:</span>
-                                    {{ options.general_phone_number }}
-                                </li>
-                            {% endif %}
+						<ul class="FooterNav-sublist">
+							{% if options.general_phone_number %}
+								<li class="FooterNav-sublistItem">
+									<span class="small-caps">Phone:</span>
+									{{ options.general_phone_number }}
+								</li>
+							{% endif %}
 
-                            {% if options.general_email_address %}
-                                <li class="FooterNav-sublistItem">
-                                    <span class="small-caps">Email:</span>
-                                    <a class="FooterNav-link" href="mailto:{{ options.general_email_address }}">{{ options.general_email_address }}</a>
-                                </li>
-                            {% endif %}
+							{% if options.general_email_address %}
+								<li class="FooterNav-sublistItem">
+									<span class="small-caps">Email:</span>
+									<a class="FooterNav-link" href="mailto:{{ options.general_email_address }}">{{ options.general_email_address }}</a>
+								</li>
+							{% endif %}
 
-                            {% if options.facebook %}
-                                <li class="FooterNav-sublistItem FooterNav-sublistItem--facebook">
-                                    <a class="FooterNav-link" href="{{ options.facebook }}" target="_blank" rel="noopener">
-                                        <span class="FooterNav-linkLabel">Facebook</span>
-                                    </a>
-                                </li>
-                            {% endif %}
+							{% if options.facebook %}
+								<li class="FooterNav-sublistItem FooterNav-sublistItem--facebook">
+									<a class="FooterNav-link" href="{{ options.facebook }}" target="_blank" rel="noopener">
+										<span class="FooterNav-linkLabel">Facebook</span>
+									</a>
+								</li>
+							{% endif %}
 
-                            {% if options.instagram %}
-                                <li class="FooterNav-sublistItem FooterNav-sublistItem--instagram">
-                                    <a class="FooterNav-link" href="{{ options.instagram }}" target="_blank" rel="noopener">
-                                        <span class="FooterNav-linkLabel">Instagram</span>
-                                    </a>
-                                </li>
-                            {% endif %}
-                        </ul>
-                    </li>
-                {% endif %}
+							{% if options.instagram %}
+								<li class="FooterNav-sublistItem FooterNav-sublistItem--instagram">
+									<a class="FooterNav-link" href="{{ options.instagram }}" target="_blank" rel="noopener">
+										<span class="FooterNav-linkLabel">Instagram</span>
+									</a>
+								</li>
+							{% endif %}
+						</ul>
+					</li>
+				{% endif %}
 
-                {% for item in footer_nav.items %}
-                    <li class="FooterNav-listItem FooterNav-listItem--nav {{ item.classes|join(' ') }}">
-                        {% if item.url == "#" %}
-                            <span class="FooterNav-listTitle">{{ item.title }}</span>
-                        {% else %}
-                            <a class="FooterNav-link" href="{{ item.link }}">{{ item.title }}</a>
-                        {% endif %}
+				{% for item in footer_nav.items %}
+					<li class="FooterNav-listItem FooterNav-listItem--nav {{ item.classes|join(' ') }}">
+						{% if item.url == "#" %}
+							<span class="FooterNav-listTitle">{{ item.title }}</span>
+						{% else %}
+							<a class="FooterNav-link" href="{{ item.link }}">{{ item.title }}</a>
+						{% endif %}
 
-                        {% if item.children %}
-                            <ul class="FooterNav-sublist">
-                                {% for child in item.children %}
-                                    <li class="FooterNav-sublistItem">
-                                        <a class="FooterNav-link" href="{{ child.link }}">{{ child.title }}</a>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        {% endif %}
-                    </li>
-                {% endfor %}
+						{% if item.children %}
+							<ul class="FooterNav-sublist">
+								{% for child in item.children %}
+									<li class="FooterNav-sublistItem">
+										<a class="FooterNav-link" href="{{ child.link }}">{{ child.title }}</a>
+									</li>
+								{% endfor %}
+							</ul>
+						{% endif %}
+					</li>
+				{% endfor %}
 
-                {% if partners %}
-                    <li class="FooterNav-listItem FooterNav-listItem--partners">
-                        <span class="FooterNav-listTitle">Our Partners</span>
+				{% if partners %}
+					<li class="FooterNav-listItem FooterNav-listItem--partners">
+						<span class="FooterNav-listTitle">Our Partners</span>
 
-                        <ul class="FooterNav-sublist">
-                            {% for partner in partners %}
-                                <li class="FooterNav-sublistItem">
-                                    <a class="FooterNav-link" href="{{ partner.link }}">{{ partner.title }}</a>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    </li>
-                {% endif %}
-            </ul>
-        </nav>
-    {% endif %}
+						<ul class="FooterNav-sublist">
+							{% for partner in partners %}
+								<li class="FooterNav-sublistItem">
+									<a class="FooterNav-link" href="{{ partner.link }}">{{ partner.title }}</a>
+								</li>
+							{% endfor %}
+						</ul>
+					</li>
+				{% endif %}
+			</ul>
+		</nav>
+	{% endif %}
 
-    <p class="Footer-copyright container">
-        ©
-        {{ "now"|date("Y") }}
-        City of Providence
-    </p>
+	<p class="Footer-copyright container">
+		©
+		{{ "now"|date("Y") }}
+		City of Providence
+	</p>
 </footer>

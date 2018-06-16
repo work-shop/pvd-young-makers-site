@@ -1,15 +1,15 @@
 {% extends "base.twig" %}
 
 {% block content %}
-    INDEX.twig
-    <h2>{{ foo }}</h2>
-    <p>{{ qux }}</p>
+	INDEX.twig
+	<h2>{{ foo }}</h2>
+	<p>{{ qux }}</p>
 
-    {% for post in posts %}
-        {% include ['tease-' ~ post.post_type ~ '.twig', 'tease.twig'] %}
-    {% endfor %}
+	{% for post in posts %}
+		{% include ["tease-" ~ post.post_type ~ ".twig", "tease.twig"] %}
+	{% endfor %}
 
-    {% include 'partials/pagination.twig' with {
-        pagination : posts.pagination({show_all: false, mid_size: 3, end_size: 2})
-    } %}
+	{% include "partials/pagination.twig" with {
+		pagination: posts.pagination({ show_all: false, mid_size: 3, end_size: 2 })
+	} %}
 {% endblock %}

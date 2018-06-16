@@ -140,16 +140,16 @@
           <ul class="flex flex-wrap -m-2">
             {% for event in events %}
               <li class="w-full md:flex-1 m-2">
-                {% set event_date = event.event_start | date("F j, Y, g:ia") ~ " – " %}
+                {% set event_date = event.event_start|date("F j, Y, g:ia") ~ " – " %}
 
-                {% if event.event_start | date("F j, Y") == event.event_end | date("F j, Y") %}
-                  {% set event_date = event_date ~ event.event_end | date("g:ia") %}
+                {% if event.event_start|date("F j, Y") == event.event_end|date("F j, Y") %}
+                  {% set event_date = event_date ~ event.event_end|date("g:ia") %}
                 {% else %}
-                  {% set event_date = event_date ~ event.event_end | date("F j, Y, g:ia") %}
+                  {% set event_date = event_date ~ event.event_end|date("F j, Y, g:ia") %}
                 {% endif %}
 
                 {% include "partials/card.twig" with {
-                  title : event.event_name,
+                  title: event.event_name,
                   link: event.link,
                   primary_pictogram: "{",
                   primary_text: event_date,

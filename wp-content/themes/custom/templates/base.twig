@@ -1,28 +1,36 @@
 <!DOCTYPE html>
 <html {{ site.language_attributes }}>
-    <head>
-        <meta charset="{{ site.charset }}">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <meta name="description" content="{{ site.description }}">
-        <title>{% include "partials/html-title.twig" %}</title>
-        <link rel="pingback" href="{{ site.pingback_url }}"/>
-        {{ function("wp_head") }}
-    </head>
+	<head>
+		<meta charset="{{ site.charset }}">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<meta name="description" content="{{ site.description }}">
+		<title>{% spaceless %}
+			{% if wp_title %}
+				{{ wp_title }}
+				|
+				{{ site.name }}
+			{% else %}
+				{{ site.name }}
+			{% endif %}
+		{% endspaceless %}</title>
+		<link rel="pingback" href="{{ site.pingback_url }}"/>
+		{{ function("wp_head") }}
+	</head>
 
-    <body class="{{ body_class }}">
-        {% include "partials/header.twig" %}
+	<body class="{{ body_class }}">
+		{% include "partials/header.twig" %}
 
-        <hr>
+		<hr>
 
-        <main>
-            {% block content %}{% endblock %}
-        </main>
+		<main>
+			{% block content %}{% endblock %}
+		</main>
 
-        <hr>
+		<hr>
 
-        {% include "partials/footer.twig" %}
+		{% include "partials/footer.twig" %}
 
-        {{ function("wp_footer") }}
-    </body>
+		{{ function("wp_footer") }}
+	</body>
 </html>
