@@ -135,8 +135,8 @@
 		{% block content %}
 			<p class="max-w-md mb-4">What are you doing today?</p>
 
-      <nav>
-        <div class="mb-4">
+      <nav class="flex flex-wrap md:flex-no-wrap -m-2">
+        <div class="m-2">
           <ul class="flex flex-wrap -m-2">
             {% for event in events %}
               <li class="w-full md:flex-1 m-2">
@@ -161,7 +161,7 @@
           </ul>
         </div>
 
-        <a class="Block Block--light" href="{{ site.link }}/events/">View our calendar</a>
+        <a class="Block Block--light self-start m-2 text-2xl" href="{{ site.link }}/events/">View our calendar</a>
       </nav>
 		{% endblock %}
 	{% endembed %}
@@ -169,7 +169,7 @@
   {% if post.get_field("home_page_partner_text") %}
     <section class="py-6 bg-cover bg-teal-dark text-white" style="background-image: url('{{ TimberImage(post.get_field("home_page_partner_image")).src("large") }}')">
       <div class="container">
-        <h2 class="mb-3 font-bold text-2xl">Partner with Us</h2>
+        <h2 class="mb-3 font-bold text-3xl">Partner with Us</h2>
 
         <p class="max-w-md mb-4">{{ post.get_field("home_page_partner_text") }}</p>
 
