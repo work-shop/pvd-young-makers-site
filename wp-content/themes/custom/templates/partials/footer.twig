@@ -67,7 +67,7 @@
 						<ul class="FooterNav-sublist">
 							{% for partner in partners %}
 								<li class="FooterNav-sublistItem">
-									<a class="FooterNav-link" href="{{ partner.link }}">{{ partner.title }}</a>
+									<a class="FooterNav-link" href="{{ partner.partner_url }}" target="_blank" rel="noopener">{{ partner.partner_name }}</a>
 								</li>
 							{% endfor %}
 						</ul>

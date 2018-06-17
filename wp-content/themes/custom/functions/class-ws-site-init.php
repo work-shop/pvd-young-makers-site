@@ -94,6 +94,7 @@ class WS_Site extends TimberSite
         $context['nav'] = new TimberMenu('Primary Navigation');
         $context['footer_nav'] = new TimberMenu('Footer Navigation');
         $context['options'] = get_fields('option');
+        $context['partners'] = get_field('partners', 9);
         $context['site'] = $this;
 
         return $context;
