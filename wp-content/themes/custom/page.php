@@ -17,4 +17,6 @@ if (is_front_page()) {
     $context['events'] = $events;
 }
 
+$context['tools'] = Timber::get_posts('post_type=tools&numberposts=8');
+
 Timber::render($templates, $context);

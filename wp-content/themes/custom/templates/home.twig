@@ -2,31 +2,33 @@
 
 {% block content %}
 	<section class="bg-teal-lightest">
-		<div class="container py-6">
-      {% if post.get_field("home_page_tagline") %}
-        <div class="HeroBlock mb-3 md:mb-4">
-          <h1 class="Block Block--dark">{{ post.get_field("home_page_tagline") }}</h1>
-        </div>
-      {% endif %}
+    <div class="max-w-xl mx-auto">
+      <div class="container py-6">
+        {% if post.get_field("home_page_tagline") %}
+          <div class="HeroBlock mb-3 md:mb-4">
+            <h1 class="Block Block--dark">{{ post.get_field("home_page_tagline") }}</h1>
+          </div>
+        {% endif %}
 
-      {% if post.get_field("home_page_links") %}
-        <nav>
-          <ul class="flex">
-            {% for item in post.get_field("home_page_links") %}
-              {% set link_href = "#" %}
-              {% if item.link_type == "url" %}
-                {% set link_href = item.link_url %}
-              {% elseif item.link_type == "page" %}
-                {% set link_href = item.link_to_page %}
-              {% endif %}
-              <li class="mr-3">
-                <a class="Block Block--light" href="{{ link_href }}">{{ item.link_label }}</a>
-              </li>
-            {% endfor %}
-          </ul>
-        </nav>
-      {% endif %}
-		</div>
+        {% if post.get_field("home_page_links") %}
+          <nav>
+            <ul class="flex">
+              {% for item in post.get_field("home_page_links") %}
+                {% set link_href = "#" %}
+                {% if item.link_type == "url" %}
+                  {% set link_href = item.link_url %}
+                {% elseif item.link_type == "page" %}
+                  {% set link_href = item.link_to_page %}
+                {% endif %}
+                <li class="mr-3">
+                  <a class="Block Block--light" href="{{ link_href }}">{{ item.link_label }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </nav>
+        {% endif %}
+      </div>
+    </div>
 	</section>
 
 	{% if post.get_field("home_page_news_stories") %}
@@ -76,11 +78,11 @@
 			{{ site.title }}
 		{% endblock %}
 
-		{% block content %}
-			<div class="max-w-md mb-4">
-        {{ post.get_field("home_page_about_text") }}
-      </div>
+		{% block text %}
+      {{ post.get_field("home_page_about_text") }}
+    {% endblock %}
 
+    {% block extra %}
 			<nav>
 				<ul class="flex flex-wrap -m-2">
           {% if post.get_field("home_page_locations_image") %}
@@ -132,9 +134,11 @@
 			Today’s Events
 		{% endblock %}
 
-		{% block content %}
-			<p class="max-w-md mb-4">What are you doing today?</p>
+		{% block text %}
+			<p>What are you doing today?</p>
+    {% endblock %}
 
+    {% block extra %}
       <nav class="flex flex-wrap md:flex-no-wrap -m-2">
         <div class="m-2">
           <ul class="flex flex-wrap -m-2">
@@ -169,13 +173,15 @@
 	{% endembed %}
 
   {% if post.get_field("home_page_partner_text") %}
-    <section class="py-6 bg-cover bg-teal-dark text-white" style="background-image: url('{{ TimberImage(post.get_field("home_page_partner_image")).src("large") }}')">
-      <div class="container">
-        <h2 class="mb-3 font-bold text-3xl">Partner with Us</h2>
+    <section class="py-6 bg-teal-dark bg-cover text-white" style="background-image: url('{{ TimberImage(post.get_field("home_page_partner_image")).src("large") }}')">
+      <div class="max-w-xl mx-auto">
+        <div class="container">
+          <h2 class="mb-3 font-bold text-3xl">Partner with Us</h2>
 
-        <p class="max-w-md mb-4">{{ post.get_field("home_page_partner_text") }}</p>
+          <p class="max-w-md mb-4">{{ post.get_field("home_page_partner_text") }}</p>
 
-        <a class="Block Block--inverted" href="{{ site.link }}/partner/">Learn about partnership opportunities</a>
+          <a class="Block Block--inverted" href="{{ site.link }}/partner/">Learn about partnership opportunities</a>
+        </div>
       </div>
     </section>
   {% endif %}
