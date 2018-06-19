@@ -27,7 +27,29 @@ if ($post_name === 'making-and-learning') {
 
 // Tools page
 if ($post_name === 'tools') {
-    $context['tools'] = Timber::get_posts('post_type=tools');
+    $machines_args = array(
+        'post_type' => 'tools',
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'tool-types',
+                'field' => 'slug',
+                'terms' => 'machines',
+            ),
+        ),
+    );
+    $context['machines'] = Timber::get_posts($machines_args);
+
+    $materials_args = array(
+        'post_type' => 'tools',
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'tool-types',
+                'field' => 'slug',
+                'terms' => 'materials',
+            ),
+        ),
+    );
+    $context['materials'] = Timber::get_posts($materials_args);
 }
 
 // Locations page

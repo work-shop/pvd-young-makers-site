@@ -1,0 +1,31 @@
+{% extends "page.twig" %}
+
+{% block page_content %}
+  {% embed "partials/section.twig" %}
+		{% block title %}
+      Our Machines
+    {% endblock %}
+
+    {% block text %}
+      {{ post.get_field("machines_introductory_text") }}
+    {% endblock %}
+
+    {% block extra %}
+      {% include "partials/list-of-tools.twig" with { tools: machines } %}
+    {% endblock %}
+  {% endembed %}
+
+  {% embed "partials/section.twig" %}
+		{% block title %}
+      Our Materials
+    {% endblock %}
+
+    {% block text %}
+      {{ post.get_field("materials_introductory_text") }}
+    {% endblock %}
+
+    {% block extra %}
+      {% include "partials/list-of-tools.twig" with { tools: materials } %}
+    {% endblock %}
+  {% endembed %}
+{% endblock %}
