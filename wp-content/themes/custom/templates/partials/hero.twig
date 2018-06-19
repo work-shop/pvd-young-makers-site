@@ -1,0 +1,39 @@
+{% set section_classes = "text-orange" %}
+{% if image_src %}
+  {% set section_classes = "text-white" %}
+{% endif %}
+<section class="relative {{ section_classes }}">
+  <div class="absolute pin bg-center bg-cover grayscale"
+		 style="background-image: url('{{ image_src }}')">
+	</div>
+
+  <div class="relative {% if image_src %} bg-teal-translucent {% endif %}">
+    <div class="max-w-xl mx-auto">
+      <div class="container py-6">
+        <h1 class="font-bold text-5xl">{{ post.title }}</h1>
+
+        {% if post.get_field("page_summary") %}
+          <p class="mt-4 font-bold text-3xl">{{ post.get_field("page_summary") }}</p>
+        {% endif %}
+
+        {% if post.get_field("page_hero_links") %}
+          <nav class="mt-4">
+            <ul>
+              {% for item in post.get_field("page_hero_links") %}
+                {% set link_href = "#" %}
+                {% if item.link_type == "url" %}
+                  {% set link_href = item.link_url %}
+                {% elseif item.link_type == "page" %}
+                  {% set link_href = item.link_to_page %}
+                {% endif %}
+                <li class="mb-3">
+                  <a class="Block Block--light" href="{{ link_href }}">{{ item.link_label }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </nav>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>

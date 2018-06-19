@@ -23,4 +23,5 @@
 
 @import "utilities/container";
 @import "utilities/typography";
+@import "utilities/filters";
 @import "utilities/pictogram";

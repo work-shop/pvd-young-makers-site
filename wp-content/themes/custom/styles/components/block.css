@@ -26,10 +26,10 @@
 }
 
 .Block--inverted {
-  @apply .shadow-teal .bg-teal-lightest .text-teal-darkest;
+  @apply .shadow-teal-darkest .bg-teal-lightest .text-teal-darkest;
 
   &:hover {
-    @apply .bg-teal-dark .text-white;
+    @apply .bg-white .text-orange;
   }
 }
 

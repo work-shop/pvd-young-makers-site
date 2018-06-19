@@ -13,7 +13,7 @@ class PVDYM_News extends WS_Custom_Post_Type {
     public static $post_options = array(
         'menu_icon'                 => 'dashicons-welcome-widgets-menus',
         'hierarchical'              => false,
-        'has_archive'               => true,
+        'has_archive'               => false,
         'menu_position'             => 4,
         'supports'                  => array(
                                         'title',

@@ -1,23 +1,13 @@
-{% extends "base.twig" %}
+{% extends "page.twig" %}
 
-{% block content %}
-	<section class="py-3 bg-teal-lightest bg-cover text-white" style="background-image: url('{{ TimberImage(post.get_field("page_hero_image")).src("large") }}')">
-    <div class="max-w-xl mx-auto">
-      <div class="container py-6">
-        <h1 class="mb-5 font-bold text-5xl">{{ post.title }}</h1>
-
-        <p class="font-bold text-3xl">{{ post.get_field("page_summary") }}</p>
-      </div>
-    </div>
-  </section>
-
+{% block page_content %}
   {% embed "partials/section.twig" %}
     {% block title %}
       Our Philosophy
     {% endblock %}
 
     {% block text %}
-      {{ post.get_field("philosophy_section_text") }}</div>
+      {{ post.get_field("philosophy_section_text") }}
     {% endblock %}
   {% endembed %}
 
@@ -41,8 +31,7 @@
               link: project.project_link,
               text: project.project_summary,
               image_src: TimberImage(project.project_image).src("large")
-            }
-            only %}
+            } only %}
           </div>
         {% endfor %}
       </div>
@@ -86,8 +75,7 @@
                 secondary_pictogram: "{",
                 secondary_text: tool_events_text,
                 image_src: TimberImage(tool.get_field("image")).src("large")
-              }
-              only %}
+              } only %}
             </li>
           {% endfor %}
         </ul>
@@ -108,7 +96,4 @@
       <a class="Block Block--light" href="{{ site.link }}/badges/">Read more about badging</a>
     {% endblock %}
   {% endembed %}
-
-  <section>
-  </section>
 {% endblock %}

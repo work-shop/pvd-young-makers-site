@@ -5,7 +5,7 @@
     <div class="max-w-xl mx-auto">
       <div class="container py-6">
         {% if post.get_field("home_page_tagline") %}
-          <div class="HeroBlock mb-3 md:mb-4">
+          <div class="HeroBlock mb-4">
             <h1 class="Block Block--dark">{{ post.get_field("home_page_tagline") }}</h1>
           </div>
         {% endif %}
@@ -41,24 +41,7 @@
             <ul class="flex flex-wrap -m-2">
               {% for post in post.get_field("home_page_news_stories") %}
                 <li class="w-full md:flex-1 m-2">
-                  <a class="block p-4 border-2 border-white hover:bg-white hover:text-orange no-underline" href="{{ post.link }}">
-                    <span class="block mb-3">{% spaceless %}
-                      {{ post.date }}
-                      {% if post.author.first_name or post.author.last_name %}
-                        •
-                        {{ post.author.first_name }}
-                        {{ post.author.last_name }}
-                      {% endif %}
-                      {% if post.terms("news-categories") %}
-                        •
-                        {{ post.terms("news-categories")|join(", ") }}
-                      {% endif %}
-                    {% endspaceless %}</span><br class="hidden">
-
-                    <span class="block mb-3 font-bold text-3xl">{{ post.title }}</span><br class="hidden">
-
-                    <span class="block font-bold small-caps">Read more</span>
-                  </a>
+                  {% include ["partials/card-mini-story.twig"] %}
                 </li>
               {% endfor %}
             </ul>
@@ -160,8 +143,7 @@
                   secondary_pictogram: ",",
                   secondary_text: event.location_name,
                   image_src: TimberImage(event.get_field("event_image")).src("large")
-                }
-                only %}
+                } only %}
               </li>
             {% endfor %}
           </ul>
@@ -173,14 +155,21 @@
 	{% endembed %}
 
   {% if post.get_field("home_page_partner_text") %}
-    <section class="py-6 bg-teal-dark bg-cover text-white" style="background-image: url('{{ TimberImage(post.get_field("home_page_partner_image")).src("large") }}')">
-      <div class="max-w-xl mx-auto">
-        <div class="container">
-          <h2 class="mb-3 font-bold text-3xl">Partner with Us</h2>
+    {% set partner_image_src = TimberImage(post.get_field("home_page_partner_image")).src("full") %}
+    <section class="relative">
+      <div class="absolute pin bg-center bg-cover grayscale"
+        style="background-image: url('{{ partner_image_src }}')">
+      </div>
 
-          <p class="max-w-md mb-4">{{ post.get_field("home_page_partner_text") }}</p>
+      <div class="relative {% if partner_image_src %} bg-orange-translucent text-white {% endif %}">
+        <div class="max-w-xl mx-auto">
+          <div class="container py-6">
+            <h2 class="mb-4 font-bold text-3xl">Partner with Us</h2>
 
-          <a class="Block Block--inverted" href="{{ site.link }}/partner/">Learn about partnership opportunities</a>
+            <p class="max-w-md mb-4 font-bold text-xl">{{ post.get_field("home_page_partner_text") }}</p>
+
+            <a class="Block Block--inverted" href="{{ site.link }}/partner/">Learn about partnership opportunities</a>
+          </div>
         </div>
       </div>
     </section>

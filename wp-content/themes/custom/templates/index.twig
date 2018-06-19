@@ -1,15 +1,19 @@
-{% extends "base.twig" %}
+{% extends "page.twig" %}
 
-{% block content %}
-	INDEX.twig
-	<h2>{{ foo }}</h2>
-	<p>{{ qux }}</p>
-
-	{% for post in posts %}
-		{% include ["tease-" ~ post.post_type ~ ".twig", "tease.twig"] %}
-	{% endfor %}
-
-	{% include "partials/pagination.twig" with {
-		pagination: posts.pagination({ show_all: false, mid_size: 3, end_size: 2 })
-	} %}
+{% block page_content %}
+	{% embed "partials/section.twig" %}
+		{% block extra %}
+			<nav>
+				<div class="mb-4">
+					<ul class="flex flex-wrap -m-2">
+						{% for post in posts %}
+							<li class="w-full md:flex-1 m-2">
+								{% include ["partials/teaser-" ~ post.post_type ~ ".twig", "partials/teaser.twig"] %}
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</nav>
+		{% endblock %}
+	{% endembed %}
 {% endblock %}

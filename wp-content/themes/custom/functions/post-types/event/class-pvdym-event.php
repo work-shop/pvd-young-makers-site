@@ -15,7 +15,7 @@ class PVDYM_Event extends WS_Custom_Post_Type {
     public static $post_options = array(
         'menu_icon'                 => 'dashicons-calendar',
         'hierarchical'              => false,
-        'has_archive'               => true,
+        'has_archive'               => false,
         'menu_position'             => 2,
         'supports'                  => array(
                                         'title',

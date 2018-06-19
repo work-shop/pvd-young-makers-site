@@ -1,0 +1,28 @@
+<a class="relative block no-underline" href="{{ post.link }}">
+	<div class="absolute pin bg-center bg-cover grayscale"
+		style="background-image: url('{{ TimberImage(post.image).src("large") }}')">
+	</div>
+
+	{% set card_classes = "hover:border-transparent" %}
+	{% if post.image %}
+		{% set card_classes = "border-transparent bg-teal-darkest-translucent text-white" %}
+	{% endif %}
+	<div class="relative p-4 border-2 hover:bg-white hover:text-orange {{ card_classes }}">
+		<span class="block mb-3 font-bold">{% spaceless %}
+			{{ post.date }}
+			{% if post.author.first_name or post.author.last_name %}
+				•
+				{{ post.author.first_name }}
+				{{ post.author.last_name }}
+			{% endif %}
+			{% if post.terms() %}
+				•
+				{{ post.terms()|join(", ") }}
+			{% endif %}
+		{% endspaceless %}</span><br class="hidden">
+
+		<span class="block mb-3 font-bold text-3xl">{{ post.title }}</span><br class="hidden">
+
+		<span class="block font-bold small-caps">Read more</span>
+	</div>
+</a>

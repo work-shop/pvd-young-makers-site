@@ -59,14 +59,17 @@ let colors = {
   "orange-darker": "#8a4311",
   "orange-dark": "#b75917",
   orange: "#e36f1e",
+  "orange-translucent": "#e36f1e99",
   "orange-light": "#e98c4b",
   "orange-lighter": "#eea979",
   "orange-lightest": "#fae3d3",
 
   "teal-darkest": "#174759",
+  "teal-darkest-translucent": "#17475999",
   "teal-darker": "#216782",
   "teal-dark": "#2c88aa",
   teal: "#3ca5cd",
+  "teal-translucent": "#3ca5cd99",
   "teal-light": "#65b8d7",
   "teal-lighter": "#8dcbe2",
   "teal-lightest": "#def0f7"
@@ -652,7 +655,8 @@ module.exports = {
     inner: "inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)",
     none: "none",
     orange: `0.25rem 0.25rem 0 ${colors.orange}`,
-    teal: `0.25rem 0.25rem 0 ${colors["teal-darkest"]}`
+    teal: `0.25rem 0.25rem 0 ${colors.teal}`,
+    "teal-darkest": `0.25rem 0.25rem 0 ${colors["teal-darkest"]}`
   },
 
   /*

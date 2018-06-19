@@ -1,16 +1,15 @@
 {% extends "base.twig" %}
 
 {% block content %}
-	PAGE.twig
-	<div class="content-wrapper">
-		<article class="post-type-{{ post.post_type }}" id="post-{{ post.ID }}">
-			<section class="article-content">
-				<h1 class="article-h1">{{ post.title }}</h1>
-				<div class="article-body">
-					{{ post.content }}
-				</div>
-			</section>
-		</article>
-	</div>
-	<!-- /content-wrapper -->
+  {% include "partials/hero.twig" with { image_src: TimberImage(post.get_field("page_hero_image")).src("full") } %}
+
+  {% block page_content %}
+    {% embed "partials/section.twig" %}
+      {% block text %}
+        {{ post.content }}
+      {% endblock %}
+    {% endembed %}
+  {% endblock %}
+
+  {% include "partials/callouts.twig" %}
 {% endblock %}

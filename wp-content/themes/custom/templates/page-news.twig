@@ -1,0 +1,19 @@
+{% extends "page.twig" %}
+
+{% block page_content %}
+  {% embed "partials/section.twig" %}
+    {% block extra %}
+      <nav>
+        <ul class="flex flex-wrap -m-2">
+          {% for story in news %}
+            <li class="w-full md:flex-1 m-2">
+              {% include "partials/card-story.twig" with {
+                post: story
+              } only %}
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+    {% endblock %}
+  {% endembed %}
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "page.twig" %}
+
+{% block page_content %}
+  {% embed "partials/section.twig" %}
+		{% block title %}
+      The Libraries
+    {% endblock %}
+
+    {% block text %}
+      {{ post.get_field("locations_intro_text") }}
+    {% endblock %}
+
+    {% block extra %}
+      <nav>
+        <ul class="flex flex-wrap -m-2">
+          {% for location in locations %}
+            <li class="w-full md:flex-1 m-2">
+              {% set location_tools_text = location.tools|length ~ " tool" %}
+              {% if location.tools|length != 1 %}
+                {% set location_tools_text = location_tools_text ~ "s" %}
+              {% endif %}
+
+              {% set location_events_text = location.events|length ~ " event" %}
+              {% if location.events|length != 1 %}
+                {% set location_events_text = location_events_text ~ "s" %}
+              {% endif %}
+
+              {% include "partials/card.twig" with {
+                title: location.title,
+                link: location.link,
+                primary_pictogram: "(",
+                primary_text: location_tools_text,
+                secondary_pictogram: "{",
+                secondary_text: location_events_text,
+                image_src: TimberImage(location.get_field("image")).src("large")
+              } only %}
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+    {% endblock %}
+  {% endembed %}
+{% endblock %}

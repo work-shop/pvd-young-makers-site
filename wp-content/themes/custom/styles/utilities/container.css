@@ -1,3 +1,7 @@
 .container {
   @apply .max-w-3xl .mx-auto .px-3;
+
+  @screen md {
+    @apply .px-5;
+  }
 }
