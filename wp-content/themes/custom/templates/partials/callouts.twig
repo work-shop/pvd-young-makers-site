@@ -2,8 +2,8 @@
 {% if post.get_field("callout_message") or post.get_field("second_callout_message") %}
   <section>
     <div class="container py-5">
-      <div class="flex">
-        <div>
+      <div class="flex justify-center">
+        <div class="mr-3">
           <p class="mb-3">{{ post.get_field("callout_message") }}</p>
 
           {% set link_href = "#" %}
