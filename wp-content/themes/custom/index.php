@@ -59,7 +59,29 @@ if ($post_name === 'locations') {
 
 // Badges page
 if ($post_name === 'badges') {
-    $context['badges'] = Timber::get_posts('post_type=badges');
+    $pathways_badges_args = array(
+        'post_type' => 'badges',
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'badge-types',
+                'field' => 'slug',
+                'terms' => 'pathways-badges',
+            ),
+        ),
+    );
+    $context['pathways_badges'] = Timber::get_posts($pathways_badges_args);
+
+    $machine_badges_args = array(
+        'post_type' => 'badges',
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'badge-types',
+                'field' => 'slug',
+                'terms' => 'machine-badges',
+            ),
+        ),
+    );
+    $context['machine_badges'] = Timber::get_posts($machine_badges_args);
 }
 
 // News page

@@ -41,7 +41,7 @@
             <ul class="flex flex-wrap -m-2">
               {% for post in post.get_field("home_page_news_stories") %}
                 <li class="w-full md:flex-1 m-2">
-                  {% include ["partials/card-mini-story.twig"] %}
+                  {% include ["partials/card-story-mini.twig"] %}
                 </li>
               {% endfor %}
             </ul>

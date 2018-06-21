@@ -1,11 +1,31 @@
 {% extends "base.twig" %}
 
-{% block content %}
-	{% include "partials/hero.twig" with { image_src: TimberImage(post.get_field("image")).src("full") } %}
+{% set image_src = null %}
+{% if post.image %}
+  {% set image_src = TimberImage(post.image).src("full") %}
+{% elseif post.get_field("page_hero_image") %}
+  {% set image_src = TimberImage(post.get_field("page_hero_image")).src("full") %}
+{% endif %}
 
-  {% embed "partials/section.twig" %}
-    {% block text %}
-      {{ post.story }}
-    {% endblock %}
-  {% endembed %}
+{% set post_text = null %}
+{% if post.story %}
+  {% set post_text = post.get_field("story") %}
+{% elseif post.content %}
+  {% set post_text = post.content %}
+{% endif %}
+
+{% block content %}
+  {% block hero %}
+    {% include "partials/single-hero.twig" %}
+  {% endblock %}
+
+  {% block single_content %}
+    {% embed "partials/section.twig" %}
+      {% block text %}
+        {{ post_text }}
+      {% endblock %}
+    {% endembed %}
+  {% endblock %}
+
+  {% include "partials/callouts.twig" %}
 {% endblock %}

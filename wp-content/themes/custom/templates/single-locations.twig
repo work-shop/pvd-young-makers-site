@@ -1,0 +1,124 @@
+{% extends "single.twig" %}
+
+{% block hero %}
+  {% set location_address = post.get_field("location_address") %}
+
+  {% set tools_text = post.tools|length ~ " tool" %}
+  {% if post.get_field("locations")|length != 1 %}
+    {% set tools_text = tools_text ~ "s" %}
+  {% endif %}
+
+  {% set events_text = post.events|length ~ " event" %}
+  {% if post.get_field("events")|length != 1 %}
+    {% set events_text = events_text ~ "s" %}
+  {% endif %}
+
+  {% include "partials/single-hero.twig" with {
+    subtitle: location_address.address,
+    primary_pictogram: "}",
+    primary_text: tools_text,
+    secondary_pictogram: ")",
+    secondary_text: events_text
+  } %}
+{% endblock %}
+
+{% block single_content %}
+  <div class="max-w-xl mx-auto">
+    {% embed "partials/section.twig" %}
+      {% block extra %}
+        <div class="flex flex-wrap">
+          {# COLUMN ONE #}
+          <div class="md:mr-6">
+            {# OPEN HOURS #}
+            <section>
+              {% include "components/subheadline.twig" with { title: "Open Hours" } only %}
+
+              <ul class="mt-3 list-reset">
+                {% for item in post.get_field("hours") %}
+                  <li class="flex small-caps">
+                    <span class="w-5 mr-3 font-bold">{{ item.day }}</span>
+                    <span>{{ item.opening_time }} – {{ item.closing_time }}</span>
+                  </li>
+                {% endfor %}
+              </ul>
+            </section>
+
+            {# CONTACT #}
+            <section class="mt-4">
+              {% include "components/subheadline.twig" with { title: "Contact" } only %}
+
+              <div class="mt-3">
+                {% if post.get_field("fab_newport_staff_contact_type") == "write-in" %}
+                  {% set contact = {
+                    name: post.get_field("fab_newport_staff_contact_name"),
+                    email_address: post.get_field("fab_newport_staff_contact_email"),
+                    phone_number: post.get_field("fab_newport_staff_contact_phone_number")
+                  } %}
+                {% elseif post.get_field("fab_newport_staff_contact_type") == "from-site" %}
+                  {% set contact_post = post.get_field("fab_newport_staff_contact")[0] %}
+                  {% set contact = {
+                    name: contact_post.post_title,
+                    email_address: contact_post.email_address,
+                    phone_number: contact_post.phone_number
+                  } %}
+                {% endif %}
+
+                <div class="font-bold">{{ contact.name }}</div>
+
+                {% if contact.email_address %}
+                  <a href="mailto: {{ contact.email_address }}">{{ contact.email_address }}</a>
+                {% endif %}
+
+                {% if contact.phone_number %}
+                  <div>{{ contact.phone_number }}</div>
+                {% endif %}
+              </div>
+
+              <div class="mt-3">
+                {% if post.get_field("library_staff_contact_type") == "write-in" %}
+                  {% set contact = {
+                    name: post.get_field("library_staff_contact_name"),
+                    email_address: post.get_field("library_staff_contact_email"),
+                    phone_number: post.get_field("library_staff_contact_phone_number")
+                  } %}
+                {% elseif post.get_field("library_staff_contact_type") == "from-site" %}
+                  {% set contact_post = post.get_field("library_staff_contact")[0] %}
+                  {% set contact = {
+                    name: contact_post.post_title,
+                    email_address: contact_post.email_address,
+                    phone_number: contact_post.phone_number
+                  } %}
+                {% endif %}
+
+                <div class="font-bold">{{ contact.name }}</div>
+
+                {% if contact.email_address %}
+                  <a href="mailto: {{ contact.email_address }}">{{ contact.email_address }}</a>
+                {% endif %}
+
+                {% if contact.phone_number %}
+                  <div>{{ contact.phone_number }}</div>
+                {% endif %}
+              </div>
+            </section>
+          </div>
+
+          {# COLUMN TWO #}
+          <div class="mt-5 md:flex-1 md:mt-0 text-lg">
+            {% include "components/measure.twig" with { text: post.get_field("location_description") } only %}
+          </div>
+        </div>
+      {% endblock %}
+    {% endembed %}
+
+    {% embed "partials/section.twig" %}
+      {% block title %}
+        Tools at This Location
+      {% endblock %}
+
+      {% block extra %}
+        {% include "partials/list-of-tools.twig" %}
+      {% endblock %}
+    {% endembed %}
+  </div>
+{% endblock %}

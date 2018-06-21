@@ -1,30 +1,32 @@
 {# TODO: test callouts #}
-{% if post.get_field("callout_message") or post.get_field("second_callout_message") %}
+{% if post.get_field("callout_left_message") or post.get_field("callout_left_message") %}
   <section>
-    <div class="container py-5">
-      <div class="flex justify-center">
-        <div class="mr-3">
-          <p class="mb-3">{{ post.get_field("callout_message") }}</p>
+    <div class="max-w-xl mx-auto">
+      <div class="container py-5">
+        <div class="flex justify-center">
+          <div class="mr-3">
+            <p class="mb-3">{{ post.get_field("callout_left_message") }}</p>
 
-          {% set link_href = "#" %}
-          {% if post.get_field("callout_link_type") == "url" %}
-            {% set link_href = post.get_field("callout_link_url") %}
-          {% elseif post.get_field("callout_link_type") == "page" %}
-            {% set link_href = post.get_field("callout_link_to_page") %}
-          {% endif %}
-          <a class="Block Block--light" href="{{ link_href }}">{{ post.get_field("callout_link_label") }}</a>
-        </div>
+            {% set link_href = "#" %}
+            {% if post.get_field("callout_left_link_type") == "url" %}
+              {% set link_href = post.get_field("callout_left_link_url") %}
+            {% elseif post.get_field("callout_left_link_type") == "page" %}
+              {% set link_href = post.get_field("callout_left_link_to_page") %}
+            {% endif %}
+            <a class="Block Block--light" href="{{ link_href }}">{{ post.get_field("callout_left_link_label") }}</a>
+          </div>
 
-        <div>
-          <p class="mb-3">{{ post.get_field("second_callout_message") }}</p>
+          <div>
+            <p class="mb-3">{{ post.get_field("callout_right_message") }}</p>
 
-          {% set link_href = "#" %}
-          {% if post.get_field("second_callout_link_type") == "url" %}
-            {% set link_href = post.get_field("second_callout_link_url") %}
-          {% elseif post.get_field("second_callout_link_type") == "page" %}
-            {% set link_href = post.get_field("second_callout_link_to_page") %}
-          {% endif %}
-          <a class="Block Block--light" href="{{ link_href }}">{{ post.get_field("second_callout_link_label") }}</a>
+            {% set link_href = "#" %}
+            {% if post.get_field("callout_right_link_type") == "url" %}
+              {% set link_href = post.get_field("callout_right_link_url") %}
+            {% elseif post.get_field("callout_right_link_type") == "page" %}
+              {% set link_href = post.get_field("callout_right_link_to_page") %}
+            {% endif %}
+            <a class="Block Block--light" href="{{ link_href }}">{{ post.get_field("callout_right_link_label") }}</a>
+          </div>
         </div>
       </div>
     </div>

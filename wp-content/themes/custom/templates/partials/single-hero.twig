@@ -1,0 +1,51 @@
+{% set section_classes = "text-orange" %}
+{% if image_src %}
+  {% set section_classes = "text-white" %}
+{% endif %}
+<section class="relative border-b-2 border-orange {{ section_classes }}">
+  <div class="absolute pin bg-center bg-cover"
+		 style="background-image: url('{{ image_src }}')">
+	</div>
+
+  <div class="relative">
+    <div class="max-w-xl mx-auto">
+      <div class="container pt-6">
+        <div class="bg-teal-lightest text-teal-darkest">
+          <div class="px-3 pt-3 pb-4 bg-teal-darkest text-white">
+            <h1 class="font-bold text-5xl">{{ post.title }}</h1>
+
+            {% if post.get_field("page_summary") %}
+              <p class="mt-4 font-bold text-3xl">{{ post.get_field("page_summary") }}</p>
+            {% endif %}
+
+            {% if subtitle %}
+              <div class="text-xl">
+                {{ subtitle }}
+              </div>
+            {% endif %}
+          </div>
+
+          {% if primary_text %}
+            <div class="flex items-center px-3 py-2 small-caps">
+              {% if primary_pictogram %}
+                <span class="mr-2 group-hover:text-orange" data-pictogram="{{ primary_pictogram }}"></span>
+              {% endif %}
+
+              <span class="group-hover:text-orange">{{ primary_text }}</span>
+            </div>
+          {% endif %}
+
+          {% if secondary_text %}
+            <div class="flex items-center px-3 py-2 border-t-1 border-teal-darkest small-caps">
+              {% if secondary_pictogram %}
+                <span class="mr-2 group-hover:text-orange" data-pictogram="{{ secondary_pictogram }}"></span>
+              {% endif %}
+
+              <span class="group-hover:text-orange">{{ secondary_text }}</span>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
