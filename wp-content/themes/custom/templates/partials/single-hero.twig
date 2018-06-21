@@ -16,7 +16,10 @@
               {{ label }}
             </div>
 
-            <h1 class="font-bold text-5xl">{{ post.title }}</h1>
+            {% if title is not defined %}
+              {% set title = post.title %}
+            {% endif %}
+            <h1 class="font-bold text-5xl">{{ title }}</h1>
 
             {% if post.get_field("page_summary") %}
               <p class="mt-4 font-bold text-3xl">{{ post.get_field("page_summary") }}</p>

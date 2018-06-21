@@ -128,7 +128,6 @@
             {% for event in events %}
               <li class="w-full md:flex-1 m-2">
                 {% set event_date = event.event_start|date("F j, Y, g:ia") ~ " – " %}
-
                 {% if event.event_start|date("F j, Y") == event.event_end|date("F j, Y") %}
                   {% set event_date = event_date ~ event.event_end|date("g:ia") %}
                 {% else %}

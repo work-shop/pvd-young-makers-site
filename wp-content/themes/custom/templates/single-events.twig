@@ -1,0 +1,59 @@
+{% extends "single.twig" %}
+
+{% block hero %}
+  {% set event_date = event.event_start|date("F j, Y, g:ia") ~ " – " %}
+  {% if event.event_start|date("F j, Y") == event.event_end|date("F j, Y") %}
+    {% set event_date = event_date ~ event.event_end|date("g:ia") %}
+  {% else %}
+    {% set event_date = event_date ~ event.event_end|date("F j, Y, g:ia") %}
+  {% endif %}
+
+  {% include "partials/single-hero.twig" with {
+    label: post.terms("event-types") | join(', '),
+    title: post.get_field("event_name"),
+    primary_pictogram: "{",
+    primary_text: event_date,
+    secondary_pictogram: ",",
+    secondary_text: post.get_field("location")[0]
+  } %}
+{% endblock %}
+
+{% block single_content %}
+  <div class="max-w-xl mx-auto">
+    {% embed "partials/section.twig" %}
+      {% block extra %}
+        <div class="">
+          {% include "components/measure.twig" with { text: post.get_field("event_description") } only %}
+
+          <div class="mt-5">
+            <a class="Block Block--light" href="{{ post.get_field("signup_link") }}" target="_blank" rel="noopener">Sign Up for This Event on Eventbrite</a>
+          </div>
+        </div>
+      {% endblock %}
+    {% endembed %}
+
+    {% if tools %}
+      {% embed "partials/section.twig" %}
+        {% block title %}
+          Tools at This Event
+        {% endblock %}
+
+        {% block extra %}
+          {% include "partials/list-of-tools.twig" %}
+        {% endblock %}
+      {% endembed %}
+    {% endif %}
+
+    {% if badges %}
+      {% embed "partials/section.twig" %}
+        {% block title %}
+          Badges You Can Earn
+        {% endblock %}
+
+        {% block extra %}
+          {% include "partials/list-of-badges-mini.twig" %}
+        {% endblock %}
+      {% endembed %}
+    {% endif %}
+  </div>
+{% endblock %}
