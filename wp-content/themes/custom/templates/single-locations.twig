@@ -3,12 +3,12 @@
 {% block hero %}
   {% set location_address = post.get_field("location_address") %}
 
-  {% set tools_text = post.tools|length ~ " tool" %}
+  {% set tools_text = post.get_field("locations")|length ~ " tool" %}
   {% if post.get_field("locations")|length != 1 %}
     {% set tools_text = tools_text ~ "s" %}
   {% endif %}
 
-  {% set events_text = post.events|length ~ " event" %}
+  {% set events_text = post.get_field("events")|length ~ " event" %}
   {% if post.get_field("events")|length != 1 %}
     {% set events_text = events_text ~ "s" %}
   {% endif %}

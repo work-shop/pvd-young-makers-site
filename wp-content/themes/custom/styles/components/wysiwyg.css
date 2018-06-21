@@ -1,3 +1,7 @@
 .wysiwyg p:not(:last-child) {
   @apply .mb-3;
 }
+
+.wysiwyg td {
+  @apply .pr-3;
+}

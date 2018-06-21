@@ -2,7 +2,7 @@
 {% if image_src %}
   {% set section_classes = "text-white" %}
 {% endif %}
-<section class="relative border-b-2 border-orange {{ section_classes }}">
+<section class="relative border-b-2 border-orange bg-teal {{ section_classes }}">
   <div class="absolute pin bg-center bg-cover"
 		 style="background-image: url('{{ image_src }}')">
 	</div>
@@ -11,7 +11,11 @@
     <div class="max-w-xl mx-auto">
       <div class="container pt-6">
         <div class="bg-teal-lightest text-teal-darkest">
-          <div class="px-3 pt-3 pb-4 bg-teal-darkest text-white">
+          <div class="p-3 bg-teal-darkest text-white">
+            <div class="text-orange font-bold small-caps">
+              {{ label }}
+            </div>
+
             <h1 class="font-bold text-5xl">{{ post.title }}</h1>
 
             {% if post.get_field("page_summary") %}
