@@ -13,6 +13,7 @@ require_once __ROOT__ . '/functions/post-types/news/class-pvdym-news.php';
 require_once __ROOT__ . '/functions/post-types/event/class-pvdym-event.php';
 require_once __ROOT__ . '/functions/post-types/people/class-pvdym-person.php';
 
+require_once __ROOT__ . '/functions/library/class-ws-map-objects.php';
 require_once __ROOT__ . '/functions/library/class-ws-cdn-url.php';
 
 require_once __ROOT__ . '/functions/taxonomies/badge-type/class-pvdym-badge-type.php';

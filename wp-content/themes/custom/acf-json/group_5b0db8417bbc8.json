@@ -40,7 +40,7 @@
             "key": "field_5b0dcaaa1da43",
             "label": "Questions",
             "name": "questions",
-            "type": "repeater",
+            "type": "clone",
             "instructions": "Use this field to add as many question and answer pairs to the site as you like.",
             "required": 0,
             "conditional_logic": 0,
@@ -49,34 +49,13 @@
                 "class": "",
                 "id": ""
             },
-            "collapsed": "",
-            "min": 0,
-            "max": 0,
-            "layout": "table",
-            "button_label": "",
-            "sub_fields": [
-                {
-                    "key": "field_5b0dcaaf1da44",
-                    "label": "",
-                    "name": "",
-                    "type": "clone",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "clone": [
-                        "group_5b0b1eeab651d"
-                    ],
-                    "display": "seamless",
-                    "layout": "block",
-                    "prefix_label": 0,
-                    "prefix_name": 0
-                }
-            ]
+            "clone": [
+                "group_5b0b1eeab651d"
+            ],
+            "display": "seamless",
+            "layout": "block",
+            "prefix_label": 0,
+            "prefix_name": 0
         },
         {
             "key": "field_5b0dcad81da45",
@@ -132,5 +111,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1527630552
+    "modified": 1529697238
 }
