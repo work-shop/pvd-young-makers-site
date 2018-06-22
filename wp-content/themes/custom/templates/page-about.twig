@@ -24,7 +24,7 @@
 
     {% block text %}
       <dl class="mb-4">
-        {% for item in faq_page.get_field('questions')|slice(0, 3) %}
+        {% for item in faq_page.get_field('questions_questions')|slice(0, 3) %}
           <dt class="font-bold">{{ item.question }}</dt>
           <dd class="mb-3">{{ item.answer }}</dd>
         {% endfor %}

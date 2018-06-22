@@ -4,7 +4,7 @@
   {% embed "partials/section.twig" %}
     {% block text %}
       <dl>
-        {% for item in post.get_field("questions") %}
+        {% for item in post.get_field("questions_questions") %}
           <dt class="font-bold">{{ item.question }}</dt>
           <dd class="mb-3">{{ item.answer }}</dd>
         {% endfor %}
