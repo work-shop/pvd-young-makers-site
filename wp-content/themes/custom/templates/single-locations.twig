@@ -30,7 +30,7 @@
         <div class="md:mr-6">
           {# OPEN HOURS #}
           <section>
-            {% include "components/subheadline.twig" with { title: "Open Hours" } only %}
+            {% include "components/subheadline.twig" with { text: "Open Hours" } only %}
 
             <ul class="mt-3 list-reset">
               {% for item in post.get_field("hours") %}
@@ -44,7 +44,7 @@
 
           {# CONTACT #}
           <section class="mt-4">
-            {% include "components/subheadline.twig" with { title: "Contact" } only %}
+            {% include "components/subheadline.twig" with { text: "Contact" } only %}
 
             <div class="mt-3">
               {% if post.get_field("fab_newport_staff_contact_type") == "write-in" %}

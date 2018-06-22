@@ -1,0 +1,14 @@
+.gform_wrapper {
+  & input:not([type="submit"]),
+  & textarea {
+    @apply .border-1;
+  }
+
+  & input[type="submit"] {
+    @apply .px-3 .py-2 .font-bold .bg-teal-darkest .text-white;
+  }
+
+  & .gfield_required {
+    @apply .text-orange !important;
+  }
+}

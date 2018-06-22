@@ -89,8 +89,14 @@ if ($post_name === 'news') {
     $context['news'] = Timber::get_posts('post_type=news');
 }
 
+// About page
 if ($post_name === 'about') {
     $context['faq_page'] = Timber::get_post('post_type=page&p=27');
+}
+
+// Contact page
+if ($post_name === 'contact') {
+    $context['locations'] = Timber::get_posts('post_type=locations');
 }
 
 Timber::render($templates, $context);
