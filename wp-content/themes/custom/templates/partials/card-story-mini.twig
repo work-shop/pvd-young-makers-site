@@ -7,7 +7,7 @@
 	{% if post.image %}
 		{% set card_classes = "border-transparent bg-teal-darkest-translucent text-white" %}
 	{% endif %}
-	<div class="relative p-4 border-2 hover:bg-white hover:text-orange {{ card_classes }}">
+	<div class="relative p-4 border-1 hover:bg-white hover:text-orange {{ card_classes }}">
 		<span class="block mb-3 font-bold">{% spaceless %}
 			{{ post.date }}
 			{% if post.author.first_name or post.author.last_name %}
