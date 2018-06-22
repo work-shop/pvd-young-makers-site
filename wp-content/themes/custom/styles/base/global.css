@@ -12,7 +12,11 @@ hr {
 }
 
 a {
-  color: inherit;
+  @apply .text-teal-darkest;
+
+  &:hover {
+    @apply .text-teal;
+  }
 }
 
 h1,

@@ -113,6 +113,8 @@
 }
 
 .FooterNav-link {
+  @apply .text-teal-dark;
+
   &:hover {
     @apply .text-white;
   }

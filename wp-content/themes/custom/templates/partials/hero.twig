@@ -7,7 +7,7 @@
 		 style="background-image: url('{{ image_src }}')">
 	</div>
 
-  <div class="relative {% if image_src %} bg-teal-translucent {% endif %}">
+  <div class="relative {% if image_src %} bg-teal-translucent {% else %} bg-orange-lightest {% endif %}">
     <div class="max-w-xl mx-auto">
       <div class="container py-6">
         <h1 class="font-bold text-5xl">{{ post.title }}</h1>

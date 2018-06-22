@@ -1,0 +1,71 @@
+{% extends "page.twig" %}
+
+{% block page_content %}
+  {% embed "partials/section.twig" %}
+    {% block text %}
+      {{ post.content }}
+    {% endblock %}
+  {% endembed %}
+
+  {% embed "partials/section.twig" %}
+    {% block title %}
+      Mission Statement
+    {% endblock %}
+
+    {% block text %}
+      {{ post.get_field("mission_statement_text") }}
+    {% endblock %}
+  {% endembed %}
+
+  {% embed "partials/section.twig" %}
+    {% block title %}
+      Frequently Asked Questions
+    {% endblock %}
+
+    {% block text %}
+      {# TODO: limit this to only show first 3 question/answers #}
+      {% for faq_groups in faq_page.get_field('questions') %}
+        <dl class="mb-4">
+          {% for faq_group in faq_groups %}
+            {% for item in faq_group %}
+              <dt class="font-bold">{{ item.question }}</dt>
+              <dd class="mb-3">{{ item.answer }}</dd>
+            {% endfor %}
+          {% endfor %}
+        </dl>
+      {% endfor %}
+
+      <a class="Block Block--light" href="{{ site.link }}/frequently-asked-questions/">Read more frequently asked questions</a>
+    {% endblock %}
+  {% endembed %}
+
+  {% embed "partials/section.twig" %}
+    {% block title %}
+      The Initiative’s History
+    {% endblock %}
+
+    {% block text %}
+      <div class="mb-4">{{ post.get_field("the_intiatives_history") }}</div>
+
+      <blockquote class="text-2xl text-teal">“{{ post.get_field("mayors_quotation") }}”</blockquote>
+    {% endblock %}
+  {% endembed %}
+
+  {% embed "partials/section.twig" %}
+    {% block title %}
+      Our Partners
+    {% endblock %}
+
+    {% block text %}
+      <ul class="mb-4 list-reset">
+        {% for partner in post.get_field("partners") %}
+          <li>
+            <a href="{{ partner.partner_url }}" target="_blank" rel="noopener">{{ partner.partner_name }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+
+      <a class="Block Block--light" href="{{ site.link }}/partner/">Learn about partnership opportunities</a>
+    {% endblock %}
+  {% endembed %}
+{% endblock %}

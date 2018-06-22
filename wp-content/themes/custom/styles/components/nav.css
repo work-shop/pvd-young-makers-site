@@ -163,5 +163,5 @@
 }
 
 .Nav-link:hover {
-  @apply .bg-orange;
+  @apply .bg-orange .text-white;
 }
