@@ -82,7 +82,7 @@
       {% for item in post.get_field("contacts") %}
         <div>
           <div class="mb-3">
-            {% include "components/subheadline.twig" with { text: item.contact_type } only %}
+            {% include "components/subheadline.twig" with { text: item.kind_of_contact } only %}
           </div>
 
           {% if item.contact_type == "write-in" %}
