@@ -13,9 +13,9 @@
     {% endblock %}
 
     {% block text %}
-      <div class="flex flex-wrap -m-5">
+      <div class="flex flex-wrap -m-4">
         {% for item in post.get_field("partnership_types") %}
-          <div class="w-full md:flex-1 m-5">
+          <div class="w-full md:flex-1 m-4">
             <div class="mb-3">
               {% include "components/subheadline.twig" with { text: item.partnership_type_heading } only %}
             </div>
@@ -24,7 +24,7 @@
               <img class="block mb-3 object-cover" src="{{ TimberImage(item.image).src("large") }}" height="320" alt="">
             {% endif %}
 
-            <div class="mb-4">{{ item.partnership_description }}</div>
+            <div class="mb-4 text-sm">{{ item.partnership_description }}</div>
 
             <div>
               {% if item.contact_type == "write-in" %}
