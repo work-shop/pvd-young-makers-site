@@ -91,8 +91,8 @@
             "sub_fields": [
                 {
                     "key": "field_5b0dc95be2a8b",
-                    "label": "Contact Type",
-                    "name": "contact_type",
+                    "label": "Kind of Contact",
+                    "name": "kind_of_contact",
                     "type": "text",
                     "instructions": "When should people contact this person? IE, \"general inquiries\", \"partnership inquiries\", etc.",
                     "required": 0,
@@ -185,5 +185,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1527630321
+    "modified": 1529699439
 }
