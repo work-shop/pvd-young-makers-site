@@ -19,13 +19,15 @@
     {% include "partials/single-hero.twig" %}
   {% endblock %}
 
-  {% block single_content %}
-    {% embed "partials/section.twig" %}
-      {% block text %}
-        {{ post_text }}
-      {% endblock %}
-    {% endembed %}
-  {% endblock %}
+  <div class="max-w-xl mx-auto">
+    {% block single_content %}
+      {% embed "partials/section.twig" %}
+        {% block text %}
+          {{ post_text }}
+        {% endblock %}
+      {% endembed %}
+    {% endblock %}
+  </div>
 
   {% include "partials/callouts.twig" %}
 {% endblock %}

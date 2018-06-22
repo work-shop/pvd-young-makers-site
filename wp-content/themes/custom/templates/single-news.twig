@@ -1,0 +1,19 @@
+{% extends "single.twig" %}
+
+{% block hero %}
+  {% include "partials/single-hero.twig" with {
+    label: post.terms("news-categories") | join(', '),
+    primary_pictogram: "{",
+    primary_text: "Posted on " ~ post.date,
+    secondary_pictogram: "",
+    secondary_text: "By " ~ post.author.first_name ~ " " ~ post.author.last_name
+  } %}
+{% endblock %}
+
+{% block single_content %}
+  {% embed "partials/section.twig" %}
+    {% block extra %}
+      {% include "components/measure.twig" with { text: post.get_field("story") } only %}
+    {% endblock %}
+  {% endembed %}
+{% endblock %}
