@@ -3,16 +3,12 @@
 {% block page_content %}
   {% embed "partials/section.twig" %}
     {% block text %}
-      {% for faq_groups in post.get_field("questions") %}
-        <dl class="mb-5">
-          {% for faq_group in faq_groups %}
-            {% for item in faq_group %}
-              <dt class="font-bold">{{ item.question }}</dt>
-              <dd class="mb-3">{{ item.answer }}</dd>
-            {% endfor %}
-          {% endfor %}
-        </dl>
-      {% endfor %}
+      <dl>
+        {% for item in post.get_field("questions") %}
+          <dt class="font-bold">{{ item.question }}</dt>
+          <dd class="mb-3">{{ item.answer }}</dd>
+        {% endfor %}
+      </dl>
     {% endblock %}
   {% endembed %}
 

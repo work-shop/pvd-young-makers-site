@@ -23,17 +23,12 @@
     {% endblock %}
 
     {% block text %}
-      {# TODO: limit this to only show first 3 question/answers #}
-      {% for faq_groups in faq_page.get_field('questions') %}
-        <dl class="mb-4">
-          {% for faq_group in faq_groups %}
-            {% for item in faq_group %}
-              <dt class="font-bold">{{ item.question }}</dt>
-              <dd class="mb-3">{{ item.answer }}</dd>
-            {% endfor %}
-          {% endfor %}
-        </dl>
-      {% endfor %}
+      <dl class="mb-4">
+        {% for item in faq_page.get_field('questions')|slice(0, 3) %}
+          <dt class="font-bold">{{ item.question }}</dt>
+          <dd class="mb-3">{{ item.answer }}</dd>
+        {% endfor %}
+      </dl>
 
       <a class="Block Block--light" href="{{ site.link }}/frequently-asked-questions/">Read more frequently asked questions</a>
     {% endblock %}
