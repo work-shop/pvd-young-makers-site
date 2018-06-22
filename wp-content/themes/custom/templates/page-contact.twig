@@ -11,7 +11,9 @@
         {% for location in locations %}
           <div class="w-full md:flex-1 m-4">
             <div class="mb-3">
-              {% include "components/subheadline.twig" with { text: location.post_title } only %}
+              {% include "components/subheadline.twig" with {
+                text: location.post_title
+              } only %}
             </div>
 
             {% if location.get_field("fab_newport_staff_contact_type") == "write-in" %}
@@ -33,7 +35,9 @@
               <div class="font-bold">{{ contact.name }}</div>
 
               {% if contact.email_address %}
-                <a href="mailto: {{ contact.email_address }}">{{ contact.email_address }}</a>
+                <a href="mailto: {{ contact.email_address }}">
+                  {{ contact.email_address }}
+                </a>
               {% endif %}
 
               {% if contact.phone_number %}
@@ -60,7 +64,9 @@
               <div class="font-bold">{{ contact.name }}</div>
 
               {% if contact.email_address %}
-                <a href="mailto: {{ contact.email_address }}">{{ contact.email_address }}</a>
+                <a href="mailto: {{ contact.email_address }}">
+                  {{ contact.email_address }}
+                </a>
               {% endif %}
 
               {% if contact.phone_number %}
@@ -82,7 +88,9 @@
       {% for item in post.get_field("contacts") %}
         <div>
           <div class="mb-3">
-            {% include "components/subheadline.twig" with { text: item.kind_of_contact } only %}
+            {% include "components/subheadline.twig" with {
+              text: item.kind_of_contact
+            } only %}
           </div>
 
           {% if item.contact_type == "write-in" %}
@@ -103,7 +111,9 @@
           <div class="font-bold">{{ contact.name }}</div>
 
           {% if contact.email_address %}
-            <a href="mailto: {{ contact.email_address }}">{{ contact.email_address }}</a>
+            <a href="mailto: {{ contact.email_address }}">
+              {{ contact.email_address }}
+            </a>
           {% endif %}
 
           {% if contact.phone_number %}
@@ -120,7 +130,7 @@
     {% endblock %}
 
     {% block text %}
-      {{ function("gravity_form", "Contact Form", false, false, false, "", false) }}
+      {{ function("gravity_form", "Contact Form") }}
     {% endblock %}
   {% endembed %}
 {% endblock %}

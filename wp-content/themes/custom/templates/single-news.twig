@@ -13,7 +13,9 @@
 {% block single_content %}
   {% embed "partials/section.twig" %}
     {% block extra %}
-      {% include "components/measure.twig" with { text: post.get_field("story") } only %}
+      {% include "components/measure.twig" with {
+        text: post.get_field("story")
+      } only %}
     {% endblock %}
   {% endembed %}
 {% endblock %}

@@ -11,7 +11,9 @@
     {% endblock %}
 
     {% block extra %}
-      {% include "partials/list-of-badges.twig" with { badges: pathways_badges } only %}
+      {% include "partials/list-of-badges.twig" with {
+        badges: pathways_badges
+      } only %}
     {% endblock %}
   {% endembed %}
 
@@ -25,7 +27,9 @@
     {% endblock %}
 
     {% block extra %}
-      {% include "partials/list-of-badges-mini.twig" with { badges: machine_badges } only %}
+      {% include "partials/list-of-badges-mini.twig" with {
+        badges: machine_badges
+      } only %}
     {% endblock %}
   {% endembed %}
 {% endblock %}

@@ -30,13 +30,19 @@
         {% if badge_icon_src %}
           <div class="md:mr-6">
             {# TODO: test if this badge image is working #}
-            <img class="block object-contain" src="{{ badge_icon_src }}" height="320" alt="">
+            <img
+              class="block object-contain"
+              src="{{ badge_icon_src }}"
+              height="320"
+              alt="">
           </div>
         {% endif %}
 
         {# COLUMN TWO #}
         <div class="mt-5 md:flex-1 md:mt-0">
-          {% include "components/measure.twig" with { text: post.get_field("tool_description") } only %}
+          {% include "components/measure.twig" with {
+            text: post.get_field("tool_description")
+          } only %}
         </div>
       </div>
     {% endblock %}

@@ -17,11 +17,17 @@
         {% for item in post.get_field("partnership_types") %}
           <div class="w-full md:flex-1 m-4">
             <div class="mb-3">
-              {% include "components/subheadline.twig" with { text: item.partnership_type_heading } only %}
+              {% include "components/subheadline.twig" with {
+                text: item.partnership_type_heading
+              } only %}
             </div>
 
             {% if item.image %}
-              <img class="block mb-3 object-cover" src="{{ TimberImage(item.image).src("large") }}" height="320" alt="">
+              <img
+                class="block mb-3 object-cover"
+                src="{{ TimberImage(item.image).src("large") }}"
+                height="320"
+                alt="">
             {% endif %}
 
             <div class="mb-4 text-sm">{{ item.partnership_description }}</div>
@@ -45,7 +51,9 @@
               <div class="font-bold">{{ contact.name }}</div>
 
               {% if contact.email_address %}
-                <a href="mailto: {{ contact.email_address }}">{{ contact.email_address }}</a>
+                <a href="mailto: {{ contact.email_address }}">
+                  {{ contact.email_address }}
+                </a>
               {% endif %}
 
               {% if contact.phone_number %}
@@ -64,7 +72,7 @@
     {% endblock %}
 
     {% block text %}
-      {{ function("gravity_form", "Contact Form", false, false, false, "", false) }}
+      {{ function("gravity_form", "Contact Form") }}
     {% endblock %}
   {% endembed %}
 {% endblock %}

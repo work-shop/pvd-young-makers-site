@@ -22,10 +22,18 @@
   {% embed "partials/section.twig" %}
     {% block extra %}
       <div class="">
-        {% include "components/measure.twig" with { text: post.get_field("event_description") } only %}
+        {% include "components/measure.twig" with {
+          text: post.get_field("event_description")
+        } only %}
 
         <div class="mt-5">
-          <a class="Block Block--light" href="{{ post.get_field("signup_link") }}" target="_blank" rel="noopener">Sign up for this event at Eventbrite</a>
+          <a
+            class="Block Block--light"
+            href="{{ post.get_field("signup_link") }}"
+            target="_blank"
+            rel="noopener">
+            Sign up for this event at Eventbrite
+          </a>
         </div>
       </div>
     {% endblock %}

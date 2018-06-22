@@ -11,7 +11,9 @@
     {% endblock %}
   {% endembed %}
 
-  {% embed "partials/section.twig" with { section_classes: "py-3 bg-teal-lightest" } %}
+  {% embed "partials/section.twig" with {
+    section_classes: "py-3 bg-teal-lightest"
+  } %}
     {% block title %}
       Projects by Young Makers
     {% endblock %}
@@ -49,7 +51,9 @@
         {{ post.get_field("tools_description") }}
       </div>
 
-      <a class="Block Block--light" href="{{ site.link }}/tools/">See all of our tools</a>
+      <a class="Block Block--light" href="{{ site.link }}/tools/">
+        See all of our tools
+      </a>
     {% endblock %}
 
     {% block extra %}
@@ -67,7 +71,9 @@
         {{ post.get_field("badging_description") }}
       </div>
 
-      <a class="Block Block--light" href="{{ site.link }}/badges/">Read more about badging</a>
+      <a class="Block Block--light" href="{{ site.link }}/badges/">
+        Read more about badging
+      </a>
     {% endblock %}
   {% endembed %}
 {% endblock %}

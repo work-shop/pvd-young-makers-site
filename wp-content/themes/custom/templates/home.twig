@@ -6,7 +6,9 @@
       <div class="container py-6">
         {% if post.get_field("home_page_tagline") %}
           <div class="HeroBlock mb-4">
-            <h1 class="Block Block--dark">{{ post.get_field("home_page_tagline") }}</h1>
+            <h1 class="Block Block--dark">
+              {{ post.get_field("home_page_tagline") }}
+            </h1>
           </div>
         {% endif %}
 
@@ -21,7 +23,9 @@
                   {% set link_href = item.link_to_page %}
                 {% endif %}
                 <li class="mr-3">
-                  <a class="Block Block--light" href="{{ link_href }}">{{ item.link_label }}</a>
+                  <a class="Block Block--light" href="{{ link_href }}">
+                    {{ item.link_label }}
+                  </a>
                 </li>
               {% endfor %}
             </ul>
@@ -48,7 +52,9 @@
           </div>
 
           <div class="text-center">
-				    <a class="Block Block--inverted" href="{{ site.link }}/news/">View more news</a>
+				    <a class="Block Block--inverted" href="{{ site.link }}/news/">
+              View more news
+            </a>
           </div>
 				</nav>
 			</div>
