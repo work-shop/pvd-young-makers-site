@@ -30,4 +30,7 @@
  * Vendor
  */
 
+@import "fullcalendar/dist/fullcalendar";
+
+@import "vendor/fullcalendar";
 @import "vendor/gravity-forms";

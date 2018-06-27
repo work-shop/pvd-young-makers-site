@@ -149,15 +149,17 @@ function admin_styles_bundle(development) {
  */
 function js_bundle() {
   return function() {
-    return js_bundler
-      .bundle()
-      .pipe(source("bundle.js"))
-      .pipe(buffer())
-      .pipe(sourcemaps.init({ loadMaps: true }))
-      .pipe(uglify())
-      .pipe(sourcemaps.write("./"))
-      .pipe(livereload())
-      .pipe(gulp.dest(js_exitpoint));
+    return (
+      js_bundler
+        .bundle()
+        .pipe(source("bundle.js"))
+        .pipe(buffer())
+        .pipe(sourcemaps.init({ loadMaps: true }))
+        // .pipe(uglify())
+        .pipe(sourcemaps.write("./"))
+        .pipe(livereload())
+        .pipe(gulp.dest(js_exitpoint))
+    );
   };
 }
 

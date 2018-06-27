@@ -1,13 +1,9 @@
-{% set section_classes = "text-orange" %}
-{% if image_src %}
-  {% set section_classes = "text-white" %}
-{% endif %}
-<section class="relative {{ section_classes }}">
+<section class="relative text-white">
   <div class="absolute pin bg-center bg-cover grayscale"
 		 style="background-image: url('{{ image_src }}')">
 	</div>
 
-  <div class="relative {% if image_src %} bg-teal-translucent {% else %} bg-orange-lightest {% endif %}">
+  <div class="relative {% if image_src %} bg-teal-translucent {% else %} bg-teal-light {% endif %}">
     <div class="max-w-xl mx-auto">
       <div class="container py-6">
         <h1 class="font-bold text-5xl">{{ post.title }}</h1>

@@ -1,0 +1,41 @@
+#fullcalendar {
+  @apply .bg-white;
+
+  & th,
+  & td {
+    @apply .border-1 .border-orange;
+  }
+
+  & .fc-day-header {
+    @apply .px-3 .py-2 .bg-orange .text-white .text-sm .tracking-loose .uppercase;
+  }
+
+  & .fc-day-top {
+    @apply .px-2 .py-1 .bg-teal-darkest .text-white;
+  }
+
+  & .fc-day-number {
+    @apply .inline-block .float-none .font-bold;
+  }
+
+  & .fc-day.fc-today {
+    @apply .bg-orange-lightest;
+  }
+
+  & .fc-event {
+    @apply .text-sm;
+  }
+
+  & .fc-event,
+  & .fc-event-dot {
+    @apply .border-teal .bg-teal;
+  }
+
+  & .fc-day-grid-event {
+    @apply .px-2 .py-1;
+  }
+
+  & .fc-day-grid-event .fc-content {
+    @apply .whitespace-normal;
+  }
+}
