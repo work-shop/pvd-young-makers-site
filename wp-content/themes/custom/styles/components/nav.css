@@ -1,12 +1,9 @@
 .Nav {
   @apply .text-white;
-  position: absolute;
-  left: 0;
-  width: calc(100% - 0.25rem);
+  width: 100%;
   font-size: 1.25rem;
 
   @media (min-width: 768px) {
-    top: 1rem;
     width: auto;
   }
 }
@@ -64,7 +61,6 @@
 .Nav-logoLink {
   display: block;
   float: left;
-  /* width: calc(4rem * 5.225); */
   height: 4rem;
   padding: 1rem 2rem 1rem 1rem;
   transform: translateY(-0.0625rem);

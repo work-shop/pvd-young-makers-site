@@ -1,0 +1,15 @@
+{% if post.alert_on_off_toggle %}
+  <div class="px-3 py-2 bg-orange font-bold text-white text-center">
+    <span>{{ post.alert_text }}</span>
+
+    {% set link_href = "#" %}
+    {% if post.link_type == "url" %}
+      {% set link_href = post.link_url %}
+    {% elseif post.link_type == "page" %}
+      {% set link_href = TimberPost(post.link_to_page).link %}
+    {% endif %}
+    <a class="text-white hover:text-orange-darkest" href="{{ link_href }}">
+      {{ post.link_label }}
+    </a>
+  </div>
+{% endif %}
