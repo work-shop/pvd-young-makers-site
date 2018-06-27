@@ -1,5 +1,4 @@
 .Footer {
-  @apply .bg-teal-darkest .text-teal-dark;
   padding-bottom: 3rem;
 }
 
@@ -113,7 +112,7 @@
 }
 
 .FooterNav-link {
-  @apply .text-teal-dark;
+  color: inherit;
 
   &:hover {
     @apply .text-white;

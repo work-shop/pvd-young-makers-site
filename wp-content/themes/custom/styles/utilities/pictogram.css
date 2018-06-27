@@ -1,10 +1,10 @@
 [data-pictogram] {
-  @apply .font-pictogram .leading-none;
+  @apply .inline-block .leading-none .text-center;
   width: 1em;
   font-size: 2rem;
-  text-align: center;
 
   &::after {
+    @apply .font-pictogram;
     content: attr(data-pictogram);
   }
 }

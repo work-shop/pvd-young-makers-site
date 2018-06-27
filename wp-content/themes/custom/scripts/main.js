@@ -1,5 +1,6 @@
 import { livereload } from "./modules/livereload-client.js";
-import { initCalendar } from "./modules/calendar.js";
+import { Calendar } from "./modules/calendar.js";
 
 livereload();
-initCalendar();
+
+const calendar = new Calendar();

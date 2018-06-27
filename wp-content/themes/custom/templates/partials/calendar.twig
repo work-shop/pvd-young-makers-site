@@ -1,5 +1,55 @@
 <div class="py-5 bg-teal-lightest">
   <div class="container">
+    <div class="xl:flex justify-between">
+      <div class="mb-3 mr-5">
+        {% include "components/headline.twig" with { text: "Calendar" } %}
+      </div>
+
+      <div class="xl:flex mb-3 text-orange">
+        <div class="mr-3">
+          <span class="calendar-filter-icon" data-pictogram=","></span>
+
+          <label class="calendar-filter-label" data-pictogram="/">
+            <select class="calendar-filter appearance-none p-2 pr-4 border-1 border-orange rounded-none bg-white text-orange font-bold" data-param="location">
+              <option value="-1">All Locations</option>
+
+              {% for location in locations %}
+                <option value="{{ location.id }}">{{ location.name }}</option>
+              {% endfor %}
+            </select>
+          </label>
+        </div>
+
+        <div class="mr-3">
+          <span class="calendar-filter-icon" data-pictogram="é"></span>
+
+          <label class="calendar-filter-label" data-pictogram="/">
+            <select class="calendar-filter appearance-none p-2 pr-4 border-1 border-orange rounded-none bg-white text-orange font-bold" data-param="type">
+              <option value="-1">All Event Types</option>
+
+              {% for type in event_types %}
+                <option value="{{ type.id }}">{{ type.name }}</option>
+              {% endfor %}
+            </select>
+          </label>
+        </div>
+
+        <div>
+          <span class="calendar-filter-icon" data-pictogram="("></span>
+
+          <label class="calendar-filter-label" data-pictogram="/">
+            <select class="calendar-filter appearance-none p-2 pr-4 border-1 border-orange rounded-none bg-white text-orange font-bold" data-param="tool">
+              <option value="-1">All Tools</option>
+
+              {% for tool in tool_types %}
+                <option value="{{ tool.id }}">{{ tool.name }}</option>
+              {% endfor %}
+            </select>
+          </label>
+        </div>
+      </div>
+    </div>
+
     <div id="fullcalendar"></div>
   </div>
 </div>

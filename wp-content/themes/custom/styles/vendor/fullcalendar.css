@@ -3,7 +3,7 @@
 
   & th,
   & td {
-    @apply .border-1 .border-orange;
+    @apply .border .border-orange;
   }
 
   & .fc-day-header {
