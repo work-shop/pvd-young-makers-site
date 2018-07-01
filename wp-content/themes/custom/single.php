@@ -10,6 +10,13 @@ $context['post'] = $post;
 
 if ($post_type === 'locations') {
     $context['tools'] = Timber::get_posts('post_type=tools&numberposts=4');
+    
+    $map_data = WS_Map_Objects::build_single_location( $post );
+    if ( $map_data != null ) {
+        $context['map_options'] = array(
+            'data' => $map_data,
+        );
+    }
 }
 
 if ($post_type === 'events') {
@@ -38,6 +45,23 @@ if ($post_type === 'events') {
         'post__in' => $array_of_badge_ids
     );
     $context['badges'] = Timber::get_posts($badges_args);
+
+    $map_data = WS_Map_Objects::build_single_event( $post );
+    if ( $map_data != null ) {
+        $context['map_options'] = array(
+            'data' => $map_data,
+        );
+    }
 }
+
+if ($post_type === 'tools') {
+    $map_data = WS_Map_Objects::build_map_objects( array( $post ) );
+    if ( $map_data != null ) {
+        $context['map_options'] = array(
+            'data' => $map_data,
+        );
+    }
+}
+
 
 Timber::render($templates, $context);
