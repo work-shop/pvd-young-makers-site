@@ -18,11 +18,27 @@ if (is_front_page()) {
         $event->location_name = Timber::get_post('post_type=locations&p=' . $event->location[0])->post_title;
     }
     $context['events'] = $events;
+    
+    $locations_for_map = Timber::get_posts('post_type=locations');
+    $map_data = WS_Map_Objects::build_map_objects( $locations_for_map );
+    if ( count( $map_data ) > 0 ) {
+        $context['map_options'] = array(
+            'data' => $map_data
+        );
+    }
 }
 
 // Making and Learning page
 if ($post_name === 'making-and-learning') {
     $context['tools'] = Timber::get_posts('post_type=tools&numberposts=8');
+    
+    $locations_for_map = Timber::get_posts('post_type=locations');
+    $map_data = WS_Map_Objects::build_map_objects( $locations_for_map );
+    if ( count( $map_data ) > 0 ) {
+        $context[ 'map_options' ] = array(
+            'data' => $map_data
+        );
+    }
 }
 
 // Tools page
@@ -50,11 +66,25 @@ if ($post_name === 'tools') {
         ),
     );
     $context['materials'] = Timber::get_posts($materials_args);
+
+    $all_tools = array_merge( $context['machines'], $context['materials'] );
+    $map_data = WS_Map_Objects::build_map_objects( $all_tools );
+    if ( count( $map_data ) > 0 ) {
+        $context[ 'map_options' ] = array(
+            'data' => $map_data
+        );
+    }
 }
 
 // Locations page
 if ($post_name === 'locations') {
     $context['locations'] = Timber::get_posts('post_type=locations');
+    $map_data = WS_Map_Objects::build_map_objects( $context['locations'] );
+    if ( count( $map_data ) > 0 ) {
+        $context[ 'map_options' ] = array(
+            'data' => $map_data
+        );
+    }
 }
 
 // Badges page
