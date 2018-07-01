@@ -70,6 +70,18 @@ var config = {
         fade: true,
         autoplaySpeed: 5000,
         speed: 700        
+    },
+    slippyMap: {
+        selector: '.ws-map',
+        map: {
+            mapTypeControl: false,
+            fullscreenControl: false,
+        },
+        marker: {
+            popup: {
+                pointer: '8px',
+            },
+        },
     }
 };
 
