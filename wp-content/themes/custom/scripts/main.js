@@ -16,4 +16,8 @@ const maps = makeSlippyMaps( {
       pointer: '8px',
     },
   },
+  render: {
+    center: { lat: 41.8240, lng: -71.4128 },
+    zoom: 14
+  }
 } )
