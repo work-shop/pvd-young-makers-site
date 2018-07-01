@@ -1,0 +1,37 @@
+<div class="group block max-w-md border-1 border-teal-darkest bg-teal-lightest ">
+  <div class="px-3 py-2 border-b-1 border-teal-darkest bg-teal-darkest text-white font-bold text-2xl">
+    {{ title }}
+  </div>
+
+  {% for row in rows %}
+
+    {% if row.type == 'text-pictogram-row' %}
+
+      <div class="flex items-center px-3 py-2 small-caps border-b-1 border-teal-darkest">
+        <span class="flex-grow">{{ row.text }}</span>
+        {% if row.pictogram %}
+          <span class="flex-no-grow" data-pictogram="{{ row.pictogram }}"></span>
+        {% endif %}
+      </div>
+
+    {% endif %}
+
+    {% if row.type == 'text-row' %}
+
+      <div class="flex items-center px-3 py-2 border-teal-darkest">
+        <span class="flex-grow">{{ row.text }}</span>
+      </div>
+
+    {% endif %}
+
+    {% if row.type == 'link-pictogram-row' %}
+      <a class="no-underline" href="{{ row.url }}">
+        <div class="flex items-center px-3 py-2 small-caps border-teal-darkest no-underline">
+          <span class="flex-grow">{{ row.text }}</span>
+          <span class="flex-no-grow" data-pictogram="„"></span>
+        </div>      
+      </a>
+    {% endif %}
+      
+  {% endfor %}
+</div>
