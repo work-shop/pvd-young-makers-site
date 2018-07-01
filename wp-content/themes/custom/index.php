@@ -134,6 +134,13 @@ if ($post_name === 'events') {
     $context['event_types'] = Timber::get_terms('event-types');
     $context['locations'] = Timber::get_posts('post_type=locations');
     $context['tool_types'] = Timber::get_terms('tool-types');
+    
+    $map_data = WS_Map_Objects::build_map_objects( $context['locations'] );
+    if ( count( $map_data ) > 0 ) {
+        $context[ 'map_options' ] = array(
+            'data' => $map_data
+        );
+    }
 }
 
 Timber::render($templates, $context);

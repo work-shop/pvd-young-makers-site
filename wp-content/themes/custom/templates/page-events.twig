@@ -2,4 +2,19 @@
 
 {% block page_content %}
   {% include "partials/calendar.twig" %}
+
+  {% if map_options %}
+    {% embed "partials/section.twig" with { section_classes: 'map-container' } %}
+      {% block extra %}
+        <script>
+        var locationsMapOptions = {
+          map: {},
+          data: {{ map_options.data|json_encode() }},
+          render: { center: { lat: 41.8240, lng: -71.4128 }, zoom: 14 },
+        };
+        </script>
+        <div id="locations-map" class="ws-map w-screen h-screen" data-options="locationsMapOptions"></div>
+      {% endblock %}
+    {% endembed %}
+  {% endif %}
 {% endblock %}
