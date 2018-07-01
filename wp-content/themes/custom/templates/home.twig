@@ -2,6 +2,19 @@
 
 {% block content %}
 	<section class="bg-teal-lightest">
+    {% if map_options %}
+      <script>
+      var locationsMapOptions = {
+        map: {
+          zoomControl: false,
+          streetViewControl: false,
+        },
+        data: {{ map_options.data|json_encode() }},
+        render: { center: { lat: 41.8240, lng: -71.4128 }, zoom: 14 },
+      };
+      </script>
+      <div id="locations-map" class="ws-map pointer-events-none w-screen h-screen" data-options="locationsMapOptions"></div>
+    {% endif %}
     <div class="max-w-xl mx-auto">
       <div class="container py-6">
         {% if post.get_field("home_page_tagline") %}
