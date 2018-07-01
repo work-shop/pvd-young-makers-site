@@ -85,7 +85,9 @@ class WS_Site extends TimberSite
             wp_enqueue_style('google-fonts');
             wp_enqueue_style('main', $compiled_resources_uri . $main_css);
             wp_enqueue_script('jquery');
-            wp_enqueue_script('main', $compiled_resources_uri . $main_js, array('jquery'), $main_js_ver, true);
+            wp_enqueue_script('map-library', 'https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyDTkjwJK80N7YCWoKjhKz8c3J1tNEbJpRg');
+            wp_enqueue_script('main', $compiled_resources_uri . $main_js, array('jquery', 'map-library'), $main_js_ver, true);
+           
         }
     }
 
