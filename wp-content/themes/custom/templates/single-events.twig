@@ -54,4 +54,20 @@
       {% endblock %}
     {% endembed %}
   {% endif %}
+
+  {% if map_options and map_options.data %}
+    {% embed "partials/section.twig" with { section_classes: 'map-container' } %}
+      {% block extra %}
+        <script>
+        var locationMapOptions = {
+          map: {},
+          data: {{ map_options.data|json_encode() }},
+          render: { center: {{ map_options.data.marker.position|json_encode() }}, zoom: 16.5 },
+        };
+        locationMapOptions.data.marker.popup.openOnInitialization = true;
+        </script>
+        <div id="location-map" class="ws-map w-screen h-screen" data-options="locationMapOptions"></div>
+      {% endblock %}
+    {% endembed %}
+  {% endif %}
 {% endblock %}
