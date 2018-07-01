@@ -9,11 +9,13 @@
 /**
  * Components
  */
+@import "../../../../node_modules/@work-shop/map-module/src/map-style.css";
 @import "tailwindcss/components";
 
 @import "components/wysiwyg";
 @import "components/block";
 @import "components/nav";
+@import "components/map";
 @import "components/footer";
 
 /**
