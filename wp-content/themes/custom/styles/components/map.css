@@ -1,0 +1,30 @@
+.map-container .container {
+  @apply .py-0 .px-0;
+}
+
+.ws-map-popup-content-wrapper {
+  @apply .p-0 .rounded-none;
+}
+
+.ws-map-popup-content {
+  @apply .w-7;
+}
+
+.ws-map-popup-close-button {
+  display: inline-block;
+}
+
+.ws-map-popup-pointer-background-top {
+  border-top-color: config( 'colors.teal-darkest' );
+}
+
+.ws-map-popup-close-button {
+  color: config( 'colors.teal-lightest' );
+  opacity: 1;
+  padding: 6px;
+}
+
+.ws-map-popup-close-button:hover {
+  color: config( 'colors.white' );
+  opacity: 1;
+}
