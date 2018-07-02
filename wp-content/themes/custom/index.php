@@ -18,12 +18,12 @@ if (is_front_page()) {
         $event->location_name = Timber::get_post('post_type=locations&p=' . $event->location[0])->post_title;
     }
     $context['events'] = $events;
-    
+
     $locations_for_map = Timber::get_posts('post_type=locations');
-    $map_data = WS_Map_Objects::build_map_objects( $locations_for_map );
-    if ( count( $map_data ) > 0 ) {
+    $map_data = WS_Map_Objects::build_map_objects($locations_for_map);
+    if (count($map_data) > 0) {
         $context['map_options'] = array(
-            'data' => $map_data
+            'data' => $map_data,
         );
     }
 }
@@ -31,12 +31,12 @@ if (is_front_page()) {
 // Making and Learning page
 if ($post_name === 'making-and-learning') {
     $context['tools'] = Timber::get_posts('post_type=tools&numberposts=8');
-    
+
     $locations_for_map = Timber::get_posts('post_type=locations');
-    $map_data = WS_Map_Objects::build_map_objects( $locations_for_map );
-    if ( count( $map_data ) > 0 ) {
-        $context[ 'map_options' ] = array(
-            'data' => $map_data
+    $map_data = WS_Map_Objects::build_map_objects($locations_for_map);
+    if (count($map_data) > 0) {
+        $context['map_options'] = array(
+            'data' => $map_data,
         );
     }
 }
@@ -67,11 +67,11 @@ if ($post_name === 'tools') {
     );
     $context['materials'] = Timber::get_posts($materials_args);
 
-    $all_tools = array_merge( $context['machines'], $context['materials'] );
-    $map_data = WS_Map_Objects::build_map_objects( $all_tools );
-    if ( count( $map_data ) > 0 ) {
-        $context[ 'map_options' ] = array(
-            'data' => $map_data
+    $all_tools = array_merge($context['machines'], $context['materials']);
+    $map_data = WS_Map_Objects::build_map_objects($all_tools);
+    if (count($map_data) > 0) {
+        $context['map_options'] = array(
+            'data' => $map_data,
         );
     }
 }
@@ -79,10 +79,10 @@ if ($post_name === 'tools') {
 // Locations page
 if ($post_name === 'locations') {
     $context['locations'] = Timber::get_posts('post_type=locations');
-    $map_data = WS_Map_Objects::build_map_objects( $context['locations'] );
-    if ( count( $map_data ) > 0 ) {
-        $context[ 'map_options' ] = array(
-            'data' => $map_data
+    $map_data = WS_Map_Objects::build_map_objects($context['locations']);
+    if (count($map_data) > 0) {
+        $context['map_options'] = array(
+            'data' => $map_data,
         );
     }
 }
@@ -131,14 +131,22 @@ if ($post_name === 'contact') {
 
 // Events page
 if ($post_name === 'events') {
+    $date = date('m Y');
+    if ($_GET['month'] && $_GET['year']) {
+        $date = htmlspecialchars($_GET['month'] . ' ' . $_GET['year']);
+    }
+    $dateObj = DateTime::createFromFormat('!m Y', $date);
+    $dateStr = $dateObj->format('F Y');
+    $context['selected_date_string'] = $dateStr;
+
     $context['event_types'] = Timber::get_terms('event-types');
     $context['locations'] = Timber::get_posts('post_type=locations');
     $context['tool_types'] = Timber::get_terms('tool-types');
-    
-    $map_data = WS_Map_Objects::build_map_objects( $context['locations'] );
-    if ( count( $map_data ) > 0 ) {
-        $context[ 'map_options' ] = array(
-            'data' => $map_data
+
+    $map_data = WS_Map_Objects::build_map_objects($context['locations']);
+    if (count($map_data) > 0) {
+        $context['map_options'] = array(
+            'data' => $map_data,
         );
     }
 }

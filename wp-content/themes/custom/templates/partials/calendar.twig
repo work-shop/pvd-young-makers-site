@@ -2,7 +2,7 @@
   <div class="container">
     <div class="xl:flex justify-between">
       <div class="mb-3 mr-5">
-        {% include "components/headline.twig" with { text: "Calendar" } %}
+        {% include "components/headline.twig" with { text: "Calendar for " ~ selected_date_string } %}
       </div>
 
       <div class="xl:flex mb-3 text-orange">
@@ -24,11 +24,11 @@
           <span class="calendar-filter-icon" data-pictogram="é"></span>
 
           <label class="calendar-filter-label" data-pictogram="/">
-            <select class="calendar-filter appearance-none p-2 pr-4 border-1 border-orange rounded-none bg-white text-orange font-bold" data-param="type">
+            <select class="calendar-filter appearance-none p-2 pr-4 border-1 border-orange rounded-none bg-white text-orange font-bold" data-param="eventType">
               <option value="-1">All Event Types</option>
 
-              {% for type in event_types %}
-                <option value="{{ type.id }}">{{ type.name }}</option>
+              {% for event_type in event_types %}
+                <option value="{{ event_type.id }}">{{ event_type.name }}</option>
               {% endfor %}
             </select>
           </label>
@@ -38,11 +38,11 @@
           <span class="calendar-filter-icon" data-pictogram="("></span>
 
           <label class="calendar-filter-label" data-pictogram="/">
-            <select class="calendar-filter appearance-none p-2 pr-4 border-1 border-orange rounded-none bg-white text-orange font-bold" data-param="tool">
+            <select class="calendar-filter appearance-none p-2 pr-4 border-1 border-orange rounded-none bg-white text-orange font-bold" data-param="toolType">
               <option value="-1">All Tools</option>
 
-              {% for tool in tool_types %}
-                <option value="{{ tool.id }}">{{ tool.name }}</option>
+              {% for tool_type in tool_types %}
+                <option value="{{ tool_type.id }}">{{ tool_type.name }}</option>
               {% endfor %}
             </select>
           </label>

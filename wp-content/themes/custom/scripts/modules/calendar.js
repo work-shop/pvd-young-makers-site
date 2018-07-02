@@ -1,6 +1,6 @@
-import $ from "jquery";
 import "babel-polyfill";
-import fullCalendar from "fullcalendar";
+import "fullcalendar";
+import $ from "jquery";
 
 export class Calendar {
   constructor() {
@@ -29,6 +29,11 @@ export class Calendar {
     this.$filter.change(() => {
       const params = [];
 
+      if (this.params.month && this.params.year) {
+        params.push(`month=${this.params.month}`);
+        params.push(`year=${this.params.year}`);
+      }
+
       this.$filter.each((i, element) => {
         const $element = $(element);
         const value = $element.val();
@@ -50,11 +55,11 @@ export class Calendar {
 
     const searchParams = new URLSearchParams(this.locationUrl.search);
     this.params = {
-      year: parseInt(searchParams.get("year"), 10),
-      month: parseInt(searchParams.get("month"), 10),
-      type: parseInt(searchParams.get("type"), 10),
+      year: searchParams.get("year"),
+      month: searchParams.get("month"),
+      eventType: parseInt(searchParams.get("eventType"), 10),
       location: parseInt(searchParams.get("location"), 10),
-      tool: parseInt(searchParams.get("tool"), 10)
+      toolType: parseInt(searchParams.get("toolType"), 10)
     };
 
     if (this.isInstantiated) {
@@ -88,24 +93,32 @@ export class Calendar {
   async getEvents(start, end, timezone, callback) {
     let jsonUrl = "/wp-json/wp/v2/events";
 
-    console.log(this.params);
-
-    if (this.params.type && this.params.type !== -1) {
-      jsonUrl += `?event-types=${this.params.type}`;
-    }
-
-    if (this.params.location) {
-    }
-
-    if (this.params.tool) {
+    if (this.params.eventType && this.params.eventType !== -1) {
+      jsonUrl += `?event-types=${this.params.eventType}`;
     }
 
     const response = await fetch(jsonUrl);
     const events = await response.json();
+    let filteredEvents = events;
+
+    if (this.params.location && this.params.location !== -1) {
+      filteredEvents = this.filterByLocation(
+        filteredEvents,
+        this.params.location
+      );
+    }
+
+    if (this.params.toolType && this.params.toolType !== -1) {
+      filteredEvents = await this.filterByToolType(
+        filteredEvents,
+        this.params.toolType
+      );
+    }
+
     const dateFormat = "DD/MM/YYYY hh:mm a";
     const formattedEvents = [];
 
-    for (const event of events) {
+    for (const event of filteredEvents) {
       const formattedEvent = {
         title: event.acf.event_name,
         start: $.fullCalendar.moment(event.acf.event_start, dateFormat),
@@ -117,6 +130,37 @@ export class Calendar {
     }
 
     callback(formattedEvents);
+  }
+
+  filterByLocation(events, locationId) {
+    const filteredEvents = events.filter(event => {
+      return event.acf.location.some(location => {
+        return location.ID === locationId;
+      });
+    });
+
+    // const filteredEvents = filter(events, {
+    //   acf: { location: [{ ID: locationId }] }
+    // });
+
+    return filteredEvents;
+  }
+
+  async filterByToolType(events, toolTypeId) {
+    const jsonUrl = `/wp-json/wp/v2/tools?tool-types=${toolTypeId}`;
+    const response = await fetch(jsonUrl);
+    const tools = await response.json();
+    const toolIds = [];
+
+    tools.forEach(tool => toolIds.push(tool.id));
+
+    const filteredEvents = events.filter(event => {
+      return event.acf.tools.some(tool => {
+        return toolIds.includes(tool.ID);
+      });
+    });
+
+    return filteredEvents;
   }
 
   renderEvent(event, element, view) {
@@ -133,36 +177,4 @@ export class Calendar {
       window.location.href = url;
     }
   }
-}
-
-function initCalendar() {
-  // async function getCategoryIdFromSlug(slug) {
-  //   const url = `/wp-json/wp/v2/event_category?slug=${slug}`;
-  //   const response = await fetch(url);
-  //   const data = await response.json();
-  //   const id = data[0].id;
-  //   return id;
-  // }
-  // async function getActiveTeamIdFromSlug(slug) {
-  //   const url = `/wp-json/wp/v2/active_team?slug=${slug}`;
-  //   const response = await fetch(url);
-  //   const data = await response.json();
-  //   const id = data[0].id;
-  //   return id;
-  // }
-  // async function filterEventsByActiveTeam(events) {
-  //   let filteredEvents = events;
-  //   const activeTeamMatches = pathname.match(/\/active-team\/([\w-]+)$/);
-  //   if (activeTeamMatches) {
-  //     const teamSlug = activeTeamMatches[1];
-  //     const activeTeamId = await getActiveTeamIdFromSlug(teamSlug);
-  //     filteredEvents = [];
-  //     for (const event of events) {
-  //       if (event.acf.active_team_association === activeTeamId) {
-  //         filteredEvents.push(event);
-  //       }
-  //     }
-  //   }
-  //   return filteredEvents;
-  // }
 }
