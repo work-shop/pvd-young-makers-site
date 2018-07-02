@@ -676,11 +676,12 @@ class Jutranslation
         echo '<input type="hidden" name="extension" value="' . esc_attr($addons[$plugin]->extension_slug) . '" />';
         echo '<input type="hidden" name="extension_language" value="' . esc_attr($language) . '" />';
         echo '<input type="hidden" name="extension_version" value="' . esc_attr($version) . '" />';
-        echo '<textarea style="display: none" name="strings">' . esc_html($strings) . '</textarea>';
+        // phpcs:ignore WordPress.XSS.EscapeOutput -- Value wrong
+        echo '<textarea style="display: none" name="strings">' . htmlentities($strings) . '</textarea>';
         echo '</form>';
         //Add waiting image
         echo '<div style="text-align:center"><img src="' .
-            esc_attr(plugin_dir_url(self::$main_plugin_file) . 'jutranslation/assets/images/preview_loader.gif"') .'</div>';
+             esc_attr(plugin_dir_url(self::$main_plugin_file)) . 'jutranslation/assets/images/preview_loader.gif"></div>';
 
         //Submit automatically the form on page loading
         echo '<script type="text/javascript">document.forms[0].submit();</script>';

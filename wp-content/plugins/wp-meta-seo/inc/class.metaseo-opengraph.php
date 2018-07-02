@@ -545,7 +545,7 @@ class MetaSeoOpenGraph
                 ($meta_title_esc != '' ? true : false))
         );
 
-        if (!empty($settings['metaseo_follow'])) {
+        if (!empty($settings['metaseo_follow']) || !empty($settings['metaseo_index'])) {
             $patterns['follow'] = array(
                 '#<meta name="robots" [^<>]+ ?>#i',
                 '<meta name="robots" content="' . $page_index . ',' . $page_follow . '" />'
