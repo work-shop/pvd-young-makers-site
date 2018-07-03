@@ -1,7 +1,7 @@
 <nav>
   <ul class="flex flex-wrap -m-2">
     {% for badge in badges %}
-      <li class="w-full md:flex-1 m-2">
+      <li class="w-full md:w-1/3 m-2">
         {% set badge_events_text = badge.events|length ~ " event" %}
         {% if badge.events|length != 1 %}
           {% set badge_events_text = badge_events_text ~ "s" %}

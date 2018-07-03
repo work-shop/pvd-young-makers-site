@@ -59,7 +59,7 @@ let colors = {
   "orange-darker": "#8a4311",
   "orange-dark": "#b75917",
   orange: "#e36f1e",
-  "orange-translucent": "#e36f1ecc",
+  "orange-translucent": "#e36f1e99",
   "orange-light": "#e98c4b",
   "orange-lighter": "#eea979",
   "orange-lightest": "#fae3d3",
@@ -69,7 +69,7 @@ let colors = {
   "teal-darker": "#216782",
   "teal-dark": "#2c88aa",
   teal: "#3ca5cd",
-  "teal-translucent": "#3ca5cdcc",
+  "teal-translucent": "#3ca5cd99",
   "teal-light": "#65b8d7",
   "teal-lighter": "#8dcbe2",
   "teal-lightest": "#def0f7"
@@ -499,6 +499,12 @@ module.exports = {
 
   minHeight: {
     "0": "0",
+    "1": "1rem",
+    "2": "2rem",
+    "3": "4rem",
+    "4": "8rem",
+    "5": "16rem",
+    "6": "32rem",
     full: "100%",
     screen: "100vh"
   },

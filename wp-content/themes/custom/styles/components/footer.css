@@ -16,6 +16,7 @@
 
 .FooterNav-listItem {
   width: 100%;
+
   @media (min-width: 768px) {
     width: calc(100% / 3 - 2rem);
     margin-right: 2rem;
@@ -37,6 +38,22 @@
 .FooterNav-listItem--partners {
   @media (min-width: 768px) {
     order: 3;
+    width: calc(100% / 1.5 - 2rem);
+  }
+
+  & .FooterNav-sublist {
+    @media (min-width: 768px) {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin: 0 0 1rem;
+    }
+  }
+
+  & .FooterNav-sublistItem {
+    @media (min-width: 768px) {
+      width: calc(50% - 1rem);
+    }
   }
 }
 

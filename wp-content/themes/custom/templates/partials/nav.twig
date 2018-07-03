@@ -1,5 +1,5 @@
 {% if nav %}
-	<nav class="Nav absolute z-50 pin-l md:pt-3">
+	<nav class="Nav fixed z-50 pin-l md:pt-3">
 		<div class="Block Block--dark">
 			<input class="Nav-toggle" id="nav-toggle" type="checkbox" hidden="hidden">
 			<label class="Nav-toggleLabel" for="nav-toggle" hidden="hidden">
@@ -9,7 +9,7 @@
 				{% endspaceless %}
 			</label>​
 
-			<a class="Nav-logoLink" href="{{ site.url }}"><img class="Nav-logo" src="{{ theme.link }}/images/logo.svg" height="64" alt="{{ site.name }}"></a>
+			<a class="Nav-logoLink float-right md:float-left" href="{{ site.url }}"><img class="Nav-logo" src="{{ theme.link }}/images/logo.svg" height="64" alt="{{ site.name }}"></a>
 
 			<ul class="Nav-list">
 				{% for item in nav.items %}

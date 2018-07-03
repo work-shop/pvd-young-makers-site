@@ -1,15 +1,24 @@
 <nav>
   <ul class="flex flex-wrap -m-2">
     {% for tool in tools %}
-      <li class="w-full md:flex-1 m-2">
+      <li class="w-full md:w-1/3 m-2">
         {% set tool_locations_text = tool.locations|length ~ " location" %}
         {% if tool.locations|length != 1 %}
           {% set tool_locations_text = tool_locations_text ~ "s" %}
         {% endif %}
 
-        {% set tool_events_text = tool.events|length ~ " event" %}
-        {% if tool.events|length != 1 %}
+        {% set tool_upcoming_events = [] %}
+        {% for event in tool.events %}
+          {% if event.event_end >= "now"|date() %}
+            {% set tool_upcoming_events = tool_upcoming_events|merge([event]) %}
+          {% endif %}
+        {% endfor %}
+        {% set tool_events_text = tool_upcoming_events|length ~ " upcoming event" %}
+        {% if tool_upcoming_events|length != 1%}
           {% set tool_events_text = tool_events_text ~ "s" %}
+        {% endif %}
+        {% if tool_upcoming_events|length == 0 %}
+          {% set tool_events_text = "No upcoming events yet" %}
         {% endif %}
 
         {% include "partials/card.twig" with {
