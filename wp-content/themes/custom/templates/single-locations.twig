@@ -3,8 +3,8 @@
 {% block hero %}
   {% set location_address = post.get_field("location_address") %}
 
-  {% set tools_text = post.get_field("locations")|length ~ " tool" %}
-  {% if post.get_field("locations")|length != 1 %}
+  {% set tools_text = post.get_field("tools")|length ~ " tool" %}
+  {% if post.get_field("tools")|length != 1 %}
     {% set tools_text = tools_text ~ "s" %}
   {% endif %}
 
