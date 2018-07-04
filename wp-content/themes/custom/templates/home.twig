@@ -14,10 +14,16 @@
         };
       </script>
 
-      <div id="locations-map" class="ws-map pointer-events-none w-full h-screen opacity-50" data-options="locationsMapOptions"></div>
+      <div id="locations-map" class="ws-map pointer-events-none w-full h-screen" data-options="locationsMapOptions"></div>
+
+      <div class="relative pin-t w-full pointer-events-none">
+        <a id="return-from-map-button" class="absolute pin-l pin-b Block Block--light mb-5 ml-5 opacity-0 pointer-events-auto" href="#">
+          Go back
+        </a>
+      </div>
     {% endif %}
 
-    <div class="absolute pin-t w-full">
+    <div id="hero" class="absolute pin-t w-full">
       <div class="max-w-xl mx-auto">
         <div class="flex flex-col justify-center h-screen container py-6">
           {% if post.get_field("home_page_tagline") %}
@@ -28,15 +34,15 @@
             </div>
           {% endif %}
 
-          {% if post.get_field("home_page_links") %}
-            <nav>
-              <ul class="flex">
-                <li class="mr-3">
-                  <a class="Block Block--light" href="#">
-                    Show me the map!
-                  </a>
-                </li>
+          <nav>
+            <ul class="flex">
+              <li id="show-map-button" class="mr-3">
+                <a class="Block Block--light" href="#">
+                  Show me the map!
+                </a>
+              </li>
 
+              {% if post.get_field("home_page_links") %}
                 {% for item in post.get_field("home_page_links") %}
                   {% set link_href = "#" %}
                   {% if item.link_type == "url" %}
@@ -50,9 +56,9 @@
                     </a>
                   </li>
                 {% endfor %}
-              </ul>
-            </nav>
-          {% endif %}
+              {% endif %}
+            </ul>
+          </nav>
         </div>
       </div>
     </div>

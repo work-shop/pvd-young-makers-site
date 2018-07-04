@@ -1,6 +1,7 @@
 import { livereload } from "./modules/livereload-client.js";
 import { Calendar } from "./modules/calendar.js";
 import "./modules/nav.js";
+import "./modules/home.js";
 import makeSlippyMaps from "@work-shop/map-module";
 
 livereload();
