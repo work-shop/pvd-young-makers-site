@@ -78,16 +78,31 @@ export class Calendar {
     }
 
     this.$container.fullCalendar({
+      defaultView: this.getResponsiveViewName(),
       defaultDate: selectedDate,
       events: this.getEvents.bind(this),
       eventRender: this.renderEvent.bind(this),
       displayEventTime: false,
       height: "auto",
       header: false,
-      dayClick: this.handleDayClick.bind(this)
+      dayClick: this.handleDayClick.bind(this),
+      windowResize: view => {
+        this.$container.fullCalendar(
+          "changeView",
+          this.getResponsiveViewName()
+        );
+      }
     });
 
     this.isInstantiated = true;
+  }
+
+  getResponsiveViewName() {
+    if ($(window).width() <= 768) {
+      return "listMonth";
+    } else {
+      return "month";
+    }
   }
 
   async getEvents(start, end, timezone, callback) {

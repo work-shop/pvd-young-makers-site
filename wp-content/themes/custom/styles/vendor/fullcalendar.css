@@ -38,4 +38,21 @@
   & .fc-day-grid-event .fc-content {
     @apply .whitespace-normal;
   }
+
+  /* List view */
+  & .fc-list-heading .fc-widget-header {
+    @apply .px-3 .py-2 .bg-orange .text-white .text-sm .tracking-loose .uppercase;
+  }
+
+  & .fc-list-item:hover td {
+    @apply .bg-transparent .underline;
+  }
+
+  & .fc-list-table td {
+    @apply .px-3 .py-2;
+  }
+
+  & .fc-list-item-title a {
+    @apply .no-underline;
+  }
 }
