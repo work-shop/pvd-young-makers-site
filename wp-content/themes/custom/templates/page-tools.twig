@@ -1,33 +1,37 @@
 {% extends "page.twig" %}
 
 {% block page_content %}
-  {% embed "partials/section.twig" %}
-		{% block title %}
-      Our Machines
-    {% endblock %}
+  {% if machines %}
+    {% embed "partials/section.twig" %}
+      {% block title %}
+        Our Machines
+      {% endblock %}
 
-    {% block text %}
-      {{ post.get_field("machines_introductory_text") }}
-    {% endblock %}
+      {% block text %}
+        {{ post.get_field("machines_introductory_text") }}
+      {% endblock %}
 
-    {% block extra %}
-      {% include "partials/list-of-tools.twig" with { tools: machines } %}
-    {% endblock %}
-  {% endembed %}
+      {% block extra %}
+        {% include "partials/list-of-tools.twig" with { tools: machines } %}
+      {% endblock %}
+    {% endembed %}
+  {% endif %}
 
-  {% embed "partials/section.twig" %}
-		{% block title %}
-      Our Materials
-    {% endblock %}
+  {% if materials %}
+    {% embed "partials/section.twig" %}
+      {% block title %}
+        Our Materials
+      {% endblock %}
 
-    {% block text %}
-      {{ post.get_field("materials_introductory_text") }}
-    {% endblock %}
+      {% block text %}
+        {{ post.get_field("materials_introductory_text") }}
+      {% endblock %}
 
-    {% block extra %}
-      {% include "partials/list-of-tools.twig" with { tools: materials } %}
-    {% endblock %}
-  {% endembed %}
+      {% block extra %}
+        {% include "partials/list-of-tools.twig" with { tools: materials } %}
+      {% endblock %}
+    {% endembed %}
+  {% endif %}
 
   {% if map_options %}
     {% embed "partials/section.twig" with { section_classes: 'map-container' } %}
