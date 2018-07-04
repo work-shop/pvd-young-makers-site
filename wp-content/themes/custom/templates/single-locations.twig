@@ -129,25 +129,23 @@
       {% include "partials/list-of-tools.twig" %}
     {% endblock %}
   {% endembed %}
-
-  {% if map_options and map_options.data %}
-    {% embed "partials/section.twig" with { section_classes: 'map-container' } %}
-      {% block extra %}
-        <script>
-        var locationMapOptions = {
-          map: {},
-          data: {{ map_options.data|json_encode() }},
-          render: { center: {{ map_options.data.marker.position|json_encode() }}, zoom: 16.5 },
-        };
-        locationMapOptions.data.marker.popup.openOnInitialization = true;
-        </script>
-        <div id="location-map" class="ws-map w-screen h-screen" data-options="locationMapOptions"></div>
-      {% endblock %}
-    {% endembed %}
-  {% endif %}
-
 {% endblock %}
 
 {% block single_fullwidth_content %}
   {% include "partials/calendar.twig" %}
+
+  {% if map_options and map_options.data %}
+    <div class="map-container">
+      <script>
+      var locationMapOptions = {
+        map: {},
+        data: {{ map_options.data|json_encode() }},
+        render: { center: {{ map_options.data.marker.position|json_encode() }}, zoom: 16.5 },
+      };
+      locationMapOptions.data.marker.popup.openOnInitialization = true;
+      </script>
+      <div id="location-map" class="ws-map w-full h-screen" data-options="locationMapOptions"></div>
+    </div>
+  {% endif %}
+
 {% endblock %}
