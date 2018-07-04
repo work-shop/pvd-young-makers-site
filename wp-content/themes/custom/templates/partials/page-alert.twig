@@ -8,7 +8,7 @@
     {% elseif post.link_type == "page" %}
       {% set link_href = TimberPost(post.link_to_page).link %}
     {% endif %}
-    <a class="text-white hover:text-orange-darkest" href="{{ link_href }}">
+    <a class="ml-2 Block Block--inverted" href="{{ link_href }}">
       {{ post.link_label }}
     </a>
   </div>
