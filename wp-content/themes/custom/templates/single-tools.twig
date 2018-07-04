@@ -17,7 +17,7 @@
     {% set events_text = events_text ~ "s" %}
   {% endif %}
   {% if upcoming_events|length == 0 %}
-    {% set events_text = "No upcoming events yet" %}
+    {% set events_text = "No upcoming events" %}
   {% endif %}
 
   {% include "partials/single-hero.twig" with {

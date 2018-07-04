@@ -19,7 +19,7 @@
             {% set tool_events_text = tool_events_text ~ "s" %}
           {% endif %}
           {% if tool_upcoming_events|length == 0 %}
-            {% set tool_events_text = "No upcoming events yet" %}
+            {% set tool_events_text = "No upcoming events" %}
           {% endif %}
 
           {% include "partials/card.twig" with {
