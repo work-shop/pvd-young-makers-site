@@ -67,7 +67,7 @@
 	{% if post.get_field("home_page_news_stories") %}
 		<section class="py-5 bg-orange text-white">
 			<div class="container">
-				<h2 class="mb-4 font-bold text-3xl text-center">Breaking News!</h2>
+				<h2 class="mb-4 font-bold text-3xl leading-tight text-center">Breaking News!</h2>
 
 				<nav>
           <div class="mb-4">
@@ -184,7 +184,7 @@
             </ul>
           </div>
 
-          <a class="Block Block--light self-start m-2 md:text-2xl" href="{{ site.link }}/events/">View our calendar</a>
+          <a class="Block Block--light self-start m-2 md:text-2xl md:leading-tight text-center" href="{{ site.link }}/events/">View our calendar</a>
         </nav>
       {% endblock %}
     {% endembed %}
@@ -200,7 +200,7 @@
       <div class="relative {% if partner_image_src %} bg-orange-translucent text-white {% endif %}">
         <div class="max-w-xl mx-auto">
           <div class="container py-6">
-            <h2 class="mb-4 font-bold text-3xl">Partner with Us</h2>
+            <h2 class="mb-4 font-bold text-3xl leading-tight">Partner with Us</h2>
 
             <p class="max-w-md mb-4 font-bold text-xl">{{ post.get_field("home_page_partner_text") }}</p>
 

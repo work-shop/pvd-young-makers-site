@@ -6,10 +6,10 @@
   <div class="relative {% if image_src %} bg-teal-translucent {% else %} bg-teal-light {% endif %}">
     <div class="max-w-xl mx-auto">
       <div class="container py-6">
-        <h1 class="font-bold text-5xl">{{ post.title }}</h1>
+        <h1 class="font-bold text-5xl leading-tight">{{ post.title }}</h1>
 
         {% if post.get_field("page_summary") %}
-          <p class="mt-5 font-bold text-3xl">{{ post.get_field("page_summary") }}</p>
+          <p class="mt-5 font-bold text-3xl leading-tight">{{ post.get_field("page_summary") }}</p>
         {% endif %}
 
         {% if post.get_field("page_hero_links") %}
