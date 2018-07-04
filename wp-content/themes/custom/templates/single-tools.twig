@@ -56,7 +56,9 @@
       </div>
     {% endblock %}
   {% endembed %}
+{% endblock %}
 
+{% block single_fullwidth_content %}
   {% if map_options %}
     {% embed "partials/section.twig" with { section_classes: 'map-container' } %}
       {% block extra %}
