@@ -58,8 +58,8 @@
   {% endembed %}
 {% endblock %}
 
-{% block single_fullwidth_content %}
-  {% if map_options %}
+{% if map_options %}
+  {% block single_fullwidth_content %}
     {% embed "partials/section.twig" with { section_classes: 'map-container' } %}
       {% block extra %}
         <script>
@@ -72,5 +72,5 @@
         <div id="locations-map" class="ws-map w-screen h-screen" data-options="locationsMapOptions"></div>
       {% endblock %}
     {% endembed %}
-  {% endif %}
-{% endblock %}
+  {% endblock %}
+{% endif %}
