@@ -1,5 +1,6 @@
 .Nav {
   @apply .text-white;
+  pointer-events: none;
   width: 100%;
   font-size: 1.25rem;
 
@@ -8,21 +9,31 @@
   }
 }
 
-.Nav .Block {
-  width: 100%;
+.Nav-content {
+  pointer-events: auto;
   margin: 0;
   padding: 0;
+
+  @media (min-width: 768px) {
+    display: table;
+  }
 }
 
-.Nav-toggle:checked ~ .Nav-toggleLabel .Nav-toggleLabelIcon--collapsed {
+.Nav-toggle:checked
+  ~ .Nav-content
+  .Nav-toggleLabel
+  .Nav-toggleLabelIcon--collapsed {
   display: none;
 }
 
-.Nav-toggle:not(:checked) ~ .Nav-toggleLabel .Nav-toggleLabelIcon--uncollapsed {
+.Nav-toggle:not(:checked)
+  ~ .Nav-content
+  .Nav-toggleLabel
+  .Nav-toggleLabelIcon--uncollapsed {
   display: none;
 }
 
-.Nav-toggle:checked ~ .Nav-list {
+.Nav-toggle:checked ~ .Nav-content .Nav-list {
   display: block;
 }
 
@@ -159,4 +170,8 @@
 
 .Nav-link:hover {
   @apply .bg-orange .text-white;
+}
+
+.Nav-toggle:checked ~ .Nav-overlayCloser {
+  pointer-events: auto;
 }

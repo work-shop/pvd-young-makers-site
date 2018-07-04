@@ -1,7 +1,9 @@
 {% if nav %}
-	<nav class="Nav fixed z-50 pin-l md:pt-3">
-		<div class="Block Block--dark">
-			<input class="Nav-toggle" id="nav-toggle" type="checkbox" hidden="hidden">
+	{# <nav class="Nav fixed z-50 pin-l md:pt-3"> #}
+	<nav class="Nav fixed z-50 pin flex flex-col h-screen">
+		<input class="Nav-toggle" id="nav-toggle" type="checkbox" hidden="hidden">
+
+		<div class="Nav-content Block Block--dark relative z-50 md:mt-3">
 			<label class="Nav-toggleLabel" for="nav-toggle" hidden="hidden">
 				{% spaceless %}
 					<span class="Nav-toggleLabelIcon Nav-toggleLabelIcon--collapsed"></span>
@@ -39,5 +41,7 @@
 				{% endfor %}
 			</ul>
 		</div>
+
+		<div class="Nav-overlayCloser absolute z-40 pin h-full"></div>
 	</nav>
 {% endif %}
