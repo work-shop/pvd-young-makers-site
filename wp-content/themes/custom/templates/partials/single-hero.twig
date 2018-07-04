@@ -37,20 +37,28 @@
           {% if primary_text %}
             <div class="flex items-center px-3 py-2 small-caps">
               {% if primary_pictogram %}
-                <span class="mr-2 group-hover:text-orange" data-pictogram="{{ primary_pictogram }}"></span>
+                <span class="mr-2" data-pictogram="{{ primary_pictogram }}"></span>
               {% endif %}
 
-              <span class="group-hover:text-orange">{{ primary_text }}</span>
+              <span>{{ primary_text }}</span>
             </div>
           {% endif %}
 
-          {% if secondary_text %}
-            <div class="flex items-center px-3 py-2 border-t-1 border-teal-darkest small-caps">
+          {% if secondary_text and secondary_link %}
+            <a class="flex items-center px-3 py-2 border-t-1 border-teal-darkest small-caps no-underline hover:border-orange hover:bg-orange-lightest hover:text-orange" href="{{ secondary_link }}">
               {% if secondary_pictogram %}
-                <span class="mr-2 group-hover:text-orange" data-pictogram="{{ secondary_pictogram }}"></span>
+                <span class="mr-2" data-pictogram="{{ secondary_pictogram }}"></span>
               {% endif %}
 
-              <span class="group-hover:text-orange">{{ secondary_text }}</span>
+              <span>{{ secondary_text }}</span>
+            </a>
+          {% elseif secondary_text %}
+            <div class="flex items-center px-3 py-2 border-t-1 border-teal-darkest small-caps">
+              {% if secondary_pictogram %}
+                <span class="mr-2" data-pictogram="{{ secondary_pictogram }}"></span>
+              {% endif %}
+
+              <span>{{ secondary_text }}</span>
             </div>
           {% endif %}
         </div>

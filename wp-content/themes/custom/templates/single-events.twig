@@ -14,7 +14,8 @@
     primary_pictogram: "{",
     primary_text: event_date,
     secondary_pictogram: ",",
-    secondary_text: post.get_field("location")[0]
+    secondary_text: post.get_field("location")[0],
+    secondary_link: post.get_field("location")[0].link
   } %}
 {% endblock %}
 
