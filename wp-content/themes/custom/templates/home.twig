@@ -7,10 +7,9 @@
         var locationsMapOptions = {
           map: {
             zoomControl: false,
-            streetViewControl: false,
           },
           data: {{ map_options.data|json_encode() }},
-          render: { center: { lat: 41.8240, lng: -71.4128 }, zoom: 14 },
+          render: {},
         };
       </script>
 
