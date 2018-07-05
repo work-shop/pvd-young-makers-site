@@ -2,17 +2,4 @@
 
 {% block page_content %}
   {% include "partials/calendar.twig" %}
-
-  {% if map_options %}
-    <div class="map-container">
-      <script>
-      var locationsMapOptions = {
-        map: {},
-        data: {{ map_options.data|json_encode() }},
-        render: {},
-      };
-      </script>
-      <div id="locations-map" class="ws-map w-full h-screen" data-options="locationsMapOptions"></div>
-    </div>
-  {% endif %}
 {% endblock %}
