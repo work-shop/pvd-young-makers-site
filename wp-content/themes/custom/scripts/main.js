@@ -16,6 +16,9 @@ const maps = makeSlippyMaps({
     fullscreenControl: false
   },
   marker: {
+    icon: {
+      fillColor: '#e36f1e',
+    },
     popup: {
       pointer: "8px"
     }
