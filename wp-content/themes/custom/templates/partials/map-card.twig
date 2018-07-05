@@ -1,13 +1,13 @@
 <div class="group block max-w-md border-1 border-teal-darkest bg-teal-lightest ">
-  <div class="p-3 border-b-1 border-teal-darkest bg-teal-darkest text-white font-bold text-2xl leading-tight">
+  <div class="p-3 border-b-1 border-teal-darkest bg-teal-darkest text-white leading-tight text-base tracking-loose uppercase">
     {{ title }}
-  </div>
+  </div>  
 
   {% for row in rows %}
 
     {% if row.type == 'text-pictogram-row' %}
 
-      <div class="flex items-center px-3 py-2 small-caps border-b-1 border-teal-darkest">
+      <div class="flex items-center px-3 py-2 border-b-1 border-teal-darkest text-sm tracking-loose uppercase">
         <span class="flex-grow">{{ row.text }}</span>
         {% if row.pictogram %}
           <span class="flex-no-grow" data-pictogram="{{ row.pictogram }}"></span>
@@ -18,7 +18,7 @@
 
     {% if row.type == 'text-row' %}
 
-      <div class="flex items-center px-3 py-2 border-teal-darkest">
+      <div class="flex items-center px-3 py-2 border-teal-darkest text-sm tracking-loose uppercase">
         <span class="flex-grow">{{ row.text }}</span>
       </div>
 
@@ -26,7 +26,7 @@
 
     {% if row.type == 'link-pictogram-row' %}
       <a class="no-underline" href="{{ row.url }}">
-        <div class="flex items-center px-3 py-2 small-caps border-teal-darkest no-underline">
+        <div class="flex items-center px-3 py-2 border-teal-darkest no-underline bg-orange text-white text-base tracking-loose uppercase">
           <span class="flex-grow">{{ row.text }}</span>
           <span class="flex-no-grow" data-pictogram="„"></span>
         </div>

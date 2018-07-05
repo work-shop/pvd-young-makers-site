@@ -28,3 +28,7 @@
   color: config( 'colors.white' );
   opacity: 1;
 }
+
+.ws-map-popup-content div div:last-of-type {
+  @apply .border-b-0;
+}
