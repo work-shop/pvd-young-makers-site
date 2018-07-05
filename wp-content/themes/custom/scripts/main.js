@@ -12,6 +12,7 @@ const maps = makeSlippyMaps({
   selector: ".ws-map",
   map: {
     mapTypeControl: false,
+    streetViewControl: false,
     fullscreenControl: false
   },
   marker: {
