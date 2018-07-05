@@ -28,3 +28,11 @@
 .ws-map-popup-content div div:last-of-type {
   @apply .border-b-0;
 }
+
+
+.ws-map-static {
+  @apply .pointer-events-none;
+}
+.ws-map-static .ws-map-popup-close-button {
+    display: none;
+}

@@ -138,13 +138,15 @@
     <div class="map-container">
       <script>
       var locationMapOptions = {
-        map: {},
+        map: {
+          zoomControl: false,
+        },
         data: {{ map_options.data|json_encode() }},
         render: { center: {{ map_options.data.marker.position|json_encode() }}, zoom: 16.5 },
       };
       locationMapOptions.data.marker.popup.openOnInitialization = true;
       </script>
-      <div id="location-map" class="ws-map w-full h-screen" data-options="locationMapOptions"></div>
+      <div id="location-map" class="ws-map w-full h-screen ws-map-static" data-options="locationMapOptions"></div>
     </div>
   {% endif %}
 
