@@ -168,12 +168,42 @@ class WS_Map_Objects {
             ) );
         }
         if ( is_array( $events ) ) {
-            $number_of_events = count( $events );
-            array_push( $card_rows, array(
-                'type' => 'text-pictogram-row',
-                'text' =>  $number_of_events . ' upcoming events',
-                'pictogram' => 'é',
-            ) );
+            // get all event end dates
+            $event_end_dates = array();
+            for ($i=0; $i < count( $events ); $i++) { 
+                $event = $events[ $i ];
+                $event_id = $event->ID;
+                $event_end_string = get_field( 'event_end', $event_id );
+                if ( ! is_string( $event_end_string ) ) {
+                    break;
+                }
+                $event_end_date = DateTime::createFromFormat( 'd/m/Y g:i a', $event_end_string );
+                array_push( $event_end_dates, $event_end_date );
+            }
+
+            // filter event end dates to only include those that are after now
+            $now = new DateTime( 'now' );
+            $future_event_dates = array();
+            for ($i=0; $i < count( $event_end_dates ); $i++) {
+                $event_end_date = $event_end_dates[ $i ];
+                if ( $event_end_date > $now ) {
+                    array_push( $future_event_dates, $event_end_date );
+                }
+            }
+
+            $number_of_future_events = count( $future_event_dates );
+
+            if ( $number_of_future_events > 0 ) {
+                $upcoming_event_text = 'upcoming event';
+                if ( $upcoming_event_text > 1 ) {
+                    $upcoming_event_text .= 's';
+                }
+                array_push( $card_rows, array(
+                    'type' => 'text-pictogram-row',
+                    'text' =>  $number_of_future_events . ' ' . $upcoming_event_text,
+                    'pictogram' => 'é',
+                ) );
+            }
         }
 
         array_push( $card_rows, array(
