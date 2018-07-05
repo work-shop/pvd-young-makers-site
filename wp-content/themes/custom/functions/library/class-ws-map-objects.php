@@ -201,7 +201,7 @@ class WS_Map_Objects {
                 array_push( $card_rows, array(
                     'type' => 'text-pictogram-row',
                     'text' =>  $number_of_future_events . ' ' . $upcoming_event_text,
-                    'pictogram' => 'é',
+                    'pictogram' => '{',
                 ) );
             }
         }
