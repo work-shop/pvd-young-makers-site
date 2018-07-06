@@ -80,7 +80,7 @@ class WS_Map_Objects {
         $card_rows = array(
             array(
                 'type' => 'text-row',
-                'text' => $address
+                'text' => static::format_address( $address )
             )
         );
 
@@ -343,6 +343,25 @@ class WS_Map_Objects {
         else {
             return null;
         }
+    }
+
+    /**
+     * Given an `address` string, create line breaks after all commas
+     * except the last two. These are use for defining the
+     * City, State, Country. These should all be on one line.
+     * @param  string $address
+     * @return string $formatted_address
+     */
+    private static function format_address ( $address ) {
+        $address_parts = explode( ', ', $address );
+        $comma_count = count( $address_parts );
+        $commas_to_remove = $comma_count - 2;
+        if ( $commas_to_remove < 0 ) {
+            $commas_to_remove = 0;
+        }
+        $address_parts = explode( ',', $address, $commas_to_remove );
+        $formatted_address = implode( '<br />', $address_parts );
+        return '<p>' . $formatted_address . '</p>';
     }
 
 }
