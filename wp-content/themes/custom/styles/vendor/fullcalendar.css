@@ -41,7 +41,7 @@
 
   /* List view */
   & .fc-list-view {
-    @apply .p-3 .border-1 .border-orange;
+    @apply .border-orange;
   }
 
   & .fc-list-heading .fc-widget-header {
@@ -61,7 +61,7 @@
   }
 
   & .fc-list-empty-wrap2 {
-    @apply .relative;
+    @apply .relative .p-3;
   }
 
   & .fc-list-empty {

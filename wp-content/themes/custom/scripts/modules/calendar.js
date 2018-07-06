@@ -1,5 +1,6 @@
 import "babel-polyfill";
 import "fullcalendar";
+import Tooltip from "tooltip.js";
 import $ from "jquery";
 
 export class Calendar {
@@ -182,6 +183,7 @@ export class Calendar {
         title: event.acf.event_name,
         start: $.fullCalendar.moment(event.acf.event_start, dateFormat),
         end: $.fullCalendar.moment(event.acf.event_end, dateFormat),
+        location: event.acf.location[0].post_title,
         url: event.link
       };
 
@@ -197,10 +199,6 @@ export class Calendar {
         return location.ID === locationId;
       });
     });
-
-    // const filteredEvents = filter(events, {
-    //   acf: { location: [{ ID: locationId }] }
-    // });
 
     return filteredEvents;
   }
@@ -222,7 +220,52 @@ export class Calendar {
     return filteredEvents;
   }
 
-  renderEvent(event, element, view) {
+  renderEvent(event, $element, view) {
+    let eventDate =
+      $.fullCalendar.moment(event.start).format("MMMM DD, YYYY, h:mma") + " - ";
+    if (
+      event.start.format("MMMM DD, YYYY") === event.end.format("MMMM DD, YYYY")
+    ) {
+      eventDate += event.end.format("h:mma");
+    } else {
+      eventDate += event.end.format("MMMM DD, YYYY, h:mma");
+    }
+
+    const eventLocation = event.location;
+
+    const tooltip = new Tooltip($element, {
+      placement: "bottom",
+      container: document.querySelector("#calendar-tooltip"),
+      template: `
+        <div
+          class="tooltip z-50 block border-1 border-teal-darkest bg-teal-lightest hover:border-orange hover:bg-orange-lightest"
+          role="tooltip"
+        >
+          <div class="tooltip-arrow"></div>
+
+          <div class="p-3 border-b-1 border-teal-darkest bg-teal-darkest text-white font-bold text-2xl leading-tight">
+            <div class="tooltip-inner"></div>
+          </div>
+
+          <div class="flex items-center px-3 py-2 small-caps border-b-1 border-teal-darkest">
+            <span class="mr-2" data-pictogram="{"></span>
+            <span>${eventDate}</span>
+          </div>
+
+          <div class="flex items-center px-3 py-2 small-caps">
+            <span class="mr-2" data-pictogram=","></span>
+            <span>${eventLocation}</span>
+          </div>
+        </div>
+      `
+    });
+    tooltip.updateTitleContent(event.title);
+
+    $element.on({
+      mouseover: () => tooltip.show(),
+      mouseleave: () => tooltip.hide()
+    });
+
     const dateString = $.fullCalendar.formatDate(event.start, "Y-MM-DD");
     const $dayTopEvent = view.el.find(`.fc-day-top[data-date="${dateString}"]`);
     $dayTopEvent.addClass("fc-event-day-top");
