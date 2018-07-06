@@ -40,6 +40,10 @@
   }
 
   /* List view */
+  & .fc-list-view {
+    @apply .p-3 .border-1 .border-orange;
+  }
+
   & .fc-list-heading .fc-widget-header {
     @apply .px-3 .py-2 .bg-orange .text-white .text-sm .tracking-loose .uppercase;
   }
@@ -54,5 +58,13 @@
 
   & .fc-list-item-title a {
     @apply .no-underline;
+  }
+
+  & .fc-list-empty-wrap2 {
+    @apply .relative;
+  }
+
+  & .fc-list-empty {
+    @apply .bg-transparent;
   }
 }

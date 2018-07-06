@@ -7,10 +7,23 @@ export class Calendar {
     this.isInstantiated = false;
     this.$container = $("#fullcalendar");
     this.$filter = $(".calendar-filter");
+    this.$previousMonthLink = $("#calendar-previous-month-link");
+    this.$nextMonthLink = $("#calendar-next-month-link");
 
     this.update();
+    this.handlePagination();
     this.handleFiltering();
     this.render();
+  }
+
+  handlePagination() {
+    this.$previousMonthLink.on("click", event => {
+      event.preventDefault();
+    });
+
+    this.$nextMonthLink.on("click", event => {
+      event.preventDefault();
+    });
   }
 
   handleFiltering() {
