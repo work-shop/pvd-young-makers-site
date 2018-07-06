@@ -1,11 +1,11 @@
 {% extends "single.twig" %}
 
 {% block hero %}
-  {% set event_date = event.event_start|date("F j, Y, g:ia") ~ " – " %}
-  {% if event.event_start|date("F j, Y") == event.event_end|date("F j, Y") %}
-    {% set event_date = event_date ~ event.event_end|date("g:ia") %}
+  {% set event_date = post.event_start|date("F j, Y, g:ia") ~ " – " %}
+  {% if post.event_start|date("F j, Y") == post.event_end|date("F j, Y") %}
+    {% set event_date = event_date ~ post.event_end|date("g:ia") %}
   {% else %}
-    {% set event_date = event_date ~ event.event_end|date("F j, Y, g:ia") %}
+    {% set event_date = event_date ~ post.event_end|date("F j, Y, g:ia") %}
   {% endif %}
 
   {% include "partials/single-hero.twig" with {
