@@ -7,22 +7,43 @@ export class Calendar {
     this.isInstantiated = false;
     this.$container = $("#fullcalendar");
     this.$filter = $(".calendar-filter");
+    this.$title = $("#calendar-title").find("h2");
     this.$previousMonthLink = $("#calendar-previous-month-link");
     this.$nextMonthLink = $("#calendar-next-month-link");
 
     this.update();
-    this.handlePagination();
     this.handleFiltering();
     this.render();
+    this.handlePagination();
   }
 
   handlePagination() {
     this.$previousMonthLink.on("click", event => {
       event.preventDefault();
+
+      const selectedDate = this.$container.fullCalendar("getDate");
+      const selectedDateMinus1Month = selectedDate.clone().subtract(1, "month");
+      const newMonth = selectedDateMinus1Month.format("MM");
+      const newYear = selectedDateMinus1Month.format("YYYY");
+
+      this.params.month = newMonth;
+      this.params.year = newYear;
+
+      this.updateUrl();
     });
 
     this.$nextMonthLink.on("click", event => {
       event.preventDefault();
+
+      const selectedDate = this.$container.fullCalendar("getDate");
+      const selectedDatePlus1Month = selectedDate.clone().add(1, "month");
+      const newMonth = selectedDatePlus1Month.format("MM");
+      const newYear = selectedDatePlus1Month.format("YYYY");
+
+      this.params.month = newMonth;
+      this.params.year = newYear;
+
+      this.updateUrl();
     });
   }
 
@@ -39,27 +60,29 @@ export class Calendar {
     });
 
     // Update URL params on select option change
-    this.$filter.change(() => {
-      const params = [];
+    this.$filter.change(() => this.updateUrl());
+  }
 
-      if (this.params.month && this.params.year) {
-        params.push(`month=${this.params.month}`);
-        params.push(`year=${this.params.year}`);
+  updateUrl() {
+    const params = [];
+
+    if (this.params.month && this.params.year) {
+      params.push(`month=${this.params.month}`);
+      params.push(`year=${this.params.year}`);
+    }
+
+    this.$filter.each((i, element) => {
+      const $element = $(element);
+      const value = $element.val();
+
+      if (!value == "") {
+        params.push(`${$element.data("param")}=${encodeURIComponent(value)}`);
       }
-
-      this.$filter.each((i, element) => {
-        const $element = $(element);
-        const value = $element.val();
-
-        if (!value == "") {
-          params.push(`${$element.data("param")}=${encodeURIComponent(value)}`);
-        }
-      });
-
-      const locationHrefWithParams = `${this.locationHref}?${params.join("&")}`;
-      history.replaceState({}, "", locationHrefWithParams);
-      this.update();
     });
+
+    const locationHrefWithParams = `${this.locationHref}?${params.join("&")}`;
+    history.replaceState({}, "", locationHrefWithParams);
+    this.update();
   }
 
   update() {
@@ -67,15 +90,23 @@ export class Calendar {
     this.locationHref = this.locationUrl.origin + this.locationUrl.pathname;
 
     const searchParams = new URLSearchParams(this.locationUrl.search);
+    const currentDate = $.fullCalendar.moment();
     this.params = {
-      year: searchParams.get("year"),
-      month: searchParams.get("month"),
+      year: searchParams.get("year") || currentDate.format("YYYY"),
+      month: searchParams.get("month") || currentDate.format("MM"),
       eventType: parseInt(searchParams.get("eventType"), 10),
       location: parseInt(searchParams.get("location"), 10),
       toolType: parseInt(searchParams.get("toolType"), 10)
     };
 
     if (this.isInstantiated) {
+      const selectedDate = $.fullCalendar.moment(
+        `${this.params.year}-${this.params.month}`
+      );
+      const formattedSelectedDate = selectedDate.format("MMMM YYYY");
+      this.$title.text(`Calendar for ${formattedSelectedDate}`);
+
+      this.$container.fullCalendar("gotoDate", selectedDate);
       this.$container.fullCalendar("refetchEvents");
     }
   }
