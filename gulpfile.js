@@ -6,6 +6,7 @@
 const path = require("path");
 const browserify = require("browserify");
 const babelify = require("babelify");
+const brfs = require("brfs");
 const source = require("vinyl-source-stream");
 const buffer = require("vinyl-buffer");
 
@@ -69,9 +70,11 @@ const admin_styles_watch_files = [
   path.join(__dirname, paths.src, "styles", "admin", "**", "*.css")
 ];
 
-const js_bundler = browserify(js_entrypoint).transform(babelify, {
-  presets: ["env"]
-});
+const js_bundler = browserify(js_entrypoint)
+  .transform(brfs)
+  .transform(babelify, {
+    presets: ["env"]
+  });
 
 /** =============
  * Gulp Processes

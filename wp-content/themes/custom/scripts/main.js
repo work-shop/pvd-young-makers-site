@@ -2,29 +2,9 @@ import { livereload } from "./modules/livereload-client.js";
 import { Calendar } from "./modules/calendar.js";
 import "./modules/nav.js";
 import "./modules/home.js";
-import makeSlippyMaps from "@work-shop/map-module";
+import makeSlippyMaps from "./modules/map/initializer.js";
 
 livereload();
 
 const calendar = new Calendar();
-
-const maps = makeSlippyMaps({
-  selector: ".ws-map",
-  map: {
-    mapTypeControl: false,
-    streetViewControl: false,
-    fullscreenControl: false
-  },
-  marker: {
-    icon: {
-      fillColor: '#e36f1e',
-    },
-    popup: {
-      pointer: "8px"
-    }
-  },
-  render: {
-    center: { lat: 41.824, lng: -71.4128 },
-    zoom: 14
-  }
-});
+const maps = makeSlippyMaps();
