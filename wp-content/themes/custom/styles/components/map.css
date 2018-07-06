@@ -29,10 +29,20 @@
   @apply .border-b-0;
 }
 
-
 .ws-map-static {
   @apply .pointer-events-none;
 }
+
 .ws-map-static .ws-map-popup-close-button {
     display: none;
+}
+
+/* Style for "Use ⌘ + scroll to zoom the map" container */
+.gm-style-pbc {
+  @apply .bg-teal-translucent;
+}
+
+/* Style for "Use ⌘ + scroll to zoom the map" text */
+.gm-style-pbt {
+  @apply .text-white;
 }
