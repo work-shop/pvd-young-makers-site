@@ -49,7 +49,7 @@
     "vinyl-source-stream": "^2.0.0"
   },
   "dependencies": {
-    "@work-shop/map-module": "^1.0.3",
+    "@work-shop/map-module": "^1.0.4",
     "fullcalendar": "^3.9.0",
     "jquery": "^3.3.1"
   }
