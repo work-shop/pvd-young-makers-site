@@ -1,7 +1,7 @@
 [data-pictogram] {
   @apply .inline-block .leading-none .text-center;
   width: 1em;
-  font-size: 2rem;
+  font-size: 2em;
 
   &::after {
     @apply .font-pictogram;
