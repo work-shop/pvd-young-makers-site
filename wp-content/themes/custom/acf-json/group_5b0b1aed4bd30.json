@@ -72,7 +72,7 @@
             "library": "all",
             "min_size": "",
             "max_size": "",
-            "mime_types": "svg"
+            "mime_types": ""
         }
     ],
     "location": [
@@ -92,5 +92,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1527770961
+    "modified": 1531335134
 }
