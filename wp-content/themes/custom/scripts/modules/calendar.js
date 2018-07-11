@@ -100,16 +100,22 @@ export class Calendar {
       tool: parseInt(searchParams.get("tool"), 10)
     };
 
-    if (this.isInstantiated) {
-      const selectedDate = $.fullCalendar.moment(
-        `${this.params.year}-${this.params.month}`
-      );
-      const formattedSelectedDate = selectedDate.format("MMMM YYYY");
-      this.$title.text(`Calendar for ${formattedSelectedDate}`);
+    this.updateCalendarTitle();
 
-      this.$container.fullCalendar("gotoDate", selectedDate);
+    if (this.isInstantiated) {
+      this.$container.fullCalendar("gotoDate", this.getSelectedDate());
       this.$container.fullCalendar("refetchEvents");
     }
+  }
+
+  getSelectedDate() {
+    return $.fullCalendar.moment(`${this.params.year}-${this.params.month}`);
+  }
+
+  updateCalendarTitle() {
+    const selectedDate = this.isInstantiated ? this.getSelectedDate() : $.fullCalendar.moment();
+    const formattedSelectedDate = selectedDate.format("MMMM YYYY");
+    this.$title.text(`Calendar for ${formattedSelectedDate}`);
   }
 
   render() {
