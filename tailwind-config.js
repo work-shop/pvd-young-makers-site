@@ -71,6 +71,7 @@ let colors = {
   teal: "#3ca5cd",
   "teal-translucent": "#3ca5cd99",
   "teal-light": "#65b8d7",
+  "teal-light-translucent": "#65b8d766",
   "teal-lighter": "#8dcbe2",
   "teal-lightest": "#def0f7"
 };

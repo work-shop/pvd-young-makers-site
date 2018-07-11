@@ -22,7 +22,7 @@
       </div>
     {% endif %}
 
-    <div id="hero" class="absolute pin-t w-full bg-teal-translucent">
+    <div id="hero" class="absolute pin-t w-full bg-teal-light-translucent">
       <div class="max-w-xl mx-auto">
         <div class="flex flex-col justify-center h-screen container py-6">
           {% if post.get_field("home_page_tagline") %}
@@ -89,105 +89,107 @@
 		</section>
 	{% endif %}
 
-	{% embed "partials/section.twig" %}
-		{% block title %}
-			About
-			{{ site.title }}
-		{% endblock %}
-
-		{% block text %}
-      <div class="mb-3">
-        {{ post.get_field("home_page_about_text") }}
-      </div>
-
-      <a class="Block Block--light" href="{{ site.link }}/making-and-learning/">Read about what we’re doing</a>
-    {% endblock %}
-
-    {% block extra %}
-			<nav class="hidden md:block mt-5">
-				<ul class="flex flex-wrap -m-2">
-          {% if post.get_field("home_page_locations_image") %}
-            <li class="w-full md:flex-1 m-2 text-center">
-              <a href="{{ site.link }}/locations/">{% spaceless %}
-                <img class="block mb-3 w-full object-cover border-1 border-darkest-teal hover:border-orange" src="{{ TimberImage(post.get_field("home_page_locations_image")).src("large") }}" height="320" alt="">
-              {% endspaceless %}</a><br class="hidden">
-
-              <a class="Block Block--light" href="{{ site.link }}/locations/">View our locations</a>
-            </li>
-          {% endif %}
-
-          {% if post.get_field("home_page_tools_image") %}
-            <li class="w-full md:flex-1 m-2 text-center">
-              <a href="{{ site.link }}/tools/">{% spaceless %}
-                <img class="block mb-3 w-full object-cover border-1 border-darkest-teal hover:border-orange" src="{{ TimberImage(post.get_field("home_page_tools_image")).src("large") }}" height="320" alt="">
-              {% endspaceless %}</a><br class="hidden">
-
-              <a class="Block Block--light" href="{{ site.link }}/tools/">Check out the tools</a>
-            </li>
-          {% endif %}
-
-          {% if post.get_field("home_page_events_image") %}
-            <li class="w-full md:flex-1 m-2 text-center">
-              <a href="{{ site.link }}/events/">{% spaceless %}
-                <img class="block mb-3 w-full object-cover border-1 border-darkest-teal hover:border-orange" src="{{ TimberImage(post.get_field("home_page_events_image")).src("large") }}" height="320" alt="">
-              {% endspaceless %}</a><br class="hidden">
-
-              <a class="Block Block--light" href="{{ site.link }}/events/">Find upcoming events</a>
-            </li>
-          {% endif %}
-
-          {% if post.get_field("home_page_badging_image") %}
-            <li class="w-full md:flex-1 m-2 text-center">
-              <a href="{{ site.link }}/badges/">{% spaceless %}
-                <img class="block mb-3 w-full object-cover border-1 border-darkest-teal hover:border-orange" src="{{ TimberImage(post.get_field("home_page_badging_image")).src("large") }}" height="320" alt="">
-              {% endspaceless %}</a><br class="hidden">
-
-              <a class="Block Block--light" href="{{ site.link }}/badges/">Read about badging</a>
-            </li>
-          {% endif %}
-				</ul>
-			</nav>
-		{% endblock %}
-	{% endembed %}
-
-  {% if events %}
-    {% embed "partials/section.twig" %}
+  <div class="my-4 md:my-5">
+    {% embed "partials/section.twig" with { section_extra_classes: "hidden md:block" } %}
       {% block title %}
-        Today’s Events
+        About
+        {{ site.title }}
+      {% endblock %}
+
+      {% block text %}
+        <div class="mb-3">
+          {{ post.get_field("home_page_about_text") }}
+        </div>
+
+        <a class="Block Block--light" href="{{ site.link }}/making-and-learning/">Read about what we’re doing</a>
       {% endblock %}
 
       {% block extra %}
-        <nav class="flex flex-wrap md:flex-no-wrap -m-2">
-          <div class="m-2">
-            <ul class="flex flex-wrap -m-2">
-              {% for event in events %}
-                <li class="w-full md:flex-1 m-2">
-                  {% set event_date = event.event_start|date("F j, Y, g:ia") ~ " – " %}
-                  {% if event.event_start|date("F j, Y") == event.event_end|date("F j, Y") %}
-                    {% set event_date = event_date ~ event.event_end|date("g:ia") %}
-                  {% else %}
-                    {% set event_date = event_date ~ event.event_end|date("F j, Y, g:ia") %}
-                  {% endif %}
+        <nav class="mt-5">
+          <ul class="flex flex-wrap -m-2">
+            {% if post.get_field("home_page_locations_image") %}
+              <li class="w-full md:flex-1 m-2 text-center">
+                <a href="{{ site.link }}/locations/">{% spaceless %}
+                  <img class="block mb-3 w-full object-cover border-1 border-darkest-teal hover:border-orange" src="{{ TimberImage(post.get_field("home_page_locations_image")).src("large") }}" height="320" alt="">
+                {% endspaceless %}</a><br class="hidden">
 
-                  {% include "partials/card.twig" with {
-                    title: event.event_name,
-                    link: event.link,
-                    primary_pictogram: "{",
-                    primary_text: event_date,
-                    secondary_pictogram: ",",
-                    secondary_text: event.location_name,
-                    image_src: TimberImage(event.get_field("event_image")).src("large")
-                  } only %}
-                </li>
-              {% endfor %}
-            </ul>
-          </div>
+                <a class="Block Block--light" href="{{ site.link }}/locations/">View our locations</a>
+              </li>
+            {% endif %}
 
-          <a class="Block Block--light self-start m-2 md:text-2xl md:leading-tight text-center" href="{{ site.link }}/events/">View our calendar</a>
+            {% if post.get_field("home_page_tools_image") %}
+              <li class="w-full md:flex-1 m-2 text-center">
+                <a href="{{ site.link }}/tools/">{% spaceless %}
+                  <img class="block mb-3 w-full object-cover border-1 border-darkest-teal hover:border-orange" src="{{ TimberImage(post.get_field("home_page_tools_image")).src("large") }}" height="320" alt="">
+                {% endspaceless %}</a><br class="hidden">
+
+                <a class="Block Block--light" href="{{ site.link }}/tools/">Check out the tools</a>
+              </li>
+            {% endif %}
+
+            {% if post.get_field("home_page_events_image") %}
+              <li class="w-full md:flex-1 m-2 text-center">
+                <a href="{{ site.link }}/events/">{% spaceless %}
+                  <img class="block mb-3 w-full object-cover border-1 border-darkest-teal hover:border-orange" src="{{ TimberImage(post.get_field("home_page_events_image")).src("large") }}" height="320" alt="">
+                {% endspaceless %}</a><br class="hidden">
+
+                <a class="Block Block--light" href="{{ site.link }}/events/">Find upcoming events</a>
+              </li>
+            {% endif %}
+
+            {% if post.get_field("home_page_badging_image") %}
+              <li class="w-full md:flex-1 m-2 text-center">
+                <a href="{{ site.link }}/badges/">{% spaceless %}
+                  <img class="block mb-3 w-full object-cover border-1 border-darkest-teal hover:border-orange" src="{{ TimberImage(post.get_field("home_page_badging_image")).src("large") }}" height="320" alt="">
+                {% endspaceless %}</a><br class="hidden">
+
+                <a class="Block Block--light" href="{{ site.link }}/badges/">Read about badging</a>
+              </li>
+            {% endif %}
+          </ul>
         </nav>
       {% endblock %}
     {% endembed %}
-  {% endif %}
+
+    {% if events %}
+      {% embed "partials/section.twig" %}
+        {% block title %}
+          Today’s Events
+        {% endblock %}
+
+        {% block extra %}
+          <nav class="flex flex-wrap md:flex-no-wrap -m-2">
+            <div class="m-2">
+              <ul class="flex flex-wrap -m-2">
+                {% for event in events %}
+                  <li class="w-full md:flex-1 m-2">
+                    {% set event_date = event.event_start|date("F j, Y, g:ia") ~ " – " %}
+                    {% if event.event_start|date("F j, Y") == event.event_end|date("F j, Y") %}
+                      {% set event_date = event_date ~ event.event_end|date("g:ia") %}
+                    {% else %}
+                      {% set event_date = event_date ~ event.event_end|date("F j, Y, g:ia") %}
+                    {% endif %}
+
+                    {% include "partials/card.twig" with {
+                      title: event.event_name,
+                      link: event.link,
+                      primary_pictogram: "{",
+                      primary_text: event_date,
+                      secondary_pictogram: ",",
+                      secondary_text: event.location_name,
+                      image_src: TimberImage(event.get_field("event_image")).src("large")
+                    } only %}
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+
+            <a class="Block Block--light self-start m-2 md:text-2xl md:leading-tight text-center" href="{{ site.link }}/events/">View our calendar</a>
+          </nav>
+        {% endblock %}
+      {% endembed %}
+    {% endif %}
+  </div>
 
   {% if post.get_field("home_page_partner_text") %}
     {% set partner_image_src = TimberImage(post.get_field("home_page_partner_image")).src("full") %}
