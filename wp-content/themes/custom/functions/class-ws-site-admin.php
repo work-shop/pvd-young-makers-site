@@ -8,13 +8,35 @@ class WS_Site_Admin {
         add_action('acf/init', array($this, 'add_options_pages'));
         add_action('acf/init', array($this, 'add_google_maps_key'));
         add_action( 'admin_head', array( $this, 'admin_css'));
+        add_action( 'admin_head', array( $this, 'render_svg_in_media') );
 
         add_action('wp_dashboard_setup', array($this, 'remove_dashboard_widgets') );
         add_action('wp_before_admin_bar_render', array($this, 'remove_admin_bar_items'));
 
         add_filter( 'get_user_metadata', array( $this, 'pages_per_page_wpse_23503'), 10, 4 );
+        add_filter( 'upload_mimes', array($this, 'enable_svg_mime_type' ) );
 
 
+    }
+
+
+    /**
+     * This pair of functions allows and properly renders SVG content
+     * in the wordpress media uploader.
+     */
+    public function enable_svg_mime_type( $mimes ) {
+        $mimes['svg'] = 'image/svg+xml';
+        return $mimes;
+    }
+
+
+    public function render_svg_in_media( ) {
+        echo '<style type="text/css">
+                .attachement-266x266, .thumbnail-img {
+                    width: 100% !important;
+                    height: auto !important;
+                }
+             </style>';
     }
 
     /**
