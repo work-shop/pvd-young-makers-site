@@ -97,7 +97,7 @@ export class Calendar {
       month: searchParams.get("month") || currentDate.format("MM"),
       eventType: parseInt(searchParams.get("eventType"), 10),
       location: parseInt(searchParams.get("location"), 10),
-      toolType: parseInt(searchParams.get("toolType"), 10)
+      tool: parseInt(searchParams.get("tool"), 10)
     };
 
     if (this.isInstantiated) {
@@ -168,10 +168,10 @@ export class Calendar {
       );
     }
 
-    if (this.params.toolType && this.params.toolType !== -1) {
-      filteredEvents = await this.filterByToolType(
+    if (this.params.tool && this.params.tool !== -1) {
+      filteredEvents = await this.filterByTool(
         filteredEvents,
-        this.params.toolType
+        this.params.tool
       );
     }
 
@@ -195,26 +195,27 @@ export class Calendar {
 
   filterByLocation(events, locationId) {
     const filteredEvents = events.filter(event => {
-      return event.acf.location.some(location => {
-        return location.ID === locationId;
-      });
+      const locations = event.acf.location;
+
+      if (locations.length > 0) {
+        return event.acf.location.some(location => {
+          return location.ID === locationId;
+        });
+      }
     });
 
     return filteredEvents;
   }
 
-  async filterByToolType(events, toolTypeId) {
-    const jsonUrl = `/wp-json/wp/v2/tools?tool-types=${toolTypeId}`;
-    const response = await fetch(jsonUrl);
-    const tools = await response.json();
-    const toolIds = [];
-
-    tools.forEach(tool => toolIds.push(tool.id));
-
+  async filterByTool(events, toolId) {
     const filteredEvents = events.filter(event => {
-      return event.acf.tools.some(tool => {
-        return toolIds.includes(tool.ID);
-      });
+      const tools = event.acf.tools;
+
+      if (tools.length > 0) {
+        return event.acf.tools.some(tool => {
+          return tool.ID === toolId;
+        });
+      }
     });
 
     return filteredEvents;

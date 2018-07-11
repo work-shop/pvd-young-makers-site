@@ -46,11 +46,11 @@
           <span class="mr-2" data-pictogram="("></span>
 
           <label class="relative flex w-full">
-            <select class="calendar-filter appearance-none w-full p-2 pr-4 border-1 border-orange rounded-none bg-white text-orange font-bold" data-param="toolType">
+            <select class="calendar-filter appearance-none w-full p-2 pr-4 border-1 border-orange rounded-none bg-white text-orange font-bold" data-param="tool">
               <option value="-1">All Tools</option>
 
-              {% for tool_type in tool_types %}
-                <option value="{{ tool_type.id }}">{{ tool_type.name }}</option>
+              {% for tool in tools %}
+                <option value="{{ tool.id }}">{{ tool.name }}</option>
               {% endfor %}
             </select>
 

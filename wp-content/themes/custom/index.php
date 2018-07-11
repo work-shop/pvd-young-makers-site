@@ -141,7 +141,7 @@ if ($post_name === 'events') {
 
     $context['event_types'] = Timber::get_terms('event-types');
     $context['locations'] = Timber::get_posts('post_type=locations');
-    $context['tool_types'] = Timber::get_terms('tool-types');
+    $context['tools'] = Timber::get_posts('post_type=tools');
 }
 
 Timber::render($templates, $context);
