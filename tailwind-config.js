@@ -829,7 +829,17 @@ module.exports = {
   |
   */
 
-  plugins: [require("tailwindcss-object-fit")(["responsive"])],
+  plugins: [
+    require("tailwindcss-object-fit")(["responsive"]),
+    require("tailwindcss-flexbox-order")({
+      range: {
+        from: -1,
+        to: 5
+      },
+      values: false,
+      variants: ["responsive"]
+    })
+  ],
 
   /*
   |-----------------------------------------------------------------------------

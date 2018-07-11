@@ -1,38 +1,33 @@
-/**
- * Base
- */
+/** Base */
+
 @import "tailwindcss/preflight";
 
-@import "base/fonts";
-@import "base/global";
+@import "./base/fonts";
+@import "./base/global";
 
-/**
- * Components
- */
-@import "../../../../node_modules/@work-shop/map-module/src/map-style.css";
+/** Components */
+
 @import "tailwindcss/components";
+@import "@work-shop/map-module/src/map-style.css";
 
-@import "components/wysiwyg";
-@import "components/block";
-@import "components/nav";
-@import "components/map";
-@import "components/footer";
+@import "./components/wysiwyg";
+@import "./components/block";
+@import "./components/nav";
+@import "./components/map";
+@import "./components/footer";
 
-/**
- * Utilities
- */
+/** Utilities */
+
 @import "tailwindcss/utilities";
 
-@import "utilities/container";
-@import "utilities/typography";
-@import "utilities/filters";
-@import "utilities/pictogram";
+@import "./utilities/container";
+@import "./utilities/typography";
+@import "./utilities/filters";
+@import "./utilities/pictogram";
 
-/**
- * Vendor
- */
+/** Vendor */
 
 @import "fullcalendar/dist/fullcalendar";
 
-@import "vendor/fullcalendar";
-@import "vendor/gravity-forms";
+@import "./vendor/fullcalendar";
+@import "./vendor/gravity-forms";
