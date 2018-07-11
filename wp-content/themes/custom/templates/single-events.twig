@@ -20,25 +20,27 @@
 {% endblock %}
 
 {% block single_content %}
-  {% embed "partials/section.twig" %}
-    {% block extra %}
-      <div class="">
-        {% include "components/measure.twig" with {
-          text: post.get_field("event_description")
-        } only %}
+  {% if post.get_field("signup_link") %}
+    {% embed "partials/section.twig" %}
+      {% block extra %}
+        <div class="">
+          {% include "components/measure.twig" with {
+            text: post.get_field("event_description")
+          } only %}
 
-        <div class="mt-5">
-          <a
-            class="Block Block--light"
-            href="{{ post.get_field("signup_link") }}"
-            target="_blank"
-            rel="noopener">
-            Sign up for this event at Eventbrite
-          </a>
+          <div class="mt-5">
+            <a
+              class="Block Block--light"
+              href="{{ post.get_field("signup_link") }}"
+              target="_blank"
+              rel="noopener">
+              Sign up for this event at Eventbrite
+            </a>
+          </div>
         </div>
-      </div>
-    {% endblock %}
-  {% endembed %}
+      {% endblock %}
+    {% endembed %}
+  {% endif %}
 
   {% if tools %}
     {% embed "partials/section.twig" %}
