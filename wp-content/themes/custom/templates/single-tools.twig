@@ -50,7 +50,7 @@
         {# COLUMN TWO #}
         <div class="mt-5 md:flex-1 md:mt-0">
           {% include "components/measure.twig" with {
-            text: post.get_field("description")
+            text: post.get_field("tool_description")
           } only %}
         </div>
       </div>
@@ -72,4 +72,3 @@
     </div>
   {% endif %}
 {% endblock %}
-
