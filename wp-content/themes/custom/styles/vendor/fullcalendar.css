@@ -28,7 +28,7 @@
 
   & .fc-event,
   & .fc-event-dot {
-    @apply .border-teal .bg-teal;
+    @apply .border-orange .bg-orange;
   }
 
   & .fc-day-grid-event {

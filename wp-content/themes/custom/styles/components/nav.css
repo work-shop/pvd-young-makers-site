@@ -175,3 +175,14 @@
 .Nav-toggle:checked ~ .Nav-overlayCloser {
   pointer-events: auto;
 }
+
+/* Nav item pictograms */
+.menu-item a::before {
+  @apply .inline-block .mr-2 .font-pictogram .leading-none .text-center;
+  width: 1em;
+  font-size: 1.5em;
+}
+.menu-item-events a::before { content: "\00e9"; }
+.menu-item-tools a::before { content: "("; }
+.menu-item-locations a::before { content: ","; }
+.menu-item-badges a::before { content: "∑"; }
