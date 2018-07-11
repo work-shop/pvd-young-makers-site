@@ -53,7 +53,20 @@ if ($post_name === 'tools') {
             ),
         ),
     );
-    $context['machines'] = Timber::get_posts($machines_args);
+    $machines = Timber::get_posts($machines_args);
+    // Replace each machine's event IDs with events objects
+    foreach($machines as $machine) {
+        if ($machine->events) {
+            $eventIds = $machine->events;
+            $events = [];
+            foreach($eventIds as $eventId) {
+                $event = Timber::get_post($eventId);
+                array_push($events, $event);
+            }
+            $machine->events = $events;
+        }
+    }
+    $context['machines'] = $machines;
 
     $materials_args = array(
         'post_type' => 'tools',
@@ -65,9 +78,23 @@ if ($post_name === 'tools') {
             ),
         ),
     );
-    $context['materials'] = Timber::get_posts($materials_args);
+    $materials = Timber::get_posts($materials_args);
+    // Replace each material's event IDs with events objects
+    foreach($materials as $material) {
+        if ($material->events) {
+            $eventIds = $material->events;
+            $events = [];
+            foreach($eventIds as $eventId) {
+                $event = Timber::get_post($eventId);
+                array_push($events, $event);
+            }
+            $material->events = $events;
+        }
+    }
+    $context['materials'] = $materials;
 
     $all_tools = array_merge($context['machines'], $context['materials']);
+
     $map_data = WS_Map_Objects::build_map_objects($all_tools);
     if (count($map_data) > 0) {
         $context['map_options'] = array(
@@ -78,7 +105,21 @@ if ($post_name === 'tools') {
 
 // Locations page
 if ($post_name === 'locations') {
-    $context['locations'] = Timber::get_posts('post_type=locations');
+    $locations = Timber::get_posts('post_type=locations');
+    // Replace each location's event IDs with events objects
+    foreach($locations as $location) {
+        if ($location->events) {
+            $eventIds = $location->events;
+            $events = [];
+            foreach($eventIds as $eventId) {
+                $event = Timber::get_post($eventId);
+                array_push($events, $event);
+            }
+            $location->events = $events;
+        }
+    }
+    $context['locations'] = $locations;
+
     $map_data = WS_Map_Objects::build_map_objects($context['locations']);
     if (count($map_data) > 0) {
         $context['map_options'] = array(

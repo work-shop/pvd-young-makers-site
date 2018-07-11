@@ -35,9 +35,18 @@
                   {% set location_tools_text = location_tools_text ~ "s" %}
                 {% endif %}
 
-                {% set location_events_text = location.events|length ~ " event" %}
-                {% if location.events|length != 1 %}
+                {% set location_upcoming_events = [] %}
+                {% for event in location.events %}
+                  {% if event.get_field("event_end")|date("d/m/Y") >= "now"|date("m/d/Y") %}
+                    {% set location_upcoming_events = location_upcoming_events|merge([event]) %}
+                  {% endif %}
+                {% endfor %}
+                {% set location_events_text = location_upcoming_events|length ~ " upcoming event" %}
+                {% if location_upcoming_events|length != 1%}
                   {% set location_events_text = location_events_text ~ "s" %}
+                {% endif %}
+                {% if location_upcoming_events|length == 0 %}
+                  {% set location_events_text = "No upcoming events" %}
                 {% endif %}
 
                 {% include "partials/card.twig" with {

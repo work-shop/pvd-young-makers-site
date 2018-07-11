@@ -10,7 +10,7 @@
 
           {% set tool_upcoming_events = [] %}
           {% for event in tool.events %}
-            {% if event.event_end >= "now"|date() %}
+            {% if event.event_end|date("d/m/Y") >= "now"|date("m/d/Y") %}
               {% set tool_upcoming_events = tool_upcoming_events|merge([event]) %}
             {% endif %}
           {% endfor %}
