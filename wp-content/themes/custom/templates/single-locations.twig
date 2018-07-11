@@ -37,7 +37,7 @@
             <ul class="mt-3 list-reset">
               {% for item in post.get_field("hours") %}
                 <li class="flex small-caps">
-                  <span class="w-5 mr-3 font-bold">{{ item.day }}</span>
+                  <span class="w-6 mr-3 font-bold">{{ item.day }}</span>
                   <span>{{ item.opening_time }} – {{ item.closing_time }}</span>
                 </li>
               {% endfor %}
