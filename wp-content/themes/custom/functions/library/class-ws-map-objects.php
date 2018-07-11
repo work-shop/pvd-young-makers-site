@@ -147,7 +147,6 @@ class WS_Map_Objects {
 
         // building an object with ACF custom fields.
         $tools = get_field('tools', $id);
-        // TODO: filter events to just those that are upcoming
         $events = get_field('events', $id);
         $position = get_field('location_address', $id);
 
@@ -167,6 +166,7 @@ class WS_Map_Objects {
                 'pictogram' => '(',
             ) );
         }
+        $default_upcoming_event_text = 'No upcoming events';
         if ( is_array( $events ) ) {
             // get all event end dates
             $event_end_dates = array();
@@ -193,18 +193,23 @@ class WS_Map_Objects {
 
             $number_of_future_events = count( $future_event_dates );
 
+            // Define $upcoming_event_text depending on number of future events
             if ( $number_of_future_events > 0 ) {
-                $upcoming_event_text = 'upcoming event';
+                $upcoming_event_text = $number_of_future_events . ' upcoming event';
                 if ( $upcoming_event_text > 1 ) {
                     $upcoming_event_text .= 's';
                 }
-                array_push( $card_rows, array(
-                    'type' => 'text-pictogram-row',
-                    'text' =>  $number_of_future_events . ' ' . $upcoming_event_text,
-                    'pictogram' => '{',
-                ) );
             }
         }
+        if ( ! isset( $upcoming_event_text ) ) {
+            $upcoming_event_text = $default_upcoming_event_text;
+        }
+
+        array_push( $card_rows, array(
+            'type' => 'text-pictogram-row',
+            'text' =>  $upcoming_event_text,
+            'pictogram' => '{',
+        ) );
 
         array_push( $card_rows, array(
             'type' => 'link-pictogram-row',
