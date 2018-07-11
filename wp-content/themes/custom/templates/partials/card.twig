@@ -1,25 +1,27 @@
 <a class="group block border-1 border-teal-darkest bg-teal-lightest hover:border-orange hover:bg-orange-lightest no-underline" href="{{ link }}">
-  <div class="p-3 border-b-1 border-teal-darkest bg-teal-darkest text-white font-bold text-2xl leading-tight group-hover:border-orange group-hover:bg-orange">
-    {{ title }}
-  </div>
+  <div class="max-h-medium overflow-hidden">
+    <div class="p-3 border-b-1 border-teal-darkest bg-teal-darkest text-white font-bold text-2xl leading-tight group-hover:border-orange group-hover:bg-orange">
+      {{ title }}
+    </div>
 
-  <div class="flex items-center px-3 py-2 small-caps border-b-1 border-teal-darkest group-hover:border-orange">
-    {% if primary_pictogram %}
-      <span class="mr-2 group-hover:text-orange" data-pictogram="{{ primary_pictogram }}"></span>
+    <div class="flex items-center px-3 py-2 small-caps border-b-1 border-teal-darkest group-hover:border-orange">
+      {% if primary_pictogram %}
+        <span class="mr-2 group-hover:text-orange" data-pictogram="{{ primary_pictogram }}"></span>
+      {% endif %}
+
+      <span class="group-hover:text-orange">{{ primary_text }}</span>
+    </div>
+
+    <div class="flex items-center px-3 py-2 small-caps">
+      {% if secondary_pictogram %}
+        <span class="mr-2 group-hover:text-orange" data-pictogram="{{ secondary_pictogram }}"></span>
+      {% endif %}
+
+      <span class="group-hover:text-orange">{{ secondary_text }}</span>
+    </div>
+
+    {% if image_src %}
+      <img class="block w-full object-cover border-t-1 border-teal-darkest group-hover:border-orange" src="{{ image_src }}" height="320" alt="">
     {% endif %}
-
-    <span class="group-hover:text-orange">{{ primary_text }}</span>
   </div>
-
-  <div class="flex items-center px-3 py-2 small-caps">
-    {% if secondary_pictogram %}
-      <span class="mr-2 group-hover:text-orange" data-pictogram="{{ secondary_pictogram }}"></span>
-    {% endif %}
-
-    <span class="group-hover:text-orange">{{ secondary_text }}</span>
-  </div>
-
-  {% if image_src %}
-    <img class="block w-full object-cover border-t-1 border-teal-darkest group-hover:border-orange" src="{{ image_src }}" height="320" alt="">
-  {% endif %}
 </a>

@@ -507,6 +507,7 @@ module.exports = {
     "5": "16rem",
     "6": "32rem",
     full: "100%",
+    "half-screen": "50vh",
     screen: "100vh"
   },
 
@@ -553,6 +554,7 @@ module.exports = {
   */
 
   maxHeight: {
+    medium: "27rem",
     full: "100%",
     screen: "100vh"
   },
