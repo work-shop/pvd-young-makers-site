@@ -3,8 +3,8 @@
 		 style="background-image: url('{{ image_src }}')">
 	</div>
 
-  <div class="relative {% if image_src %} bg-teal-translucent {% else %} bg-teal-light {% endif %}">
-    <div class="max-w-xl mx-auto">
+  <div class="relative flex items-end min-h-half-screen {% if image_src %} bg-teal-translucent {% else %} bg-teal-light {% endif %}">
+    <div class="w-full max-w-xl mx-auto">
       <div class="container py-6">
         <h1 class="font-bold text-5xl leading-tight">{{ post.title }}</h1>
 
