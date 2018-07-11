@@ -183,7 +183,7 @@ export class Calendar {
         title: event.acf.event_name,
         start: $.fullCalendar.moment(event.acf.event_start, dateFormat),
         end: $.fullCalendar.moment(event.acf.event_end, dateFormat),
-        location: event.acf.location[0].post_title,
+        location: event.acf.location && event.acf.location[0] && event.acf.location[0].post_title,
         url: event.link
       };
 
@@ -234,11 +234,11 @@ export class Calendar {
     const eventLocation = event.location;
 
     const tooltip = new Tooltip($element, {
-      placement: "bottom",
+      placement: "top",
       container: document.querySelector("#calendar-tooltip"),
       template: `
         <div
-          class="tooltip z-50 block border-1 border-teal-darkest bg-teal-lightest hover:border-orange hover:bg-orange-lightest"
+          class="tooltip pointer-events-none z-50 block border-1 border-teal-darkest bg-teal-lightest"
           role="tooltip"
         >
           <div class="tooltip-arrow"></div>
