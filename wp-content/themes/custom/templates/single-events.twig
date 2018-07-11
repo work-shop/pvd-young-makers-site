@@ -65,8 +65,8 @@
   {% endif %}
 {% endblock %}
 
-{% if map_options and map_options.data %}
-  {% block single_fullwidth_content %}
+{% block single_fullwidth_content %}
+  {% if map_options and map_options.data %}
     <div class="map-container">
       <script>
       var locationMapOptions = {
@@ -80,5 +80,5 @@
       </script>
       <div id="location-map" class="ws-map w-full h-screen ws-map-static" data-options="locationMapOptions"></div>
     </div>
-  {% endblock %}
-{% endif %}
+  {% endif %}
+{% endblock %}

@@ -58,8 +58,8 @@
   {% endembed %}
 {% endblock %}
 
-{% if map_options %}
-  {% block single_fullwidth_content %}
+{% block single_fullwidth_content %}
+  {% if map_options and map_options.data %}
     <div class="map-container">
       <script>
       var locationsMapOptions = {
@@ -70,5 +70,6 @@
       </script>
       <div id="locations-map" class="ws-map w-full h-screen" data-options="locationsMapOptions"></div>
     </div>
-  {% endblock %}
-{% endif %}
+  {% endif %}
+{% endblock %}
+
