@@ -1,5 +1,5 @@
 {% if nav %}
-	<nav class="Nav fixed z-50 pin flex flex-col items-start h-screen">
+	<nav class="Nav fixed z-50 pin flex flex-col md:items-start h-screen">
 		<input class="Nav-toggle" id="nav-toggle" type="checkbox" hidden="hidden">
 
 		<div class="Nav-content Block Block--dark relative z-50 md:mt-3">
@@ -30,7 +30,7 @@
 						{% if item.children %}
 							<ul class="Nav-sublist">
 								{% for child in item.children %}
-									<li class="Nav-sublistItem">
+									<li class="Nav-sublistItem {{ child.classes|join(' ') }}">
 										<a class="Nav-link" href="{{ child.link }}">{{ child.title }}</a>
 									</li>
 								{% endfor %}
