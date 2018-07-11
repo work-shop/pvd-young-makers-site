@@ -2,6 +2,10 @@
 	<nav class="Nav fixed z-50 pin flex flex-col md:items-start h-screen">
 		<input class="Nav-toggle" id="nav-toggle" type="checkbox" hidden="hidden">
 
+		<div class="hidden md:block w-full pointer-events-auto">
+			{% include "partials/page-alert.twig" %}
+		</div>
+
 		<div class="Nav-content Block Block--dark relative z-50 md:mt-3">
 			<label class="Nav-toggleLabel" for="nav-toggle" hidden="hidden">
 				{% spaceless %}
