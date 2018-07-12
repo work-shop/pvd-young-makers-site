@@ -23,6 +23,12 @@
     "deploy-staging": "DESTINATION=staging_html ./.deploy.sh",
     "deploy-production": "DESTINATION=public_html ./.deploy.sh"
   },
+  "dependencies": {
+    "@work-shop/map-module": "^1.0.4",
+    "fullcalendar": "^3.9.0",
+    "jquery": "^3.3.1",
+    "tooltip.js": "^1.2.0"
+  },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-polyfill": "^6.26.0",
@@ -39,8 +45,6 @@
     "gulp-sass": "^4.0.1",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^3.0.0",
-    "node-bourbon": "^4.2.8",
-    "node-neat": "^2.0.0-beta.0",
     "postcss-cssnext": "^3.1.0",
     "postcss-import": "^11.1.0",
     "tailwindcss": "^0.6.3",
@@ -48,11 +52,5 @@
     "tailwindcss-object-fit": "^1.0.1",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
-  },
-  "dependencies": {
-    "@work-shop/map-module": "^1.0.4",
-    "fullcalendar": "^3.9.0",
-    "jquery": "^3.3.1",
-    "tooltip.js": "^1.2.0"
   }
 }

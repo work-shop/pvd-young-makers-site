@@ -28,14 +28,6 @@ const managed_files = ["js", "css"];
 /** ==================================================
  * Include Paths, Watch Paths, and Compilation Targets
  * =================================================== */
-const bourbon_includePaths = require("node-bourbon").includePaths;
-const slick_includePaths = path.join(
-  __dirname,
-  "node_modules",
-  "slick-carousel",
-  "slick"
-);
-
 const php_entrypoint = path.join(
   __dirname,
   paths.src,
