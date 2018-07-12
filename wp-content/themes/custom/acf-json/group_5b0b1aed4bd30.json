@@ -73,6 +73,49 @@
             "min_size": "",
             "max_size": "",
             "mime_types": ""
+        },
+        {
+            "key": "field_5b47c104750a9",
+            "label": "Badge Metadata",
+            "name": "",
+            "type": "accordion",
+            "instructions": "Manage the set of events that young makers can earn badges at here.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
+            "key": "field_5b47c120750aa",
+            "label": "Events",
+            "name": "events",
+            "type": "relationship",
+            "instructions": "Add events that Young Makers can earn this badge at here.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "events"
+            ],
+            "taxonomy": [],
+            "filters": [
+                "search",
+                "taxonomy"
+            ],
+            "elements": "",
+            "min": "",
+            "max": "",
+            "return_format": "object"
         }
     ],
     "location": [
@@ -92,5 +135,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1531335134
+    "modified": 1531429133
 }

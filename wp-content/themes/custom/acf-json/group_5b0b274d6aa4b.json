@@ -232,6 +232,32 @@
             "min": "",
             "max": 1,
             "return_format": "object"
+        },
+        {
+            "key": "field_5b47c0b89f34e",
+            "label": "Badges",
+            "name": "badges",
+            "type": "relationship",
+            "instructions": "What badges can young makers earn at this event, if any?",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "badges"
+            ],
+            "taxonomy": [],
+            "filters": [
+                "search",
+                "taxonomy"
+            ],
+            "elements": "",
+            "min": "",
+            "max": "",
+            "return_format": "object"
         }
     ],
     "location": [
@@ -254,5 +280,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1527772669
+    "modified": 1531429037
 }
