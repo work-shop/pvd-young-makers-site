@@ -456,11 +456,13 @@ module.exports = {
     "4": "2rem",
     "5": "4rem",
     "6": "8rem",
+    "6.5": "12rem",
     "7": "16rem",
     "8": "32rem",
     "9": "64rem",
     "10": "128rem",
     "11": "256rem",
+    "1/2": "50%",
     full: "100%",
     screen: "100vh"
   },
@@ -554,6 +556,14 @@ module.exports = {
   */
 
   maxHeight: {
+    "0": "0",
+    "1": "1rem",
+    "2": "2rem",
+    "3": "4rem",
+    "4": "8rem",
+    "5": "16rem",
+    "6": "32rem",
+    small: "14rem",
     medium: "27rem",
     full: "100%",
     screen: "100vh"
@@ -610,6 +620,7 @@ module.exports = {
     "3": "1rem",
     "4": "2rem",
     "5": "4rem",
+    "5.5": "6rem",
     "6": "8rem",
     "7": "16rem"
   },
@@ -637,6 +648,7 @@ module.exports = {
     "3": "1rem",
     "4": "2rem",
     "5": "4rem",
+    "5.5": "6rem",
     "6": "8rem",
     "7": "16rem"
   },
@@ -802,7 +814,7 @@ module.exports = {
     shadows: ["responsive"],
     svgFill: [],
     svgStroke: [],
-    tableLayout: ['responsive'],
+    tableLayout: ["responsive"],
     textAlign: ["responsive"],
     textColors: ["responsive", "hover", "group-hover"],
     textSizes: ["responsive"],
@@ -831,6 +843,15 @@ module.exports = {
   */
 
   plugins: [
+    require("tailwindcss-aspect-ratio")({
+      ratios: {
+        square: [1, 1],
+        "16/9": [16, 9],
+        "4/3": [4, 3],
+        "21/9": [21, 9]
+      },
+      variants: ["responsive"]
+    }),
     require("tailwindcss-object-fit")(["responsive"]),
     require("tailwindcss-flexbox-order")({
       range: {

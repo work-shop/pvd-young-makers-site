@@ -48,6 +48,7 @@
     "postcss-cssnext": "^3.1.0",
     "postcss-import": "^11.1.0",
     "tailwindcss": "^0.6.3",
+    "tailwindcss-aspect-ratio": "^1.0.1",
     "tailwindcss-flexbox-order": "^1.0.0",
     "tailwindcss-object-fit": "^1.0.1",
     "vinyl-buffer": "^1.0.1",

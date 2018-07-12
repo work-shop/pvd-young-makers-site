@@ -1,23 +1,29 @@
-<a class="group block border-1 border-teal-darkest bg-teal-lightest hover:border-orange hover:bg-orange-lightest no-underline" href="{{ link }}">
-  <div class="flex justify-between items-center p-3 border-b-1 border-teal-darkest bg-teal-darkest text-white font-bold text-2xl leading-tight group-hover:border-orange group-hover:bg-orange">
-    <span>{{ title }}</span>
+<div class="border-1 border-teal-darkest">
+    <div class="flex justify-between items-center p-3 border-b-1 border-teal-darkest bg-orange text-white font-bold text-2xl leading-tight">
+      <span>{{ title }}</span>
 
-    <span class="ml-2" data-pictogram="∑"></span>
-  </div>
+      <span class="ml-2" data-pictogram="∑"></span>
+    </div>
 
-  <div class="flex items-center px-3 py-2 border-b-1 border-teal-darkest small-caps group-hover:border-orange">
-    {% if primary_pictogram %}
-      <span class="mr-2 group-hover:text-orange" data-pictogram="{{ primary_pictogram }}"></span>
+    <div class="flex items-center px-3 py-2 border-b-1 border-teal-darkest bg-teal-darkest text-white small-caps">
+      {% if primary_pictogram %}
+        <span class="mr-2" data-pictogram="{{ primary_pictogram }}"></span>
+      {% endif %}
+
+      <span>{{ primary_text }}</span>
+    </div>
+
+    {% if image_src %}
+      <div class="w-1/2 h-1/2 float-right">
+        <div class="relative aspect-ratio-square -mt-5.5">
+          <div class="absolute pin m-4">
+            <img class="block w-full h-full object-cover border-1 border-orange rounded-full bg-orange-lightest" src="{{ image_src }}" height="320" alt="">
+          </div>
+        </div>
+      </div>
     {% endif %}
 
-    <span class="group-hover:text-orange">{{ primary_text }}</span>
-  </div>
-
-  <div class="wysiwyg p-3 bg-white group-hover:bg-orange-lightest group-hover:text-orange">
-    {{ content }}
-  </div>
-
-  {% if image_src %}
-    <img class="block w-full object-cover border-t-1 border-teal-darkest group-hover:border-orange" src="{{ image_src }}" height="320" alt="">
-  {% endif %}
-</a>
+    <div class="wysiwyg p-3 text-orange">
+      {{ content }}
+    </div>
+</div>

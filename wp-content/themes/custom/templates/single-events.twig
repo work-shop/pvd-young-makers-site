@@ -23,7 +23,7 @@
   {% if post.get_field("signup_link") %}
     {% embed "partials/section.twig" %}
       {% block extra %}
-        <div class="">
+        <div>
           {% include "components/measure.twig" with {
             text: post.get_field("event_description")
           } only %}

@@ -12,8 +12,22 @@
 
     {% block extra %}
       {% include "partials/list-of-badges.twig" with {
-        badges: pathways_badges
+        badges: machine_badges
       } only %}
+    {% endblock %}
+  {% endembed %}
+
+  {% embed "partials/section.twig" %}
+    {% block title %}
+      Interested in Learning More?
+    {% endblock %}
+
+    {% block text %}
+      <div class="mb-3 text-xl">
+        Visit your local library to speak to a staff member and start building towards your Novice Badge.
+      </div>
+
+      <a class="Block Block--light" href="{{ site.link }}/locations/">See our locations!</a>
     {% endblock %}
   {% endembed %}
 
@@ -27,7 +41,8 @@
     {% endblock %}
 
     {% block extra %}
-      {% include "partials/list-of-badges-mini.twig" with {
+      {% include "partials/list-of-badges.twig" with {
+        size: "small",
         badges: machine_badges
       } only %}
     {% endblock %}
