@@ -9,7 +9,7 @@
     {% block text %}
       <div class="flex flex-wrap -m-4">
         {% for location in locations %}
-          <div class="w-full md:flex-1 m-4">
+          <div class="w-full lg:w-1/3 m-4">
             <div class="mb-3">
               {% include "components/subheadline.twig" with {
                 text: location.post_title

@@ -7,64 +7,66 @@
     {% endblock %}
   {% endembed %}
 
-  {% embed "partials/section.twig" %}
-    {% block title %}
-      Partnership Types
-    {% endblock %}
+  {% if post.get_field("partnership_types")|length > 0 %}
+    {% embed "partials/section.twig" %}
+      {% block title %}
+        Partnership Types
+      {% endblock %}
 
-    {% block text %}
-      <div class="flex flex-wrap -m-4">
-        {% for item in post.get_field("partnership_types") %}
-          <div class="w-full md:flex-1 m-4">
-            <div class="mb-3">
-              {% include "components/subheadline.twig" with {
-                text: item.partnership_type_heading
-              } only %}
+      {% block text %}
+        <div class="flex flex-wrap -m-4">
+          {% for item in post.get_field("partnership_types") %}
+            <div class="w-full lg:w-1/3 m-4">
+              <div class="mb-3">
+                {% include "components/subheadline.twig" with {
+                  text: item.partnership_type_heading
+                } only %}
+              </div>
+
+              {% if item.image %}
+                <img
+                  class="block mb-3 object-cover"
+                  src="{{ TimberImage(item.image).src("large") }}"
+                  height="320"
+                  alt="">
+              {% endif %}
+
+              <div class="mb-4 text-sm">{{ item.partnership_description }}</div>
+
+              <div>
+                {% if item.contact_type == "write-in" %}
+                  {% set contact = {
+                    name: item.contact_name,
+                    email_address: item.contact_email,
+                    phone_number: item.contact_phone_number
+                  } %}
+                {% elseif item.contact_type == "from-site" %}
+                  {% set contact_post = item.contact[0] %}
+                  {% set contact = {
+                    name: contact_post.post_title,
+                    email_address: contact_post.email_address,
+                    phone_number: contact_post.phone_number
+                  } %}
+                {% endif %}
+
+                <div class="font-bold">{{ contact.name }}</div>
+
+                {% if contact.email_address %}
+                  <a href="mailto: {{ contact.email_address }}">
+                    {{ contact.email_address }}
+                  </a>
+                {% endif %}
+
+                {% if contact.phone_number %}
+                  <div>{{ contact.phone_number }}</div>
+                {% endif %}
+              </div>
             </div>
-
-            {% if item.image %}
-              <img
-                class="block mb-3 object-cover"
-                src="{{ TimberImage(item.image).src("large") }}"
-                height="320"
-                alt="">
-            {% endif %}
-
-            <div class="mb-4 text-sm">{{ item.partnership_description }}</div>
-
-            <div>
-              {% if item.contact_type == "write-in" %}
-                {% set contact = {
-                  name: item.contact_name,
-                  email_address: item.contact_email,
-                  phone_number: item.contact_phone_number
-                } %}
-              {% elseif item.contact_type == "from-site" %}
-                {% set contact_post = item.contact[0] %}
-                {% set contact = {
-                  name: contact_post.post_title,
-                  email_address: contact_post.email_address,
-                  phone_number: contact_post.phone_number
-                } %}
-              {% endif %}
-
-              <div class="font-bold">{{ contact.name }}</div>
-
-              {% if contact.email_address %}
-                <a href="mailto: {{ contact.email_address }}">
-                  {{ contact.email_address }}
-                </a>
-              {% endif %}
-
-              {% if contact.phone_number %}
-                <div>{{ contact.phone_number }}</div>
-              {% endif %}
-            </div>
-          </div>
-        {% endfor %}
-      </div>
-    {% endblock %}
-  {% endembed %}
+          {% endfor %}
+        </div>
+      {% endblock %}
+    {% endembed %}
+  {% endif %}
 
   {% embed "partials/section.twig" %}
     {% block title %}
