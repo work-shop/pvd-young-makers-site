@@ -140,7 +140,20 @@ if ($post_name === 'badges') {
             ),
         ),
     );
-    $context['pathways_badges'] = Timber::get_posts($pathways_badges_args);
+    $pathways_badges = Timber::get_posts($pathways_badges_args);
+    // Replace each Pathways badge's event IDs with events objects
+    foreach($pathways_badges as $badge) {
+        if ($badge->events) {
+            $eventIds = $badge->events;
+            $events = [];
+            foreach($eventIds as $eventId) {
+                $event = Timber::get_post($eventId);
+                array_push($events, $event);
+            }
+            $badge->events = $events;
+        }
+    }
+    $context['pathways_badges'] = $pathways_badges;
 
     $machine_badges_args = array(
         'post_type' => 'badges',
@@ -152,7 +165,20 @@ if ($post_name === 'badges') {
             ),
         ),
     );
-    $context['machine_badges'] = Timber::get_posts($machine_badges_args);
+    $machine_badges = Timber::get_posts($machine_badges_args);
+    // Replace each Machine badge's event IDs with events objects
+    foreach($machine_badges as $badge) {
+        if ($badge->events) {
+            $eventIds = $badge->events;
+            $events = [];
+            foreach($eventIds as $eventId) {
+                $event = Timber::get_post($eventId);
+                array_push($events, $event);
+            }
+            $badge->events = $events;
+        }
+    }
+    $context['machine_badges'] = $machine_badges;
 }
 
 // News page
