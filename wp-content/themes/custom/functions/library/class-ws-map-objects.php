@@ -69,20 +69,23 @@ class WS_Map_Objects {
     public static function build_single_location( $location ) {
         $id = $location->ID;
         $position = get_field('location_address', $id);
-        $address = $position['address'];
 
         if ( ! static::is_valid_position( $position ) ) {
+            // no position has been input
             return null;
         }
 
         $position = static::ensure_position_float( $position );
+        $address = static::format_address( $position['address'] );
 
-        $card_rows = array(
-            array(
-                'type' => 'text-row',
-                'text' => static::format_address( $address )
-            )
-        );
+        if ( is_string( $address ) && strlen( $address ) > 0 ) {
+            $card_rows = array(
+                array(
+                    'type' => 'text-row',
+                    'text' =>  $address,
+                )
+            );
+        }
 
         // building a timber context from the resulting object.
         $timber_context = array(
@@ -329,13 +332,18 @@ class WS_Map_Objects {
                  is_float( floatval( $position->lng ) ) ) ) {
             return false;
         }
+        if ( ! ( array_key_exists( 'address', $position ) &&
+                 is_string( $position['address'] ) ) ) {
+            return false;
+        }
         return true;
     }
 
     private static function ensure_position_float( $position ) {
         return array(
             'lat' => floatval( $position['lat'] ),
-            'lng' => floatval( $position['lng'] )
+            'lng' => floatval( $position['lng'] ),
+            'address' => $position['address'],
         );
     }
 
