@@ -1,6 +1,6 @@
 export function livereload() {
 
-    if ( window.location.host.indexOf('pvdyoungmakers.com') === -1 ) {
+    if ( window.location.host.indexOf('pvdyoungmakers') === -1 ) {
       console.log( 'livereload enabled' );
       document.write(
         '<script src="http://' +
