@@ -1,5 +1,5 @@
 <a class="group block border-1 border-teal-darkest bg-teal-lightest hover:border-orange hover:bg-orange-lightest no-underline" href="{{ link }}">
-  <div class="max-h-medium overflow-hidden">
+  <div class="flex flex-col flex-wrap h-7.5 overflow-hidden">
     <div class="p-3 border-b-1 border-teal-darkest bg-teal-darkest text-white font-bold text-2xl leading-tight group-hover:border-orange group-hover:bg-orange">
       {{ title }}
     </div>
@@ -21,7 +21,7 @@
     </div>
 
     {% if image_src %}
-      <img class="block w-full object-cover border-t-1 border-teal-darkest group-hover:border-orange" src="{{ image_src }}" height="320" alt="">
+      <div style="background-image: url('{{ image_src }}')" class="w-full flex-grow bg-center bg-cover border-t-1 border-teal-darkest group-hover:border-orange"></div>
     {% endif %}
   </div>
 </a>
