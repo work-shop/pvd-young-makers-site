@@ -13,11 +13,23 @@ $context['post'] = $post;
 
 // Home page
 if (is_front_page()) {
-    $events = Timber::get_posts('post_type=events&numberposts=3');
+    $events = Timber::get_posts('post_type=events');
+    $events_filtered_by_today = [];
     foreach ($events as $event) {
-        $event->location_name = Timber::get_post('post_type=locations&p=' . $event->location[0])->post_title;
+        $event_start_string = $event->event_start;
+        $event_start_date = DateTime::createFromFormat('Y-m-d H:i:s', $event_start_string)->format('Y-m-d');
+
+        $event_end_string = $event->event_end;
+        $event_end_date = DateTime::createFromFormat('Y-m-d H:i:s', $event_end_string)->format('Y-m-d');
+
+        $now = date('Y-m-d');
+
+        if ($event_start_date >= $now && $event_end_date <= $now) {
+            $event->location_name = Timber::get_post('post_type=locations&p=' . $event->location[0])->post_title;
+            array_push($events_filtered_by_today, $event);
+        }
     }
-    $context['events'] = $events;
+    $context['events'] = $events_filtered_by_today;
 
     $locations_for_map = Timber::get_posts('post_type=locations');
     $map_data = WS_Map_Objects::build_map_objects($locations_for_map);
@@ -55,11 +67,11 @@ if ($post_name === 'tools') {
     );
     $machines = Timber::get_posts($machines_args);
     // Replace each machine's event IDs with events objects
-    foreach($machines as $machine) {
+    foreach ($machines as $machine) {
         if ($machine->events) {
             $eventIds = $machine->events;
             $events = [];
-            foreach($eventIds as $eventId) {
+            foreach ($eventIds as $eventId) {
                 $event = Timber::get_post($eventId);
                 array_push($events, $event);
             }
@@ -80,11 +92,11 @@ if ($post_name === 'tools') {
     );
     $materials = Timber::get_posts($materials_args);
     // Replace each material's event IDs with events objects
-    foreach($materials as $material) {
+    foreach ($materials as $material) {
         if ($material->events) {
             $eventIds = $material->events;
             $events = [];
-            foreach($eventIds as $eventId) {
+            foreach ($eventIds as $eventId) {
                 $event = Timber::get_post($eventId);
                 array_push($events, $event);
             }
@@ -107,11 +119,11 @@ if ($post_name === 'tools') {
 if ($post_name === 'locations') {
     $locations = Timber::get_posts('post_type=locations');
     // Replace each location's event IDs with events objects
-    foreach($locations as $location) {
+    foreach ($locations as $location) {
         if ($location->events) {
             $eventIds = $location->events;
             $events = [];
-            foreach($eventIds as $eventId) {
+            foreach ($eventIds as $eventId) {
                 $event = Timber::get_post($eventId);
                 array_push($events, $event);
             }
@@ -142,11 +154,11 @@ if ($post_name === 'badges') {
     );
     $pathways_badges = Timber::get_posts($pathways_badges_args);
     // Replace each Pathways badge's event IDs with events objects
-    foreach($pathways_badges as $badge) {
+    foreach ($pathways_badges as $badge) {
         if ($badge->events) {
             $eventIds = $badge->events;
             $events = [];
-            foreach($eventIds as $eventId) {
+            foreach ($eventIds as $eventId) {
                 $event = Timber::get_post($eventId);
                 array_push($events, $event);
             }
@@ -167,11 +179,11 @@ if ($post_name === 'badges') {
     );
     $machine_badges = Timber::get_posts($machine_badges_args);
     // Replace each Machine badge's event IDs with events objects
-    foreach($machine_badges as $badge) {
+    foreach ($machine_badges as $badge) {
         if ($badge->events) {
             $eventIds = $badge->events;
             $events = [];
-            foreach($eventIds as $eventId) {
+            foreach ($eventIds as $eventId) {
                 $event = Timber::get_post($eventId);
                 array_push($events, $event);
             }
