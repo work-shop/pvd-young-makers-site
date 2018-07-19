@@ -3,9 +3,16 @@
     {% for badge in badges %}
       <li class="w-full {% if size == "small" %} md:w-1/3 xl:w-1/4 {% else %} lg:w-1/2 {% endif %}">
         <div class="m-2">
-          {% set badge_upcoming_events = [] %}
+          {% set deduped_events = [] %}
           {% for event in badge.events %}
-            {% if event.event_end|date("d/m/Y") >= "now"|date("m/d/Y") %}
+            {% if event not in deduped_events %}
+              {% set deduped_events = deduped_events|merge([event]) %}
+            {% endif %}
+          {% endfor %}
+
+          {% set badge_upcoming_events = [] %}
+          {% for event in deduped_events %}
+            {% if event.event_end|date("d/m/Y") >= "now"|date("d/m/Y") %}
               {% set badge_upcoming_events = badge_upcoming_events|merge([event]) %}
             {% endif %}
           {% endfor %}

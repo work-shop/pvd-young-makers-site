@@ -8,9 +8,16 @@
             {% set tool_locations_text = tool_locations_text ~ "s" %}
           {% endif %}
 
-          {% set tool_upcoming_events = [] %}
+          {% set deduped_events = [] %}
           {% for event in tool.events %}
-            {% if event.event_end|date("d/m/Y") >= "now"|date("m/d/Y") %}
+            {% if event not in deduped_events %}
+              {% set deduped_events = deduped_events|merge([event]) %}
+            {% endif %}
+          {% endfor %}
+
+          {% set tool_upcoming_events = [] %}
+          {% for event in deduped_events %}
+            {% if event.event_end|date("d/m/Y") >= "now"|date("d/m/Y") %}
               {% set tool_upcoming_events = tool_upcoming_events|merge([event]) %}
             {% endif %}
           {% endfor %}

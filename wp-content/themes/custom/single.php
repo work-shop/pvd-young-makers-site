@@ -8,24 +8,26 @@ $templates = array('single-' . $post_type . '.twig', 'single.twig');
 $context = Timber::get_context();
 $context['post'] = $post;
 
+// Single location
 if ($post_type === 'locations') {
     $context['tools'] = Timber::get_posts('post_type=tools&numberposts=4');
-    
-    $map_data = WS_Map_Objects::build_single_location( $post );
-    if ( $map_data != null ) {
+
+    $map_data = WS_Map_Objects::build_single_location($post);
+    if ($map_data != null) {
         $context['map_options'] = array(
             'data' => $map_data,
         );
     }
 }
 
+// Single event
 if ($post_type === 'events') {
     $tools_args = array(
         'post_type' => 'tools',
         'meta_query' => array(
             array(
-                'key'     => 'events',
-                'value'   => '"' . $post->id . '"',
+                'key' => 'events',
+                'value' => '"' . $post->id . '"',
                 'compare' => 'LIKE',
             ),
         ),
@@ -46,17 +48,18 @@ if ($post_type === 'events') {
     );
     $context['badges'] = Timber::get_posts($badges_args);
 
-    $map_data = WS_Map_Objects::build_single_event( $post );
-    if ( $map_data != null ) {
+    $map_data = WS_Map_Objects::build_single_event($post);
+    if ($map_data != null) {
         $context['map_options'] = array(
             'data' => $map_data,
         );
     }
 }
 
+// Single tool
 if ($post_type === 'tools') {
-    $map_data = WS_Map_Objects::build_map_objects( array( $post ) );
-    if ( $map_data != null ) {
+    $map_data = WS_Map_Objects::build_map_objects(array($post));
+    if ($map_data != null) {
         $context['map_options'] = array(
             'data' => $map_data,
         );

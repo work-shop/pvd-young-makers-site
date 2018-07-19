@@ -6,9 +6,16 @@
     {% set locations_text = locations_text ~ "s" %}
   {% endif %}
 
-  {% set upcoming_events = [] %}
+  {% set deduped_events = [] %}
   {% for event in post.get_field("events") %}
-    {% if event.event_end|date("d/m/Y") >= "now"|date("m/d/Y") %}
+    {% if event not in deduped_events %}
+      {% set deduped_events = deduped_events|merge([event]) %}
+    {% endif %}
+  {% endfor %}
+
+  {% set upcoming_events = [] %}
+  {% for event in deduped_events %}
+    {% if event.event_end|date("d/m/Y") >= "now"|date("d/m/Y") %}
       {% set upcoming_events = upcoming_events|merge([event]) %}
     {% endif %}
   {% endfor %}
