@@ -12,6 +12,7 @@
 
           {% set badge_upcoming_events = [] %}
           {% for event in deduped_events %}
+            {% set event = TimberPost(event) %}
             {% if event.event_end|date("d/m/Y") >= "now"|date("d/m/Y") %}
               {% set badge_upcoming_events = badge_upcoming_events|merge([event]) %}
             {% endif %}

@@ -8,7 +8,7 @@
 
   {% set deduped_events = [] %}
   {% for event in post.get_field("events") %}
-    {% if event not in deduped_events %}
+    {% if event.id not in deduped_events %}
       {% set deduped_events = deduped_events|merge([event]) %}
     {% endif %}
   {% endfor %}

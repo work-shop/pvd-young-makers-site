@@ -70,17 +70,17 @@ if ($post_name === 'tools') {
     );
     $machines = Timber::get_posts($machines_args);
     // Replace each machine's event IDs with events objects
-    foreach ($machines as $machine) {
-        if ($machine->events) {
-            $eventIds = $machine->events;
-            $events = [];
-            foreach ($eventIds as $eventId) {
-                $event = Timber::get_post($eventId);
-                array_push($events, $event);
-            }
-            $machine->events = $events;
-        }
-    }
+    // foreach ($machines as $machine) {
+    //     if ($machine->events) {
+    //         $eventIds = $machine->events;
+    //         $events = [];
+    //         foreach ($eventIds as $eventId) {
+    //             $event = Timber::get_post($eventId);
+    //             array_push($events, $event);
+    //         }
+    //         $machine->events = $events;
+    //     }
+    // }
     $context['machines'] = $machines;
 
     $materials_args = array(
@@ -95,17 +95,17 @@ if ($post_name === 'tools') {
     );
     $materials = Timber::get_posts($materials_args);
     // Replace each material's event IDs with events objects
-    foreach ($materials as $material) {
-        if ($material->events) {
-            $eventIds = $material->events;
-            $events = [];
-            foreach ($eventIds as $eventId) {
-                $event = Timber::get_post($eventId);
-                array_push($events, $event);
-            }
-            $material->events = $events;
-        }
-    }
+    // foreach ($materials as $material) {
+    //     if ($material->events) {
+    //         $eventIds = $material->events;
+    //         $events = [];
+    //         foreach ($eventIds as $eventId) {
+    //             $event = Timber::get_post($eventId);
+    //             array_push($events, $event);
+    //         }
+    //         $material->events = $events;
+    //     }
+    // }
     $context['materials'] = $materials;
 
     $all_tools = array_merge($context['machines'], $context['materials']);
@@ -122,17 +122,17 @@ if ($post_name === 'tools') {
 if ($post_name === 'locations') {
     $locations = Timber::get_posts('post_type=locations');
     // Replace each location's event IDs with events objects
-    foreach ($locations as $location) {
-        if ($location->events) {
-            $eventIds = $location->events;
-            $events = [];
-            foreach ($eventIds as $eventId) {
-                $event = Timber::get_post($eventId);
-                array_push($events, $event);
-            }
-            $location->events = $events;
-        }
-    }
+    // foreach ($locations as $location) {
+    //     if ($location->events) {
+    //         $eventIds = $location->events;
+    //         $events = [];
+    //         foreach ($eventIds as $eventId) {
+    //             $event = Timber::get_post($eventId);
+    //             array_push($events, $event);
+    //         }
+    //         $location->events = $events;
+    //     }
+    // }
     $context['locations'] = $locations;
 
     $map_data = WS_Map_Objects::build_map_objects($context['locations']);
@@ -160,17 +160,17 @@ if ($post_name === 'badges') {
     );
     $pathways_badges = Timber::get_posts($pathways_badges_args);
     // Replace each Pathways badge's event IDs with events objects
-    foreach ($pathways_badges as $badge) {
-        if ($badge->events) {
-            $eventIds = $badge->events;
-            $events = [];
-            foreach ($eventIds as $eventId) {
-                $event = Timber::get_post($eventId);
-                array_push($events, $event);
-            }
-            $badge->events = $events;
-        }
-    }
+    // foreach ($pathways_badges as $badge) {
+    //     if ($badge->events) {
+    //         $eventIds = $badge->events;
+    //         $events = [];
+    //         foreach ($eventIds as $eventId) {
+    //             $event = Timber::get_post($eventId);
+    //             array_push($events, $event);
+    //         }
+    //         $badge->events = $events;
+    //     }
+    // }
     $context['pathways_badges'] = $pathways_badges;
 
     $machine_badges_args = array(
@@ -185,17 +185,17 @@ if ($post_name === 'badges') {
     );
     $machine_badges = Timber::get_posts($machine_badges_args);
     // Replace each Machine badge's event IDs with events objects
-    foreach ($machine_badges as $badge) {
-        if ($badge->events) {
-            $eventIds = $badge->events;
-            $events = [];
-            foreach ($eventIds as $eventId) {
-                $event = Timber::get_post($eventId);
-                array_push($events, $event);
-            }
-            $badge->events = $events;
-        }
-    }
+    // foreach ($machine_badges as $badge) {
+    //     if ($badge->events) {
+    //         $eventIds = $badge->events;
+    //         $events = [];
+    //         foreach ($eventIds as $eventId) {
+    //             $event = Timber::get_post($eventId);
+    //             array_push($events, $event);
+    //         }
+    //         $badge->events = $events;
+    //     }
+    // }
     $context['machine_badges'] = $machine_badges;
 }
 

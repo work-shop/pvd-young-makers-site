@@ -44,6 +44,7 @@
 
                 {% set location_upcoming_events = [] %}
                 {% for event in deduped_events %}
+                  {% set event = TimberPost(event) %}
                   {% if event.get_field("event_end")|date("d/m/Y") >= "now"|date("d/m/Y") %}
                     {% set location_upcoming_events = location_upcoming_events|merge([event]) %}
                   {% endif %}

@@ -8,9 +8,25 @@
     {% set tools_text = tools_text ~ "s" %}
   {% endif %}
 
-  {% set events_text = post.get_field("events")|length ~ " event" %}
-  {% if post.get_field("events")|length != 1 %}
+  {% set deduped_events = [] %}
+  {% for event in post.get_field("events") %}
+    {% if event.id not in deduped_events %}
+      {% set deduped_events = deduped_events|merge([event]) %}
+    {% endif %}
+  {% endfor %}
+
+  {% set upcoming_events = [] %}
+  {% for event in deduped_events %}
+    {% if event.event_end|date("d/m/Y") >= "now"|date("d/m/Y") %}
+      {% set upcoming_events = upcoming_events|merge([event]) %}
+    {% endif %}
+  {% endfor %}
+  {% set events_text = upcoming_events|length ~ " upcoming event" %}
+  {% if upcoming_events|length != 1%}
     {% set events_text = events_text ~ "s" %}
+  {% endif %}
+  {% if upcoming_events|length == 0 %}
+    {% set events_text = "No upcoming events" %}
   {% endif %}
 
   {% include "partials/single-hero.twig" with {
