@@ -8,6 +8,7 @@
       {% endblock %}
 
       {% block text %}
+        {{ machines_tool_type.description }}
         {{ post.get_field("machines_introductory_text") }}
       {% endblock %}
 
@@ -24,6 +25,7 @@
       {% endblock %}
 
       {% block text %}
+        {{ materials_tool_type.description }}
         {{ post.get_field("materials_introductory_text") }}
       {% endblock %}
 

@@ -55,6 +55,9 @@ if ($post_name === 'making-and-learning') {
 
 // Tools page
 if ($post_name === 'tools') {
+    $context['machines_tool_type'] = new TimberTerm('machines');
+    $context['materials_tool_type'] = new TimberTerm('materials');
+
     $machines_args = array(
         'post_type' => 'tools',
         'tax_query' => array(
@@ -142,6 +145,9 @@ if ($post_name === 'locations') {
 
 // Badges page
 if ($post_name === 'badges') {
+    $context['pathways_badge_type'] = new TimberTerm('pathways-badges');
+    $context['machine_badge_type'] = new TimberTerm('machine-badges');
+
     $pathways_badges_args = array(
         'post_type' => 'badges',
         'tax_query' => array(
