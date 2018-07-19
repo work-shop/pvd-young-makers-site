@@ -1,11 +1,11 @@
 {% extends "single.twig" %}
 
 {% block hero %}
-  {% set event_date = post.event_start|date("F j, Y, g:ia") ~ " – " %}
-  {% if post.event_start|date("F j, Y") == post.event_end|date("F j, Y") %}
-    {% set event_date = event_date ~ post.event_end|date("g:ia") %}
+  {% set event_date = post.event_start | date("F j, Y, g:ia") ~ " – " %}
+  {% if post.event_start | date("F j, Y") == post.event_end | date("F j, Y") %}
+    {% set event_date = event_date ~ post.event_end | date("g:ia") %}
   {% else %}
-    {% set event_date = event_date ~ post.event_end|date("F j, Y, g:ia") %}
+    {% set event_date = event_date ~ post.event_end | date("F j, Y, g:ia") %}
   {% endif %}
 
   {% include "partials/single-hero.twig" with {
@@ -25,15 +25,12 @@
       {% block extra %}
         <div>
           {% include "components/measure.twig" with {
-            text: post.get_field("event_description")
-          } only %}
+            text : post.get_field("event_description")
+          }
+          only %}
 
           <div class="mt-5">
-            <a
-              class="Block Block--light"
-              href="{{ post.get_field("signup_link") }}"
-              target="_blank"
-              rel="noopener">
+            <a class="Block Block--light" href="{{ post.get_field(" signup_link") }}"="signup_link") }}"" target="_blank" rel="noopener">
               Sign up for this event at Eventbrite
             </a>
           </div>
@@ -61,7 +58,7 @@
       {% endblock %}
 
       {% block extra %}
-        {% include "partials/list-of-badges-mini.twig" %}
+        {% include "partials/list-of-badges.twig" with { size: "small" } %}
       {% endblock %}
     {% endembed %}
   {% endif %}
@@ -71,14 +68,17 @@
   {% if map_options and map_options.data %}
     <div class="map-container">
       <script>
-      var locationMapOptions = {
-        map: {
-          zoomControl: false,
-        },
-        data: {{ map_options.data|json_encode() }},
-        render: { center: {{ map_options.data.marker.position|json_encode() }}, zoom: 17 },
-      };
-      locationMapOptions.data.marker.popup.openOnInitialization = true;
+        var locationMapOptions = {
+          map: {
+            zoomControl: false
+          },
+          data: {{ map_options.data|json_encode() }},
+          render: {
+            center: {{ map_options.data.marker.position|json_encode() }},
+            zoom: 17
+          }
+        };
+        locationMapOptions.data.marker.popup.openOnInitialization = true;
       </script>
       <div id="location-map" class="ws-map w-full h-screen ws-map-static" data-options="locationMapOptions"></div>
     </div>
