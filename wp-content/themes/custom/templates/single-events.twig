@@ -46,7 +46,9 @@
       {% endblock %}
 
       {% block extra %}
-        {% include "partials/list-of-tools.twig" %}
+        {% include "partials/list-of-tools.twig" with {
+          tools: post.get_field("tools")
+        } only %}
       {% endblock %}
     {% endembed %}
   {% endif %}
