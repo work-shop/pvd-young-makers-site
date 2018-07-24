@@ -2,6 +2,24 @@
 
 {% block page_content %}
   {% embed "partials/section.twig" %}
+    {% set section_classes = "bg-orange text-white overflow-auto h-100 pb-5" %}
+    {% set section_extra_classes = "max-w-lg" %}
+    {% block extra %}
+
+        {% for item in post.get_field('statistics') %}
+            <div class="statistics-row w-1/2 m-0 float-left text-center">
+                <p class="centered h2 text-5xl text-bold">
+                    {{ item.statistic_quantity }}
+                </p>
+                <p class="centered uppercase text-xs">
+                    {{ item.statistic_label }}
+                </p>
+            </div>
+        {% endfor %}
+    {% endblock %}
+  {% endembed %}
+
+  {% embed "partials/section.twig" %}
     {% block text %}
       {{ post.content }}
     {% endblock %}
