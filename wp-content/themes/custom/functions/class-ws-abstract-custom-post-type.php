@@ -138,10 +138,8 @@ abstract class WS_Custom_Post_Type {
 
         $new_field_state = ( empty( $new_field_state ) ) ? array() : $new_field_state;
 
-        // echo "\n\n 'new state:'";
-        // var_dump( $new_field_state );
-        // echo "\n\n 'old state:'";
-        // var_dump( $old_field_state );
+
+
 
 
         foreach ( $new_field_state as $new_id ) {
@@ -149,30 +147,25 @@ abstract class WS_Custom_Post_Type {
             // cast the id to an int for clearer comparison.
             $new_id = (int) $new_id;
 
-            // If this new element is already in the array, just carry on.
-            // it should have been linked in a previous pass.
-            // In this case, this id is in the old field state, and
-            // in the new fieldstate, meaning it hasn't changed at all. pass along.
-            if ( !in_array( $new_id, $old_field_state, true ) ) {
+            //
+            $conserved_foreign_field_state = get_field( $field_name, $new_id );
+            $conserved_foreign_field_state = ( $conserved_foreign_field_state ) ? array_map( function($x) { return (int) $x->ID; }, $conserved_foreign_field_state ) : array();
+            $conserved_foreign_field_state =
+            // in php, arrays are assigned by copy, don't worry.
+            // add the id to the a foreign update
+            array_push( $conserved_foreign_field_state, $source_post_id );
 
-                // if it's down here,
-                // otherwise, get the target field state from the other post, designated $id.
-                $conserved_foreign_field_state = get_field( $field_name, $new_id );
-                $conserved_foreign_field_state = ( $conserved_foreign_field_state ) ? array_map( function($x) { return (int) $x->ID; }, $conserved_foreign_field_state ) : array();
-                // in php, arrays are assigned by copy, don't worry.
-                // add the id to the a foreign update
-                array_push( $conserved_foreign_field_state, $source_post_id );
+            update_field( $field_name, $conserved_foreign_field_state, $new_id );
 
-                update_field( $field_name, $conserved_foreign_field_state, $new_id );
+            //}
 
-            } else {
+            //echo "IN ARRAY";
 
-                // remove this updated id from the old field state,
-                // at the end of this loop, we'll have the set of posts to
-                // remove this post id from.
-                $old_field_state = array_remove( $new_id, $old_field_state );
-
-            }
+            // remove this updated id from the old field state,
+            // at the end of this loop, we'll have the set of posts to
+            // remove this post id from.
+            // Here we actually have to add this pos
+            $old_field_state = array_remove( $new_id, $old_field_state );
 
         }
         // echo "\n\n 'posts to remove:'";
