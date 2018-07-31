@@ -113,7 +113,9 @@ export class Calendar {
   }
 
   updateCalendarTitle() {
-    const selectedDate = this.isInstantiated ? this.getSelectedDate() : $.fullCalendar.moment();
+    const selectedDate = this.isInstantiated
+      ? this.getSelectedDate()
+      : $.fullCalendar.moment();
     const formattedSelectedDate = selectedDate.format("MMMM YYYY");
     this.$title.text(`Calendar for ${formattedSelectedDate}`);
   }
@@ -187,9 +189,16 @@ export class Calendar {
     for (const event of filteredEvents) {
       const formattedEvent = {
         title: event.acf.event_name,
-        start: $.fullCalendar.moment(event.acf.event_start, dateFormat),
-        end: $.fullCalendar.moment(event.acf.event_end, dateFormat),
-        location: event.acf.location && event.acf.location[0] && event.acf.location[0].post_title,
+        start: $.fullCalendar
+          .moment(event.acf.event_start, dateFormat)
+          .toISOString(),
+        end: $.fullCalendar
+          .moment(event.acf.event_end, dateFormat)
+          .toISOString(),
+        location:
+          event.acf.location &&
+          event.acf.location[0] &&
+          event.acf.location[0].post_title,
         url: event.link
       };
 
@@ -245,7 +254,7 @@ export class Calendar {
       container: document.querySelector("#calendar-tooltip"),
       template: `
         <div
-          class="tooltip pointer-events-none z-50 block border-1 border-teal-darkest bg-teal-lightest"
+          class="tooltip pointer-events-none z-50 block max-w-xs lg:max-w-md border-1 border-teal-darkest bg-teal-lightest"
           role="tooltip"
         >
           <div class="tooltip-arrow"></div>
