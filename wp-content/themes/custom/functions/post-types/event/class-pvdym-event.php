@@ -59,9 +59,11 @@ class PVDYM_Event extends WS_Custom_Post_Type {
         $old_tools = get_field('tools', $post_id );
         $old_tools = ( $old_tools ) ? array_map( function($x){return $x->ID;}, $old_tools) : array();
 
-        $new_badges = $_POST['acf'][ self::$field_keys[ 'tools' ] ];
+        $new_badges = $_POST['acf'][ self::$field_keys[ 'badges' ] ];
         $old_badges = get_field('badges', $post_id );
         $old_badges = ( $old_badges ) ? array_map( function($x){return $x->ID;}, $old_badges) : array();
+
+
 
         self::transfer_to_linked_post_type( PVDYM_Location::$field_keys[ 'events' ], $new_location, $old_location, $post_id );
         self::transfer_to_linked_post_type( PVDYM_Tool::$field_keys[ 'events' ], $new_tools, $old_tools, $post_id );

@@ -20,6 +20,84 @@
             "esc_html": 0
         },
         {
+            "key": "field_5b5784bb743a9",
+            "label": "Program Statistics",
+            "name": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
+            "key": "field_5b578512743aa",
+            "label": "Statistics",
+            "name": "statistics",
+            "type": "repeater",
+            "instructions": "Use these fields to represent a few, key statistics about PVD Young Makers on the about page",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "",
+            "sub_fields": [
+                {
+                    "key": "field_5b578599743ac",
+                    "label": "Quantity",
+                    "name": "statistic_quantity",
+                    "type": "number",
+                    "instructions": "Enter the quantity you'd like to represent here!",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "min": "",
+                    "max": "",
+                    "step": ""
+                },
+                {
+                    "key": "field_5b57851f743ab",
+                    "label": "Statistic Label",
+                    "name": "statistic_label",
+                    "type": "text",
+                    "instructions": "Enter a label for the statistic here. This will be displayed small below the number.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                }
+            ]
+        },
+        {
             "key": "field_5b0dc19c278dc",
             "label": "Mission Statement",
             "name": "",
@@ -286,8 +364,10 @@
     "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
-    "hide_on_screen": "",
+    "hide_on_screen": [
+        "the_content"
+    ],
     "active": 1,
     "description": "",
-    "modified": 1527629005
+    "modified": 1532462792
 }
