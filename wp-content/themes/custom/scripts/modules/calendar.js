@@ -159,11 +159,9 @@ export class Calendar {
   }
 
   async getEvents(start, end, timezone, callback) {
-    let jsonUrl = "/wp-json/wp/v2/events";
-
-    if (this.params.eventType && this.params.eventType !== -1) {
-      jsonUrl += `?event-types=${this.params.eventType}`;
-    }
+    let jsonUrl = `/wp-json/wp/v2/events?per_page=100&filter[meta_key]=event_start&filter[meta_value]=${
+      this.params.year
+    }-${this.params.month}&filter[meta_compare]=LIKE`;
 
     const response = await fetch(jsonUrl);
     const events = await response.json();
@@ -176,25 +174,25 @@ export class Calendar {
       );
     }
 
-    if (this.params.tool && this.params.tool !== -1) {
-      filteredEvents = await this.filterByTool(
+    if (this.params.eventType && this.params.eventType !== -1) {
+      filteredEvents = this.filterByEventType(
         filteredEvents,
-        this.params.tool
+        this.params.eventType
       );
     }
 
-    const dateFormat = "DD/MM/YYYY hh:mm a";
+    if (this.params.tool && this.params.tool !== -1) {
+      filteredEvents = this.filterByTool(filteredEvents, this.params.tool);
+    }
+
+    const dateFormat = "YYYY-MM-DD HH:mm";
     const formattedEvents = [];
 
     for (const event of filteredEvents) {
       const formattedEvent = {
         title: event.acf.event_name,
-        start: $.fullCalendar
-          .moment(event.acf.event_start, dateFormat)
-          .toISOString(),
-        end: $.fullCalendar
-          .moment(event.acf.event_end, dateFormat)
-          .toISOString(),
+        start: $.fullCalendar.moment(event.acf.event_start, dateFormat),
+        end: $.fullCalendar.moment(event.acf.event_end, dateFormat),
         location:
           event.acf.location &&
           event.acf.location[0] &&
@@ -222,7 +220,21 @@ export class Calendar {
     return filteredEvents;
   }
 
-  async filterByTool(events, toolId) {
+  filterByEventType(events, eventTypeId) {
+    const filteredEvents = events.filter(event => {
+      const eventTypes = event["event-types"];
+
+      if (eventTypes.length > 0) {
+        return eventTypes.some(eventType => {
+          return eventType === eventTypeId;
+        });
+      }
+    });
+
+    return filteredEvents;
+  }
+
+  filterByTool(events, toolId) {
     const filteredEvents = events.filter(event => {
       const tools = event.acf.tools;
 
@@ -237,55 +249,61 @@ export class Calendar {
   }
 
   renderEvent(event, $element, view) {
-    let eventDate =
-      $.fullCalendar.moment(event.start).format("MMMM DD, YYYY, h:mma") + " - ";
-    if (
-      event.start.format("MMMM DD, YYYY") === event.end.format("MMMM DD, YYYY")
-    ) {
-      eventDate += event.end.format("h:mma");
-    } else {
-      eventDate += event.end.format("MMMM DD, YYYY, h:mma");
+    if (event.start && event.end) {
+      let eventDate =
+        $.fullCalendar.moment(event.start).format("MMMM DD, YYYY, h:mma") +
+        " - ";
+      if (
+        event.start.format("MMMM DD, YYYY") ===
+        event.end.format("MMMM DD, YYYY")
+      ) {
+        eventDate += event.end.format("h:mma");
+      } else {
+        eventDate += event.end.format("MMMM DD, YYYY, h:mma");
+      }
+
+      const eventLocation = event.location;
+
+      const tooltip = new Tooltip($element, {
+        placement: "top",
+        container: document.querySelector("#calendar-tooltip"),
+        template: `
+          <div
+            class="tooltip pointer-events-none z-50 block max-w-xs lg:max-w-md border-1 border-teal-darkest bg-teal-lightest"
+            role="tooltip"
+          >
+            <div class="tooltip-arrow"></div>
+
+            <div class="p-3 border-b-1 border-teal-darkest bg-teal-darkest text-white font-bold text-2xl leading-tight">
+              <div class="tooltip-inner"></div>
+            </div>
+
+            <div class="flex items-center px-3 py-2 small-caps border-b-1 border-teal-darkest">
+              <span class="mr-2" data-pictogram="{"></span>
+              <span>${eventDate}</span>
+            </div>
+
+            <div class="flex items-center px-3 py-2 small-caps">
+              <span class="mr-2" data-pictogram=","></span>
+              <span>${eventLocation}</span>
+            </div>
+          </div>
+        `
+      });
+      tooltip.updateTitleContent(event.title);
+
+      $element.on({
+        mouseover: () => tooltip.show(),
+        mouseleave: () => tooltip.hide()
+      });
+
+      const dateString = $.fullCalendar.formatDate(event.start, "Y-MM-DD");
+      const $dayTopEvent = view.el.find(
+        `.fc-day-top[data-date="${dateString}"]`
+      );
+      $dayTopEvent.addClass("fc-event-day-top");
+      $dayTopEvent.attr("data-event-url", event.url);
     }
-
-    const eventLocation = event.location;
-
-    const tooltip = new Tooltip($element, {
-      placement: "top",
-      container: document.querySelector("#calendar-tooltip"),
-      template: `
-        <div
-          class="tooltip pointer-events-none z-50 block max-w-xs lg:max-w-md border-1 border-teal-darkest bg-teal-lightest"
-          role="tooltip"
-        >
-          <div class="tooltip-arrow"></div>
-
-          <div class="p-3 border-b-1 border-teal-darkest bg-teal-darkest text-white font-bold text-2xl leading-tight">
-            <div class="tooltip-inner"></div>
-          </div>
-
-          <div class="flex items-center px-3 py-2 small-caps border-b-1 border-teal-darkest">
-            <span class="mr-2" data-pictogram="{"></span>
-            <span>${eventDate}</span>
-          </div>
-
-          <div class="flex items-center px-3 py-2 small-caps">
-            <span class="mr-2" data-pictogram=","></span>
-            <span>${eventLocation}</span>
-          </div>
-        </div>
-      `
-    });
-    tooltip.updateTitleContent(event.title);
-
-    $element.on({
-      mouseover: () => tooltip.show(),
-      mouseleave: () => tooltip.hide()
-    });
-
-    const dateString = $.fullCalendar.formatDate(event.start, "Y-MM-DD");
-    const $dayTopEvent = view.el.find(`.fc-day-top[data-date="${dateString}"]`);
-    $dayTopEvent.addClass("fc-event-day-top");
-    $dayTopEvent.attr("data-event-url", event.url);
   }
 
   handleDayClick(day, jsEvent, view) {
