@@ -30,6 +30,10 @@
             {% set tool_events_text = "No upcoming events" %}
           {% endif %}
 
+          <script type="text/javascript">
+              console.log( {{ tool|json_encode }} );
+          </script>
+
           {% include "partials/card.twig" with {
             title: tool.title,
             link: tool.link,
@@ -37,7 +41,7 @@
             primary_text: tool_locations_text,
             secondary_pictogram: "{",
             secondary_text: tool_events_text,
-            image_src: TimberImage(tool.get_field("image")).src("large")
+            image_src: tool.thumbnail.src("large")
           } only %}
         </div>
       </li>
