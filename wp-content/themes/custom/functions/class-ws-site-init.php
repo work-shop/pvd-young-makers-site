@@ -57,7 +57,12 @@ class WS_Site extends TimberSite
         if (function_exists('add_image_size')) {
             add_image_size('social_card', 1200, 630, array('x_crop_position' => 'center', 'y_crop_position' => 'center'));
             add_image_size('acf_preview', 300, 300, false);
+            add_image_size('thumbnail', 150, 150, false);
             add_image_size('page_hero', 1440, 660, false);
+        }
+
+        if ( function_exists('set_post_thumbnail_size') ) {
+            set_post_thumbnail_size( 300, 300 );
         }
     }
 
