@@ -60,7 +60,7 @@ class WS_CDN_Url {
 
         if ( ! empty( $cdn_url ) ) {
 
-            return str_replace( $cms_url . $trailing_string, $cdn_url, $original );
+            return str_replace( $cms_url . $trailing_string, $cdn_url . '/', $original );
 
         } else {
 
