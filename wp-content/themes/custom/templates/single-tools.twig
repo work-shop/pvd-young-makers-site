@@ -1,5 +1,7 @@
 {% extends "single.twig" %}
 
+
+
 {% block hero %}
   {% set locations_text = post.get_field("locations")|length ~ " location" %}
   {% if post.get_field("locations")|length != 1 %}
@@ -46,11 +48,30 @@
         {% if badge_icon_src %}
           <div class="md:mr-6">
             {# TODO: test if this badge image is working #}
-            <img
-              class="block object-contain"
-              src="{{ badge_icon_src }}"
-              height="320"
-              alt="">
+
+            {% set badge_upcoming_events = [] %}
+            {% for event in deduped_events %}
+              {% set event = TimberPost(event) %}
+              {% if event.event_end|date("d/m/Y") >= "now"|date("d/m/Y") %}
+                {% set badge_upcoming_events = badge_upcoming_events|merge([event]) %}
+              {% endif %}
+            {% endfor %}
+            {% set badge_events_text = badge_upcoming_events|length ~ " upcoming event" %}
+            {% if badge_upcoming_events|length != 1%}
+              {% set badge_events_text = badge_events_text ~ "s" %}
+            {% endif %}
+            {% if badge_upcoming_events|length == 0 %}
+              {% set badge_events_text = "No upcoming events" %}
+            {% endif %}
+
+            {% include "partials/card-badge-mini.twig" with {
+              title: badge.title,
+              link: badge.link,
+              primary_pictogram: "}",
+              primary_text: badge_events_text,
+              image_src: TimberImage(badge.get_field("badge_icon")).src("large")
+            } only %}
+
           </div>
         {% endif %}
 
