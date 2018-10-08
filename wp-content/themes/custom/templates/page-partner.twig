@@ -1,9 +1,17 @@
 {% extends "page.twig" %}
 
 {% block page_content %}
+    {% if post.get_field("partnership_introduction")|length > 0 %}
+      {% embed "partials/section.twig" %}
+        {% block text %}
+          {{ post.get_field("partnership_introduction") }}
+        {% endblock %}
+      {% endembed %}
+    {% endif %}
+
   {% embed "partials/section.twig" %}
     {% block text %}
-      {{ post.get_field("partnership_introduction") }}
+      {{ post.content }}
     {% endblock %}
   {% endembed %}
 

@@ -13,6 +13,12 @@
   {% endembed %}
 
   {% embed "partials/section.twig" %}
+    {% block text %}
+      {{ post.content }}
+    {% endblock %}
+  {% endembed %}
+
+  {% embed "partials/section.twig" %}
     {% block title %}
       Ask Us a Question
     {% endblock %}

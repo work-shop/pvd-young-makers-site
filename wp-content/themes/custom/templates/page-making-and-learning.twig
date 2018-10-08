@@ -1,6 +1,12 @@
 {% extends "page.twig" %}
 
 {% block page_content %}
+    {% embed "partials/section.twig" %}
+      {% block text %}
+        {{ post.content }}
+      {% endblock %}
+    {% endembed %}
+
   {% embed "partials/section.twig" %}
     {% block title %}
       Our Philosophy
