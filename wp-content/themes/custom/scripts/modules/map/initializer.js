@@ -10,12 +10,12 @@ function makeSlippyMap () {
 
   return mapModule( {
     selector: ".ws-map",
-    map: {
-      mapTypeControl: false,
-      streetViewControl: false,
-      fullscreenControl: false,
-      styles: pvdymTileStyle,
-    },
+    mapTypeControl: false,
+    streetViewControl: false,
+    fullscreenControl: false,
+    styles: pvdymTileStyle,
+    center: ProvidenceLatLng,
+    zoom: 14,
     marker: {
       icon: {
         fillColor: pvdymOrange,
@@ -24,10 +24,6 @@ function makeSlippyMap () {
         pointer: "8px",
       }
     },
-    render: {
-      center: ProvidenceLatLng,
-      zoom: 14
-    }
   } )
 
 }
