@@ -1,7 +1,12 @@
 {% extends "page.twig" %}
 
 {% block page_content %}
+
     {% embed "partials/section.twig" %}
+      {% block title %}
+        {{ post.get_field("visual_editor_title") }}
+      {% endblock %}
+
       {% block text %}
         {{ post.content }}
       {% endblock %}
