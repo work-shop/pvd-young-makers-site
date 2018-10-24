@@ -1,7 +1,7 @@
 {% extends "page.twig" %}
 
 {% block page_content %}
-  {% if pathways_badges %}
+  {% if pathways_badges or post.get_field("pathways_badge_overview") %}
     {% embed "partials/section.twig" %}
       {% block title %}
         Pathways Badges
@@ -20,7 +20,7 @@
     {% endembed %}
   {% endif %}
 
-  {% if machine_badges %}
+  {% if machine_badges or post.get_field("machine_badges_overview") %}
     {% embed "partials/section.twig" %}
       {% block title %}
         Machine Badges

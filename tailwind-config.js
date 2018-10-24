@@ -511,6 +511,9 @@ module.exports = {
     "6": "32rem",
     full: "100%",
     "half-screen": "50vh",
+    "three-quarter-screen": "75vh",
+    "80-percent-screen": "80vh",
+    "90-percent-screen": "90vh",
     screen: "100vh"
   },
 

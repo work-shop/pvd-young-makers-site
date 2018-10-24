@@ -98,8 +98,10 @@ class PVDYM_Event extends WS_Custom_Post_Type {
 
 
     public static function get_date_string( $event_start, $event_end ) {
-        $dt_start = DateTime::createFromFormat('d/m/Y g:i a', $event_start );
-        $dt_end = DateTime::createFromFormat('d/m/Y g:i a', $event_end );
+
+
+        $dt_start = DateTime::createFromFormat('Y-m-d H:i:s', $event_start );
+        $dt_end = DateTime::createFromFormat('Y-m-d H:i:s', $event_end );
 
         $date_start = $dt_start->format('F j, Y');
         $date_end = $dt_end->format('F j, Y');

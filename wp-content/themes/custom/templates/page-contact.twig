@@ -79,6 +79,7 @@
     {% endblock %}
   {% endembed %}
 
+  {% if post.get_field("contacts") %}
   {% embed "partials/section.twig" %}
     {% block title %}
       General Contacts
@@ -123,6 +124,7 @@
       {% endfor %}
     {% endblock %}
   {% endembed %}
+  {% endif %}
 
   {% embed "partials/section.twig" %}
     {% block title %}

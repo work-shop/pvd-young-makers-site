@@ -19,7 +19,8 @@ class PVDYM_Tool extends WS_Custom_Post_Type {
         'menu_position'             => 4,
         'supports'                  => array(
                                         'title',
-                                        'revisions'
+                                        'revisions',
+                                        'thumbnail'
                                     ),
         'rewrite'                   => array(
                                         'slug' => 'tools',
