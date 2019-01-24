@@ -248,8 +248,10 @@ class Jutranslation
 
                 //Check if a translation exists for each entry
                 foreach ($mo->entries as $entry) {
-                    if (count($entry->translations[0])) {
-                        $language->overrided ++;
+                    if (is_array($entry->translations) || $entry->translations instanceof Countable) {
+                        if (count($entry->translations)) {
+                            $language->overrided ++;
+                        }
                     }
                 }
             }
