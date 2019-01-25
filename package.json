@@ -20,8 +20,8 @@
     "start": "npm run watch",
     "watch": "gulp",
     "build": "gulp build",
-    "deploy-staging": "DESTINATION=staging_html ./.deploy.sh",
-    "deploy-production": "DESTINATION=public_html ./.deploy.sh"
+    "deploy-staging": "./.deploy-staging.sh",
+    "deploy-production": "./.deploy-production.sh"
   },
   "dependencies": {
     "@work-shop/map-module": "^1.1.0",
