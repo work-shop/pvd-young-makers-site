@@ -31,8 +31,10 @@ if (is_front_page()) {
     }
     $context['events'] = $events_filtered_by_today;
 
-    $locations_for_map = Timber::get_posts('post_type=locations');
+    $locations_for_map = Timber::get_posts('post_type=locations&posts_per_page=-1');
+
     $map_data = WS_Map_Objects::build_map_objects($locations_for_map);
+
     if (count($map_data) > 0) {
         $context['map_options'] = array(
             'data' => $map_data,
@@ -120,7 +122,7 @@ if ($post_name === 'tools') {
 
 // Locations page
 if ($post_name === 'locations') {
-    $locations = Timber::get_posts('post_type=locations');
+    $locations = Timber::get_posts('post_type=locations&posts_per_page=-1');
     // Replace each location's event IDs with events objects
     // foreach ($locations as $location) {
     //     if ($location->events) {
@@ -201,7 +203,7 @@ if ($post_name === 'badges') {
 
 // News page
 if ($post_name === 'news') {
-    $context['news'] = Timber::get_posts('post_type=news');
+    $context['news'] = Timber::get_posts('post_type=news&posts_per_page=-1');
 }
 
 // About page
@@ -211,7 +213,7 @@ if ($post_name === 'about') {
 
 // Contact page
 if ($post_name === 'contact') {
-    $context['locations'] = Timber::get_posts('post_type=locations');
+    $context['locations'] = Timber::get_posts('post_type=locations&posts_per_page=-1');
 }
 
 // Events page
@@ -225,8 +227,8 @@ if ($post_name === 'events') {
     $context['selected_date_string'] = $dateStr;
 
     $context['event_types'] = Timber::get_terms('event-types');
-    $context['locations'] = Timber::get_posts('post_type=locations');
-    $context['tools'] = Timber::get_posts('post_type=tools');
+    $context['locations'] = Timber::get_posts('post_type=locations&posts_per_page=-1');
+    $context['tools'] = Timber::get_posts('post_type=tools&posts_per_page=-1');
 }
 
 Timber::render($templates, $context);
