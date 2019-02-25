@@ -20,7 +20,7 @@
 {% endblock %}
 
 {% block single_content %}
-  {% if post.get_field("signup_link") %}
+  {% if post.get_field("signup_link") or post.get_field("event_description") %}
     {% embed "partials/section.twig" %}
       {% block extra %}
         <div>
@@ -29,11 +29,13 @@
           }
           only %}
 
+          {% if post.get_field("signup_link") %}
           <div class="mt-5">
             <a class="Block Block--light" href="{{ post.get_field(" signup_link") }}"="signup_link") }}"" target="_blank" rel="noopener">
               Sign up for this event at Eventbrite
             </a>
           </div>
+          {% endif %}
         </div>
       {% endblock %}
     {% endembed %}
