@@ -78,7 +78,7 @@ function twentysixteen_setup() {
 	/*
 	 * Enable support for Post Thumbnails on posts and pages.
 	 *
-	 * @link https://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
+	 * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
 	 */
 	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size( 1200, 9999 );
@@ -371,20 +371,13 @@ require get_template_directory() . '/inc/customizer.php';
 function twentysixteen_content_image_sizes_attr( $sizes, $size ) {
 	$width = $size[0];
 
-	if ( 840 <= $width ) {
-		$sizes = '(max-width: 709px) 85vw, (max-width: 909px) 67vw, (max-width: 1362px) 62vw, 840px';
-	}
+	840 <= $width && $sizes = '(max-width: 709px) 85vw, (max-width: 909px) 67vw, (max-width: 1362px) 62vw, 840px';
 
 	if ( 'page' === get_post_type() ) {
-		if ( 840 > $width ) {
-			$sizes = '(max-width: ' . $width . 'px) 85vw, ' . $width . 'px';
-		}
+		840 > $width && $sizes = '(max-width: ' . $width . 'px) 85vw, ' . $width . 'px';
 	} else {
-		if ( 840 > $width && 600 <= $width ) {
-			$sizes = '(max-width: 709px) 85vw, (max-width: 909px) 67vw, (max-width: 984px) 61vw, (max-width: 1362px) 45vw, 600px';
-		} elseif ( 600 > $width ) {
-			$sizes = '(max-width: ' . $width . 'px) 85vw, ' . $width . 'px';
-		}
+		840 > $width && 600 <= $width && $sizes = '(max-width: 709px) 85vw, (max-width: 909px) 67vw, (max-width: 984px) 61vw, (max-width: 1362px) 45vw, 600px';
+		600 > $width && $sizes = '(max-width: ' . $width . 'px) 85vw, ' . $width . 'px';
 	}
 
 	return $sizes;
@@ -400,35 +393,29 @@ add_filter( 'wp_calculate_image_sizes', 'twentysixteen_content_image_sizes_attr'
  * @param array $attr Attributes for the image markup.
  * @param int   $attachment Image attachment ID.
  * @param array $size Registered image size or flat array of height and width dimensions.
- * @return array The filtered attributes for the image markup.
+ * @return string A source size value for use in a post thumbnail 'sizes' attribute.
  */
 function twentysixteen_post_thumbnail_sizes_attr( $attr, $attachment, $size ) {
 	if ( 'post-thumbnail' === $size ) {
-		if ( is_active_sidebar( 'sidebar-1' ) ) {
-			$attr['sizes'] = '(max-width: 709px) 85vw, (max-width: 909px) 67vw, (max-width: 984px) 60vw, (max-width: 1362px) 62vw, 840px';
-		} else {
-			$attr['sizes'] = '(max-width: 709px) 85vw, (max-width: 909px) 67vw, (max-width: 1362px) 88vw, 1200px';
-		}
+		is_active_sidebar( 'sidebar-1' ) && $attr['sizes'] = '(max-width: 709px) 85vw, (max-width: 909px) 67vw, (max-width: 984px) 60vw, (max-width: 1362px) 62vw, 840px';
+		! is_active_sidebar( 'sidebar-1' ) && $attr['sizes'] = '(max-width: 709px) 85vw, (max-width: 909px) 67vw, (max-width: 1362px) 88vw, 1200px';
 	}
 	return $attr;
 }
 add_filter( 'wp_get_attachment_image_attributes', 'twentysixteen_post_thumbnail_sizes_attr', 10 , 3 );
 
 /**
- * Modifies tag cloud widget arguments to display all tags in the same font size
- * and use list format for better accessibility.
+ * Modifies tag cloud widget arguments to have all tags in the widget same font size.
  *
  * @since Twenty Sixteen 1.1
  *
  * @param array $args Arguments for tag cloud widget.
- * @return array The filtered arguments for tag cloud widget.
+ * @return array A new modified arguments.
  */
 function twentysixteen_widget_tag_cloud_args( $args ) {
-	$args['largest']  = 1;
+	$args['largest'] = 1;
 	$args['smallest'] = 1;
-	$args['unit']     = 'em';
-	$args['format']   = 'list'; 
-
+	$args['unit'] = 'em';
 	return $args;
 }
 add_filter( 'widget_tag_cloud_args', 'twentysixteen_widget_tag_cloud_args' );

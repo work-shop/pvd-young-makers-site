@@ -199,10 +199,6 @@ input[type="checkbox"] {
 	text-align: left;
 }
 
-.comment-form #wp-comment-cookies-consent {
-	margin: 0 0 0 10px;
-}
-
 /* Post Formats */
 
 .format-quote blockquote .icon {
@@ -234,9 +230,11 @@ input[type="checkbox"] {
 	right: auto;
 }
 
-.tagcloud ul li {
+.widget .tagcloud a,
+.widget.widget_tag_cloud a,
+.wp_widget_tag_cloud a {
 	float: right;
-	margin: 4px 0 0 4px;
+	margin: 4px 0 0 4px !important; /* !important to override inline styles */
 }
 
 .widget ul li li {
